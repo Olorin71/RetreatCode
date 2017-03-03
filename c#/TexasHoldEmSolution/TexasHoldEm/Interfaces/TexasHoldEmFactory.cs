@@ -1,5 +1,4 @@
-﻿using System;
-using TexasHoldEm.Internals;
+﻿using TexasHoldEm.Internals;
 
 namespace TexasHoldEm.Interfaces
 {

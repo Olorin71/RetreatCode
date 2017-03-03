@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace TexasHoldEm.Interfaces
 {
@@ -7,11 +6,9 @@ namespace TexasHoldEm.Interfaces
     {
         int Chips { get; }
         ReadOnlyCollection<ICard> HoleCards { get; }
-
         string Name { get; }
-
         void AddHoleCard(ICard card);
-        void Set(int v);
+        void Set(int amount);
         void AllIn();
     }
 }
