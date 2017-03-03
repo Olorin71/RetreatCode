@@ -11,20 +11,30 @@ namespace TexasHoldEm
         {
             var cards = CreateCards();
             Shuffle(cards);
-
         }
 
         private IList<Card> CreateCards()
         {
             IList<Card> cards = new List<Card>();
-            for (int suit = 1; suit <= 4; suit++)
+            foreach (CardSuit suit in AllCardSuits())
             {
-                for (int rank = 2; rank <= 14; rank++)
+                foreach (CardValue rank in AllCardValues())
                 {
-                    cards.Add(new Card((CardValue)rank, (CardSuit)suit));
+                    cards.Add(new Card(rank, suit));
                 }
             }
+
             return cards;
+        }
+
+        private IEnumerable<CardSuit> AllCardSuits()
+        {
+            return (IEnumerable<CardSuit>)Enum.GetValues(typeof(CardSuit));
+        }
+
+        private IEnumerable<CardValue> AllCardValues()
+        {
+            return (IEnumerable<CardValue>)Enum.GetValues(typeof(CardValue));
         }
 
         private void Shuffle(IList<Card> cards)
