@@ -1,4 +1,4 @@
-﻿namespace TexasHoldEm
+﻿namespace TexasHoldEm.Interfaces
 {
     public enum CardSuit
     {

@@ -1,27 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm
+namespace TexasHoldEm.Internals
 {
-    public class Deck
+    internal class Deck : IDeck
     {
-        Queue<Card> deck = new Queue<Card>();
+        Queue<ICard> deck = new Queue<ICard>();
 
-        public static Deck CreateNew()
-        {
-            var deck =  new Deck();
-            deck.Initialize();
-            return deck;
-        }
-        private void Initialize()
+        public void Initialize()
         {
             var cards = CreateCards();
             Shuffle(cards);
         }
 
-        private IList<Card> CreateCards()
+        private IList<ICard> CreateCards()
         {
-            IList<Card> cards = new List<Card>();
+            IList<ICard> cards = new List<ICard>();
             foreach (CardSuit suit in AllCardSuits())
             {
                 foreach (CardValue rank in AllCardValues())
@@ -43,7 +38,7 @@ namespace TexasHoldEm
             return (IEnumerable<CardValue>)Enum.GetValues(typeof(CardValue));
         }
 
-        private void Shuffle(IList<Card> cards)
+        private void Shuffle(IList<ICard> cards)
         {
             deck.Clear();
             Random rnd = new Random();
@@ -57,7 +52,7 @@ namespace TexasHoldEm
 
         }
 
-        public Card Deal()
+        public ICard Deal()
         {
             var card = deck.Dequeue();
             return card;

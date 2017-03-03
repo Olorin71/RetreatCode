@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics.CodeAnalysis;
-using TexasHoldEm;
+using TexasHoldEm.Interfaces;
 
 namespace TexasHoldEmTest
 {
@@ -12,10 +12,10 @@ namespace TexasHoldEmTest
         public void DeckContainsFiftyTwoCards()
         {
             int counter;
-            Deck deck = Deck.CreateNew();
+            IDeck deck = TexasHoldEmFactory.CreateNewDeck();
             for(counter = 1; counter <= 52; counter++)
             {
-                Card card = deck.Deal();
+                ICard card = deck.Deal();
             }
             Assert.AreEqual(53, counter);
         }
@@ -23,8 +23,8 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DeckCanDealACard()
         {
-            Deck deck = Deck.CreateNew();
-            Card card = deck.Deal();
+            IDeck deck = TexasHoldEmFactory.CreateNewDeck();
+            ICard card = deck.Deal();
             Assert.IsNotNull(card);
         }
     }

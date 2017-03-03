@@ -1,8 +1,9 @@
 ﻿using System;
+using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm
+namespace TexasHoldEm.Internals
 {
-    public class Card
+    public class Card : ICard
     {
         private CardValue value;
         private CardSuit suit;
