@@ -1,4 +1,6 @@
-﻿namespace TexasHoldEm
+﻿using System;
+
+namespace TexasHoldEm
 {
     public class Card
     {
@@ -14,6 +16,16 @@
         public override string ToString()
         {
             return value.ToString() + " of " + suit + "s";
+        }
+
+        public bool HasSameValueAs(Card card)
+        {
+            return value == card.value;
+        }
+
+        public bool HasSameSuitAs(Card card)
+        {
+            return suit == card.suit;
         }
     }
 
