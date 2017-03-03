@@ -17,9 +17,9 @@ namespace TexasHoldEm.Interfaces
             return new Card(value, suit);
         }
 
-        public static IPlayer CreateNewPlayer(string name)
+        public static IPlayer CreateNewPlayer(string name, int chipsAmount)
         {
-            return new Player(name);
+            return new Player(name, chipsAmount);
         }
     }
 }

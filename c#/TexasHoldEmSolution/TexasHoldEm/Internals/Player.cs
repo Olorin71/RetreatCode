@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TexasHoldEm.Interfaces;
+using TexasHoldEm.Properties;
 
 namespace TexasHoldEm.Internals
 {
@@ -13,10 +14,13 @@ namespace TexasHoldEm.Internals
     {
         private ICard firstHoleCard;
         private ICard secondHoleCard;
-        public Player(string name)
+        public Player(string name, int chipsAmount)
         {
             Name = name;
+            Chips = chipsAmount;
         }
+
+        public int Chips { get; private set; }
 
         public ReadOnlyCollection<ICard> HoleCards
         {
@@ -26,7 +30,7 @@ namespace TexasHoldEm.Internals
             }
         }
 
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         public void AddHoleCard(ICard card)
         {
@@ -42,8 +46,25 @@ namespace TexasHoldEm.Internals
                 }
                 else
                 {
-                    throw new InvalidOperationException("A third hole card is not allowed.");
+                    throw new InvalidOperationException(Resources.ThirdHoleCardNotAllowed);
                 }
+            }
+        }
+
+        public void AllIn()
+        {
+            Chips = 0;
+        }
+
+        public void Set(int amount)
+        {
+            if (Chips >= amount)
+            {
+                Chips -= amount;
+            }
+            else
+            {
+                throw new InvalidOperationException(Resources.NotEnoughChips);
             }
         }
     }
