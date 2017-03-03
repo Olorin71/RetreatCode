@@ -7,25 +7,41 @@ namespace TexasHoldEm
         private CardValue value;
         private CardSuit suit;
 
+        public CardValue Value
+        {
+            get
+            {
+                return value;
+            }
+
+            private set
+            {
+                this.value = value;
+            }
+        }
+
+        public CardSuit Suit
+        {
+            get
+            {
+                return suit;
+            }
+
+            private set
+            {
+                suit = value;
+            }
+        }
+
         public Card(CardValue value, CardSuit suit)
         {
-            this.value = value;
-            this.suit = suit;
+            this.Value = value;
+            this.Suit = suit;
         }
 
         public override string ToString()
         {
-            return value.ToString() + " of " + suit + "s";
-        }
-
-        public bool HasSameValueAs(Card card)
-        {
-            return value == card.value;
-        }
-
-        public bool HasSameSuitAs(Card card)
-        {
-            return suit == card.suit;
+            return Value.ToString() + " of " + Suit + "s";
         }
     }
 
