@@ -1,9 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics.CodeAnalysis;
 using TexasHoldEm;
 
 namespace TexasHoldEmTest
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class DeckTest
     {
         [TestMethod]
