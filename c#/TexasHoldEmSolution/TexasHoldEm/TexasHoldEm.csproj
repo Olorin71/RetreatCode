@@ -47,6 +47,8 @@
     <Compile Include="Internals\Deck.cs" />
     <Compile Include="Interfaces\ICard.cs" />
     <Compile Include="Interfaces\IDeck.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Internals\Player.cs" />
     <Compile Include="Internals\TexasHoldEmGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
