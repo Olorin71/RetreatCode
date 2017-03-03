@@ -10,7 +10,7 @@ namespace TexasHoldEm
         public Deck()
         {
             var cards = CreateCards();
-            Mix(cards);
+            Shuffle(cards);
 
         }
 
@@ -27,7 +27,7 @@ namespace TexasHoldEm
             return cards;
         }
 
-        private void Mix(IList<Card> cards)
+        private void Shuffle(IList<Card> cards)
         {
             deck.Clear();
             Random rnd = new Random();
