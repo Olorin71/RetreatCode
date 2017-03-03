@@ -12,7 +12,7 @@ namespace TexasHoldEmTest
         public void DeckContainsFiftyTwoCards()
         {
             int counter;
-            Deck deck = new Deck();
+            Deck deck = Deck.CreateNew();
             for(counter = 1; counter <= 52; counter++)
             {
                 Card card = deck.Deal();
@@ -23,7 +23,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DeckCanDealACard()
         {
-            Deck deck = new Deck();
+            Deck deck = Deck.CreateNew();
             Card card = deck.Deal();
             Assert.IsNotNull(card);
         }

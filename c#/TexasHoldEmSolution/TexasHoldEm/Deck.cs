@@ -7,7 +7,13 @@ namespace TexasHoldEm
     {
         Queue<Card> deck = new Queue<Card>();
 
-        public Deck()
+        public static Deck CreateNew()
+        {
+            var deck =  new Deck();
+            deck.Initialize();
+            return deck;
+        }
+        private void Initialize()
         {
             var cards = CreateCards();
             Shuffle(cards);
