@@ -5,19 +5,19 @@ namespace TexasHoldEm.Internals
 {
     public class Card : ICard
     {
-        private CardValue value;
-        private CardSuit suit;
+        private CardValue cardValue;
+        private CardSuit cardSuit;
 
         public CardValue Value
         {
             get
             {
-                return value;
+                return cardValue;
             }
 
             private set
             {
-                this.value = value;
+                this.cardValue = value;
             }
         }
 
@@ -25,24 +25,33 @@ namespace TexasHoldEm.Internals
         {
             get
             {
-                return suit;
+                return cardSuit;
             }
 
             private set
             {
-                suit = value;
+                cardSuit = value;
             }
         }
 
         public Card(CardValue value, CardSuit suit)
         {
-            this.Value = value;
-            this.Suit = suit;
+            Value = value;
+            Suit = suit;
         }
 
         public override string ToString()
         {
             return Value.ToString() + " of " + Suit + "s";
+        }
+
+        public bool Equals(ICard other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return Value == other.Value && Suit == other.Suit;
         }
     }
 

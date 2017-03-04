@@ -56,7 +56,7 @@ namespace TexasHoldEm.Internals
             Chips = 0;
         }
 
-        public void Set(int amount)
+        public void SetAmount(int amount)
         {
             if (Chips >= amount)
             {

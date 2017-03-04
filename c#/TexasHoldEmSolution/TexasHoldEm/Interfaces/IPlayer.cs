@@ -8,7 +8,7 @@ namespace TexasHoldEm.Interfaces
         ReadOnlyCollection<ICard> HoleCards { get; }
         string Name { get; }
         void AddHoleCard(ICard card);
-        void Set(int amount);
+        void SetAmount(int amount);
         void AllIn();
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace TexasHoldEm.Interfaces
+﻿using System;
+
+namespace TexasHoldEm.Interfaces
 {
-    public interface ICard
+    public interface ICard : IEquatable<ICard>
     {
         CardSuit Suit { get; }
         CardValue Value { get; }

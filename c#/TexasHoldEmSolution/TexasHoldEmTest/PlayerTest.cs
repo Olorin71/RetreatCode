@@ -13,12 +13,14 @@ namespace TexasHoldEmTest
         int testChipAmount = 1000;
         IPlayer player;
 
-        [TestInitialize]
-        public void InitializeTest()
-        {
-            player = TexasHoldEmFactory.CreateNewPlayer(testPlayerName, testChipAmount);
-        }
+        private TexasHoldEmBuilder texasHoldEmBuilder;
 
+        [TestInitialize]
+        public void Initialize()
+        {
+            texasHoldEmBuilder = new TexasHoldEmBuilder();
+            player = texasHoldEmBuilder.CreateNewPlayer(testPlayerName, testChipAmount);
+        }
         [TestMethod]
         public void AfterCreatePlayerTheNameAndTheChipsAmountIsSet()
         {
@@ -30,7 +32,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void CanSetIfEnoughChips()
         {
-            player.Set(100);
+            player.SetAmount(100);
             Assert.AreEqual(testChipAmount - 100, player.Chips);
         }
 
@@ -46,37 +48,34 @@ namespace TexasHoldEmTest
         {
             try
             {
-                player.Set(1001);
+                player.SetAmount(1001);
             }
             catch(InvalidOperationException ioe)
             {
                 Assert.AreEqual("Not enough Chips.", ioe.Message);
-            }
-            catch
-            {
-                Assert.Fail();
             }
         }
 
         [TestMethod]
         public void CanAddTwoHoleCards()
         {
-            var firstHoleCard = TexasHoldEmFactory.CreateNewCard(CardValue.Ace, CardSuit.Club);
+            var firstHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
             player.AddHoleCard(firstHoleCard);
-            var secondHoleCard = TexasHoldEmFactory.CreateNewCard(CardValue.Ace, CardSuit.Diamond);
+            var secondHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Diamond);
             player.AddHoleCard(secondHoleCard);
             CollectionAssert.Contains(player.HoleCards, firstHoleCard);
             CollectionAssert.Contains(player.HoleCards, secondHoleCard);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         [TestMethod]
         public void CannotAddAThirdHoleCard()
         {
-            var firstHoleCard = TexasHoldEmFactory.CreateNewCard(CardValue.Ace, CardSuit.Club);
+            var firstHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
             player.AddHoleCard(firstHoleCard);
-            var secondHoleCard = TexasHoldEmFactory.CreateNewCard(CardValue.Ace, CardSuit.Diamond);
+            var secondHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Diamond);
             player.AddHoleCard(secondHoleCard);
-            var thirdHoleCard = TexasHoldEmFactory.CreateNewCard(CardValue.Ace, CardSuit.Heart);
+            var thirdHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Heart);
             try
             {
                 player.AddHoleCard(thirdHoleCard);

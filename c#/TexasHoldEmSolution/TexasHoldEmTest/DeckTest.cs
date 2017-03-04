@@ -8,14 +8,22 @@ namespace TexasHoldEmTest
     [ExcludeFromCodeCoverage]
     public class DeckTest
     {
+        private TexasHoldEmBuilder texasHoldEmBuilder;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            texasHoldEmBuilder = new TexasHoldEmBuilder();
+        }
+
         [TestMethod]
         public void DeckContainsFiftyTwoCards()
         {
             int counter;
-            IDeck deck = TexasHoldEmFactory.CreateNewDeck();
+            IDeck deck = texasHoldEmBuilder.CreateNewDeck();
             for(counter = 1; counter <= 52; counter++)
             {
-                ICard card = deck.Deal();
+                deck.Deal();
             }
             Assert.AreEqual(53, counter);
         }
@@ -23,7 +31,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DeckCanDealACard()
         {
-            IDeck deck = TexasHoldEmFactory.CreateNewDeck();
+            IDeck deck = texasHoldEmBuilder.CreateNewDeck();
             ICard card = deck.Deal();
             Assert.IsNotNull(card);
         }
