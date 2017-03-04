@@ -13,19 +13,20 @@ namespace TexasHoldEm.Internals
 
         public override IBestPossibleHand Check()
         {
-            return CheckForAtLeast(1, HandName.FourOfAKind);
+            return GetHand(HandName.FourOfAKind);
         }
 
-        protected override IList<ICard> GetCards(IList<CardValue> pairs)
-        {
-            return Data.Cards.Where(x => x.Value == pairs.First()).ToList();
-        }
-
-        protected override IList<CardValue> LocateAvailable()
+        protected override IList<ICard> GetCards()
         {
             var fours = Data.CardValues.Where(x => x.Value == 4).Select(x => x.Key).ToList();
             SortByCardValue(fours);
-            return fours;
+            return Data.Cards.Where(x => x.Value == fours.First()).ToList();
         }
+
+        protected override bool HasHand()
+        {
+            return Data.CardValues.Where(x => x.Value == 4).Select(x => x.Key).Any();
+        }
+
     }
 }

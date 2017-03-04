@@ -27,20 +27,19 @@ namespace TexasHoldEm.Internals
             list.Sort((x, y) => comparer.CompareCardValues(x, y));
         }
 
-        protected abstract IList<CardValue> LocateAvailable();
+        protected abstract IList<ICard> GetCards();
 
-        protected abstract IList<ICard> GetCards(IList<CardValue> pairs);
+        protected abstract bool HasHand();
 
         public abstract IBestPossibleHand Check();
 
-        protected IBestPossibleHand CheckForAtLeast(int amountOfGroupsNeeded, HandName name)
+        protected IBestPossibleHand GetHand(HandName name)
         {
-            var availableGroups = LocateAvailable();
-            if (availableGroups.Count >= amountOfGroupsNeeded)
+            if (HasHand())
             {
-                var cards = GetCards(availableGroups);
-                BestPossibleHand best = new BestPossibleHand(name, cards);
-                return best;
+                IList<ICard> bestHand = GetCards(); ;
+                BestPossibleHand hand = new BestPossibleHand(name, bestHand);
+                return hand;
             }
             return null;
         }

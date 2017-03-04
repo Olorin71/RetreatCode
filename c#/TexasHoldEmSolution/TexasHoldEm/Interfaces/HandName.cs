@@ -2,6 +2,7 @@
 {
     public enum HandName
     {
+        FullHouse,
         FourOfAKind,
         ThreeOfAKind,
         TwoPairs,
