@@ -1,10 +1,10 @@
-package net.poepperl.retreat.texasholdem.gluecode;
+package net.poepperl.retreat.texasholdem.steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class GlueCode {
+public class StepImplementation {
 
 	@Given("^Gegeben sei$")
 	public void gegeben_sei() throws Throwable {
