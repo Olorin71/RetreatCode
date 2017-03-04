@@ -58,6 +58,7 @@
     <Compile Include="Interfaces\ICard.cs" />
     <Compile Include="Interfaces\IDeck.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Internals\FourOfAKindChecker.cs" />
     <Compile Include="Internals\HandInvestigator.cs" />
     <Compile Include="Internals\PairChecker.cs" />
     <Compile Include="Internals\PairsCheckerBase.cs" />

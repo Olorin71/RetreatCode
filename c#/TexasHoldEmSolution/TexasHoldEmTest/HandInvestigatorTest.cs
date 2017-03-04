@@ -112,5 +112,38 @@ namespace TexasHoldEmTest
 
         }
 
+        [TestMethod]
+        public void DetectsFourOfAKind()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theFlop = texasHoldEmBuilder.CreateNewFlop(TestData.ClubNine, TestData.HeartTwo, TestData.SpadeSix);
+            ICard theTurn = TestData.SpadeNine;
+            ICard theRiver = TestData.HeartNine;
+            IEnumerable<ICard> theCommunityCards = texasHoldEmBuilder.CreateNewCommunityCards(theFlop, theTurn, theRiver);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.AreEqual(HandName.FourOfAKind, result.HandName);
+
+        }
+
+        [TestMethod]
+        public void BestHandContainsTheFoundFourOfAKind()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theFlop = texasHoldEmBuilder.CreateNewFlop(TestData.ClubNine, TestData.HeartTwo, TestData.HeartKing);
+            ICard theTurn = TestData.SpadeNine;
+            ICard theRiver = TestData.HeartNine;
+            IEnumerable<ICard> theCommunityCards = texasHoldEmBuilder.CreateNewCommunityCards(theFlop, theTurn, theRiver);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.IsTrue(result.BestHand.Contains(TestData.DiamondNine));
+            Assert.IsTrue(result.BestHand.Contains(TestData.HeartNine));
+            Assert.IsTrue(result.BestHand.Contains(TestData.ClubNine));
+            Assert.IsTrue(result.BestHand.Contains(TestData.SpadeNine));
+
+        }
+
     }
 }

@@ -32,6 +32,7 @@ namespace TexasHoldEm.Internals
 
         private void CreateCheckers(CheckerData data)
         {
+            checkers.Add(new FourOfAKindChecker(data, comparer));
             checkers.Add(new ThreeOfAKindChecker(data, comparer));
             checkers.Add(new TwoPairsChecker(data, comparer));
             checkers.Add(new PairChecker(data, comparer));
