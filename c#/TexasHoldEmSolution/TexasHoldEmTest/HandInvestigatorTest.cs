@@ -299,7 +299,7 @@ namespace TexasHoldEmTest
         }
 
         [TestMethod]
-        public void BestHandHighCardQuennContainsTheQueen()
+        public void BestHandHighCardQueenContainsTheQueen()
         {
             IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartTwo, TestData.HeartThree);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.ClubFive, TestData.SpadeFour, TestData.HeartNine, TestData.SpadeTen);

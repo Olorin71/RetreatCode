@@ -20,13 +20,13 @@ namespace TexasHoldEmTest
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void CreateGameWithMaximalOnePlayerThrowsArgumentOutOfRangeException()
+        public void CreateGameWithLessThanTwoPlayerThrowsArgumentOutOfRangeException()
         {
             builder.CreateNewGame(1, 1000);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void CreateGameWithMaximalMorreThanNinePlayerThrowsArgumentOutOfRangeException()
+        public void CreateGameWithMaximalMoreThanNinePlayerThrowsArgumentOutOfRangeException()
         {
             builder.CreateNewGame(10, 1000);
         }
