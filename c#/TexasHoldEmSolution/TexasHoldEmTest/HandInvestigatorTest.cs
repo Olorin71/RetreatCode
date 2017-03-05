@@ -262,7 +262,6 @@ namespace TexasHoldEmTest
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
             Assert.AreEqual(HandName.RoyalFlush, result.HandName);
-
         }
 
         [TestMethod]
@@ -274,7 +273,52 @@ namespace TexasHoldEmTest
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
             AssertContainsAll(result.BestHand, TestData.HeartAce, TestData.HeartKing, TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen);
+        }
 
+
+        [TestMethod]
+        public void DetectsHighCard()
+        {
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.ClubFive, TestData.SpadeFour, TestData.HeartNine, TestData.SpadeTen);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.AreEqual(HandName.HighCard, result.HandName);
+        }
+
+        [TestMethod]
+        public void BestHandHighCardContainsTheHighestCard()
+        {
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.ClubFive, TestData.SpadeFour, TestData.HeartNine, TestData.SpadeTen);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            AssertContainsAll(result.BestHand, TestData.HeartAce);
+
+        }
+
+        [TestMethod]
+        public void DetectsFlush()
+        {
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartFour, TestData.HeartFive, TestData.SpadeFour, TestData.HeartNine, TestData.SpadeTen);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.AreEqual(HandName.Flush, result.HandName);
+        }
+
+        [TestMethod]
+        public void BestHandContainsFlush()
+        {
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartFour, TestData.HeartFive, TestData.SpadeFour, TestData.HeartNine, TestData.SpadeTen);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            AssertContainsAll(result.BestHand, TestData.HeartAce, TestData.HeartKing, TestData.HeartFour, TestData.HeartFive, TestData.HeartNine);
         }
 
 

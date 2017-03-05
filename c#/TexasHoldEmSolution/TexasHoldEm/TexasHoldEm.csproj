@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlushChecker.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="CheckerBase.cs" />
     <Compile Include="CheckerData.cs" />
+    <Compile Include="HighCardChecker.cs" />
     <Compile Include="Interfaces\HandName.cs" />
     <Compile Include="Interfaces\IBestPossibleHand.cs" />
     <Compile Include="Interfaces\IHandInvestigator.cs" />

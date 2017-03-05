@@ -31,10 +31,12 @@ namespace TexasHoldEm
             checkers.Add(new RoyalAndStraightFlushChecker(data));
             checkers.Add(new FourOfAKindChecker(data));
             checkers.Add(new FullHouseChecker(data));
+            checkers.Add(new FlushChecker(data));
             checkers.Add(new StraightChecker(data));
             checkers.Add(new ThreeOfAKindChecker(data));
             checkers.Add(new TwoPairsChecker(data));
             checkers.Add(new PairChecker(data));
+            checkers.Add(new HighCardChecker(data));
         }
 
         private static IList<ICard> CreateCardsList(IEnumerable<ICard> theHoleCards, IEnumerable<ICard> theCommunityCards)
