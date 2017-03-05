@@ -472,7 +472,7 @@ namespace TexasHoldEmTest
         }
 
         [TestMethod]
-        public void FlushShoudBeDetected()
+        public void FlushShouldBeDetected()
         {
             IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartFour, TestData.HeartFive, TestData.SpadeFour, TestData.HeartNine, TestData.SpadeTen);
@@ -571,7 +571,7 @@ namespace TexasHoldEmTest
 
         private static void AssertContainsAllCardValues(ReadOnlyCollection<CardValue> values, params CardValue[] cards)
         {
-            foreach (CardValue card in values)
+            foreach (CardValue card in cards)
             {
                 Assert.IsTrue(values.Contains(card), card + " not in result.");
             }
