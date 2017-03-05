@@ -64,6 +64,7 @@
     <Compile Include="Internals\PairChecker.cs" />
     <Compile Include="Internals\Player.cs" />
     <Compile Include="Internals\StraightChecker.cs" />
+    <Compile Include="Internals\StraightCheckerBase.cs" />
     <Compile Include="Internals\StraightFlushChecker.cs" />
     <Compile Include="Internals\TexasHoldEmGame.cs" />
     <Compile Include="Internals\ThreeOfAKindChecker.cs" />
