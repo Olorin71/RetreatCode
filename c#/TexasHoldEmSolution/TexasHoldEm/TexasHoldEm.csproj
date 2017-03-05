@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\HandName.cs" />
     <Compile Include="Interfaces\IBestPossibleHand.cs" />
     <Compile Include="Interfaces\IHandInvestigator.cs" />
+    <Compile Include="Interfaces\ITexasHoldEmGame.cs" />
     <Compile Include="Interfaces\TexasHoldEmBuilder.cs" />
     <Compile Include="BestPossibleHand.cs" />
     <Compile Include="Card.cs" />

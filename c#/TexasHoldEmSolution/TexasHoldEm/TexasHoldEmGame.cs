@@ -1,12 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TexasHoldEm.Interfaces;
 
 namespace TexasHoldEm
 {
-    class TexasHoldEmGame
+    internal class TexasHoldEmGame : ITexasHoldEmGame
     {
+        private int initialChipsAmount;
+        private int maxNumberOfPlayers;
+        private IList<IPlayer> players;
+
+        public TexasHoldEmGame(int maxNumberOfPlayers, int initialChipsAmount)
+        {
+            players = new List<IPlayer>();
+            this.initialChipsAmount = initialChipsAmount;
+            this.maxNumberOfPlayers = maxNumberOfPlayers;
+        }
+        public int NumberOfPlayers {
+            get
+            {
+                return players.Count;
+            }
+        }
+        public void AddPlayer(string playerName)
+        {
+            players.Add(new Player(playerName, initialChipsAmount));
+        }
     }
 }
