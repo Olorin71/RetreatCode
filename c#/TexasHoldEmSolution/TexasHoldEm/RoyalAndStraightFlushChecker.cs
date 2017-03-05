@@ -6,10 +6,6 @@ namespace TexasHoldEm
 {
     internal class RoyalAndStraightFlushChecker : StraightCheckerBase
     {
-        public RoyalAndStraightFlushChecker(CheckerData data) : base(data)
-        {
-        }
-
         protected override bool HasHand()
         {
             bool straightFound = false;

@@ -6,10 +6,6 @@ namespace TexasHoldEm
 {
     internal abstract class StraightCheckerBase : CheckerBase
     {
-        protected StraightCheckerBase(CheckerData data) : base(data)
-        {
-        }
-
         protected int MinValue { get; set; }
 
         protected override IList<ICard> GetCards()

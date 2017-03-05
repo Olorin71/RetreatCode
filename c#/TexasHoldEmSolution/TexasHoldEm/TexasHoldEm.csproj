@@ -47,10 +47,11 @@
     <Compile Include="CheckerBase.cs" />
     <Compile Include="CheckerData.cs" />
     <Compile Include="HighCardChecker.cs" />
+    <Compile Include="HandComparer.cs" />
     <Compile Include="Interfaces\HandName.cs" />
     <Compile Include="Interfaces\IBestPossibleHand.cs" />
+    <Compile Include="Interfaces\IHandComparer.cs" />
     <Compile Include="Interfaces\IHandInvestigator.cs" />
-    <Compile Include="Interfaces\ITexasHoldEmGame.cs" />
     <Compile Include="Interfaces\TexasHoldEmBuilder.cs" />
     <Compile Include="BestPossibleHand.cs" />
     <Compile Include="Card.cs" />
@@ -68,7 +69,6 @@
     <Compile Include="StraightChecker.cs" />
     <Compile Include="StraightCheckerBase.cs" />
     <Compile Include="RoyalAndStraightFlushChecker.cs" />
-    <Compile Include="TexasHoldEmGame.cs" />
     <Compile Include="ThreeOfAKindChecker.cs" />
     <Compile Include="TwoPairsChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

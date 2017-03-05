@@ -59,9 +59,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CardTest.cs" />
     <Compile Include="TestData.cs" />
-    <Compile Include="TexasHoldEmGameTest.cs" />
     <Compile Include="PlayerTest.cs" />
     <Compile Include="HandInvestigatorTest.cs" />
+    <Compile Include="HandComparerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TexasHoldEm\TexasHoldEm.csproj">

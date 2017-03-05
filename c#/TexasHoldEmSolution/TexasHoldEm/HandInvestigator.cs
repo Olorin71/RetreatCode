@@ -12,11 +12,11 @@ namespace TexasHoldEm
         {
             IList<ICard> cards = CreateCardsList(theHoleCards, theCommunityCards);
             CheckerData data = new CheckerData(cards);
-            CreateCheckers(data);
+            CreateCheckers();
             IBestPossibleHand hand = null;
             foreach (CheckerBase checker in checkers)
             {
-                hand = checker.Check();
+                hand = checker.Check(data);
                 if (hand != null)
                 {
                     break; ;
@@ -25,18 +25,18 @@ namespace TexasHoldEm
             return hand;
         }
 
-        private void CreateCheckers(CheckerData data)
+        private void CreateCheckers()
         {
             // The checkers are added sorted by hand value, most valuable first.
-            checkers.Add(new RoyalAndStraightFlushChecker(data));
-            checkers.Add(new FourOfAKindChecker(data));
-            checkers.Add(new FullHouseChecker(data));
-            checkers.Add(new FlushChecker(data));
-            checkers.Add(new StraightChecker(data));
-            checkers.Add(new ThreeOfAKindChecker(data));
-            checkers.Add(new TwoPairsChecker(data));
-            checkers.Add(new PairChecker(data));
-            checkers.Add(new HighCardChecker(data));
+            checkers.Add(new RoyalAndStraightFlushChecker());
+            checkers.Add(new FourOfAKindChecker());
+            checkers.Add(new FullHouseChecker());
+            checkers.Add(new FlushChecker());
+            checkers.Add(new StraightChecker());
+            checkers.Add(new ThreeOfAKindChecker());
+            checkers.Add(new TwoPairsChecker());
+            checkers.Add(new PairChecker());
+            checkers.Add(new HighCardChecker());
         }
 
         private static IList<ICard> CreateCardsList(IEnumerable<ICard> theHoleCards, IEnumerable<ICard> theCommunityCards)

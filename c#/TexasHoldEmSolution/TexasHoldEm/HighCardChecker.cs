@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
@@ -7,8 +6,9 @@ namespace TexasHoldEm
 {
     internal class HighCardChecker : CheckerBase
     {
-        public HighCardChecker(CheckerData data) : base(data)
+        public HighCardChecker()
         {
+            HandName = HandName.HighCard;
         }
 
         protected override IList<ICard> GetCards()

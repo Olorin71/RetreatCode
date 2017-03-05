@@ -20,13 +20,24 @@ namespace TexasHoldEm
             Chips = chipsAmount;
         }
 
+        public IBestPossibleHand BestHand { get; set; }
+
         public int Chips { get; private set; }
 
         public ReadOnlyCollection<ICard> HoleCards
         {
             get
             {
-                return new ReadOnlyCollection<ICard>(new List<ICard> { firstHoleCard, secondHoleCard });
+                var list = new List<ICard>();
+                if (firstHoleCard != null)
+                {
+                    list.Add(firstHoleCard);
+                }
+                if (secondHoleCard != null)
+                {
+                    list.Add(secondHoleCard);
+                }
+                return new ReadOnlyCollection<ICard>(list);
             }
         }
 
@@ -54,6 +65,12 @@ namespace TexasHoldEm
         public void AllIn()
         {
             Chips = 0;
+        }
+
+        public void ClearHoleCards()
+        {
+            firstHoleCard = null;
+            secondHoleCard = null;
         }
 
         public void SetAmount(int amount)

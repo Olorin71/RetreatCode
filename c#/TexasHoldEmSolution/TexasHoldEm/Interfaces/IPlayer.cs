@@ -7,8 +7,11 @@ namespace TexasHoldEm.Interfaces
         int Chips { get; }
         ReadOnlyCollection<ICard> HoleCards { get; }
         string Name { get; }
+        IBestPossibleHand BestHand { get; set; }
+
         void AddHoleCard(ICard card);
         void SetAmount(int amount);
         void AllIn();
+        void ClearHoleCards();
     }
 }

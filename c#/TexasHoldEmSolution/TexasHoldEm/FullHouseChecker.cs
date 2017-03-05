@@ -7,7 +7,7 @@ namespace TexasHoldEm
 {
     internal class FullHouseChecker : CheckerBase
     {
-        public FullHouseChecker(CheckerData data) : base(data)
+        public FullHouseChecker()
         {
             HandName = HandName.FullHouse;
         }

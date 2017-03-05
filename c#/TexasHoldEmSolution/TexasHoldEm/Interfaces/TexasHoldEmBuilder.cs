@@ -23,19 +23,15 @@ namespace TexasHoldEm.Interfaces
             return new HandInvestigator();
         }
 
+        public IHandComparer CreateNewHandComparer()
+        {
+            return new HandComparer();
+        }
+
 
         public IPlayer CreateNewPlayer(string name, int chipsAmount)
         {
             return new Player(name, chipsAmount);
-        }
-
-        public ITexasHoldEmGame CreateNewGame(int maxNumberOfPlayers, int initialChipsAmount)
-        {
-            if (maxNumberOfPlayers < 2 || maxNumberOfPlayers > 9)
-            {
-                throw new ArgumentOutOfRangeException("maxNumberOfPlayers", "Maximal number of players should be between two and nine.");
-            }
-            return new TexasHoldEmGame(maxNumberOfPlayers, initialChipsAmount);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace TexasHoldEm
 {
     internal class ThreeOfAKindChecker : CheckerBase
     {
-        public ThreeOfAKindChecker(CheckerData data) : base(data)
+        public ThreeOfAKindChecker()
         {
             HandName = HandName.ThreeOfAKind;
         }

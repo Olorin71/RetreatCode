@@ -4,7 +4,7 @@ namespace TexasHoldEm
 {
     internal class StraightChecker : StraightCheckerBase
     {
-        public StraightChecker(CheckerData data) : base(data)
+        public StraightChecker()
         {
             HandName = HandName.Straight;
         }

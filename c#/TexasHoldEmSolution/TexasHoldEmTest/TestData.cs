@@ -36,6 +36,13 @@ namespace TexasHoldEmTest
                 return texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Club);
             }
         }
+        internal static ICard ClubKing
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Club);
+            }
+        }
         internal static ICard ClubAce
         {
             get
@@ -76,6 +83,13 @@ namespace TexasHoldEmTest
             get
             {
                 return texasHoldEmBuilder.CreateNewCard(CardValue.Six, CardSuit.Heart);
+            }
+        }
+        internal static ICard HeartEight
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Eight, CardSuit.Heart);
             }
         }
         internal static ICard HeartNine

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TexasHoldEm.Interfaces;
 
 namespace TexasHoldEm
@@ -6,11 +7,6 @@ namespace TexasHoldEm
     internal abstract class CheckerBase
     {
         private CheckerData data;
-
-        protected CheckerBase(CheckerData data)
-        {
-            this.data = data;
-        }
 
         protected CheckerData Data
         {
@@ -42,12 +38,9 @@ namespace TexasHoldEm
             return 0;
         }
 
-        protected abstract IList<ICard> GetCards();
-
-        protected abstract bool HasHand();
-
-        public IBestPossibleHand Check()
+        public IBestPossibleHand Check(CheckerData data)
         {
+            this.data = data;
             if (HasHand())
             {
                 IList<ICard> bestHand = GetCards();
@@ -56,5 +49,9 @@ namespace TexasHoldEm
             }
             return null;
         }
+
+        protected abstract IList<ICard> GetCards();
+
+        protected abstract bool HasHand();
     }
 }

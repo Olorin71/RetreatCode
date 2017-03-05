@@ -7,7 +7,7 @@ namespace TexasHoldEm
 {
     internal class FlushChecker : CheckerBase
     {
-        public FlushChecker(CheckerData data) : base(data)
+        public FlushChecker()
         {
             HandName = HandName.Flush;
         }

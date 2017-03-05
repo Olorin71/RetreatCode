@@ -7,7 +7,7 @@ namespace TexasHoldEm
 {
     internal class TwoPairsChecker : CheckerBase
     {
-        public TwoPairsChecker(CheckerData data) : base(data)
+        public TwoPairsChecker()
         {
             HandName = HandName.TwoPairs;
         }
