@@ -288,7 +288,7 @@ namespace TexasHoldEmTest
         }
 
         [TestMethod]
-        public void BestHandHighCardContainsTheHighestCard()
+        public void BestHandHighCardAceContainsTheAce()
         {
             IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.ClubFive, TestData.SpadeFour, TestData.HeartNine, TestData.SpadeTen);
@@ -296,7 +296,17 @@ namespace TexasHoldEmTest
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
             AssertContainsAll(result.BestHand, TestData.HeartAce);
+        }
 
+        [TestMethod]
+        public void BestHandHighCardQuennContainsTheQueen()
+        {
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartTwo, TestData.HeartThree);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.ClubFive, TestData.SpadeFour, TestData.HeartNine, TestData.SpadeTen);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            AssertContainsAll(result.BestHand, TestData.HeartQueen);
         }
 
         [TestMethod]

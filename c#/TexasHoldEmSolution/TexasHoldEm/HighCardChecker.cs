@@ -13,15 +13,16 @@ namespace TexasHoldEm
 
         protected override IList<ICard> GetCards()
         {
+            IList<ICard> cards = new List<ICard>();
             for (int actualCardValue = 14; actualCardValue > 2; actualCardValue--)
             {
                 CardValue cardValue = (CardValue)actualCardValue;
                 if (Data.CardValues.ContainsKey(cardValue) && Data.CardValues[cardValue] == 1)
                 {
-                    return Data.Cards.Where(x => x.Value == cardValue).ToList();
+                    cards.Add(Data.Cards.First(x => x.Value == cardValue));
                 }
             }
-            return null;
+            return cards;
         }
 
         protected override bool HasHand()
