@@ -2,10 +2,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TexasHoldEm.Interfaces;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TexasHoldEmTest
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class HandComparerTest
     {
         private TexasHoldEmBuilder builder;
@@ -18,7 +20,7 @@ namespace TexasHoldEmTest
             comparer = builder.CreateNewHandComparer();
         }
         [TestMethod]
-        public void PlayerOneRoyaFlushPlayerTwoStraightFlushPlayerOneWins()
+        public void PlayerOneRoyalFlushPlayerTwoStraightFlushPlayerOneWins()
         {
             var player1Guid = Guid.NewGuid();
             var player2Guid = Guid.NewGuid();
