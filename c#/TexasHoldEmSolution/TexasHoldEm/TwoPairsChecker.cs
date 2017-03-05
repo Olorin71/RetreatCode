@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class TwoPairsChecker : CheckerBase
     {
-        public TwoPairsChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
+        public TwoPairsChecker(CheckerData data) : base(data)
         {
             HandName = HandName.TwoPairs;
         }

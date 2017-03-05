@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TexasHoldEm.Interfaces;
-using TexasHoldEm.Internals;
+using TexasHoldEm;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Collections.ObjectModel;
@@ -25,7 +25,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsPair()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.SpadeSix, TestData.HeartFour, TestData.HeartFive);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -35,7 +35,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void BestHandContainsTheFoundPair()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondKing, TestData.DiamondNine);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondKing, TestData.DiamondNine);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.SpadeSix, TestData.HeartFour, TestData.HeartFive);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -47,7 +47,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsTwoPairs()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.SpadeSix, TestData.HeartKing, TestData.HeartFive);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -58,7 +58,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsTheHighestTwoPairsCombination()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.SpadeSix, TestData.HeartKing, TestData.HeartSix);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -72,7 +72,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsThreeOfAKind()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.SpadeSix, TestData.HeartFive, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -84,7 +84,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsTheHighestThreeOfAKind()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.HeartKing, TestData.SpadeKing, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -98,7 +98,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsFourOfAKind()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.SpadeSix, TestData.SpadeNine, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -110,7 +110,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void BestHandContainsTheFoundFourOfAKind()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.HeartKing, TestData.SpadeNine, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -125,7 +125,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsFullHouse()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartTwo, TestData.SpadeSix, TestData.SpadeKing, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -137,7 +137,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsTheHighestThreeOfAKindInFullHouse()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartKing, TestData.SpadeSix, TestData.SpadeKing, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -149,7 +149,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsTheHighestPairInFullHouse()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.DiamondNine, TestData.DiamondKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubNine, TestData.HeartKing, TestData.SpadeSix, TestData.HeartSix, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -160,7 +160,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsStraightAceToFive()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.ClubAce, TestData.HeartThree);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.ClubAce, TestData.HeartThree);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour, TestData.SpadeNine, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -172,7 +172,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void BestHandContainsStraightAceToFive()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.ClubAce, TestData.HeartThree);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.ClubAce, TestData.HeartThree);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour, TestData.SpadeNine, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -184,7 +184,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsStraightTwoToSix()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.SpadeSix, TestData.HeartThree);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.SpadeSix, TestData.HeartThree);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour, TestData.SpadeNine, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -196,7 +196,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void BestHandContainsStraightTwoToSix()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.SpadeSix, TestData.HeartThree);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.SpadeSix, TestData.HeartThree);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour, TestData.SpadeNine, TestData.HeartNine);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -208,7 +208,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsStraightTenToAce()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.SpadeTen, TestData.ClubAce);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.SpadeTen, TestData.ClubAce);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.DiamondKing, TestData.HeartTwo, TestData.HeartQueen, TestData.SpadeNine, TestData.HeartJack);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -220,7 +220,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void BestHandContainsStraightTenToAce()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.SpadeTen, TestData.ClubAce);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.SpadeTen, TestData.ClubAce);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.DiamondKing, TestData.HeartTwo, TestData.HeartQueen, TestData.SpadeNine, TestData.HeartJack);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -232,7 +232,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsStraightFlushTwoToSix()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.HeartSix, TestData.HeartThree);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartSix, TestData.HeartThree);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartFive, TestData.HeartTwo, TestData.HeartFour, TestData.SpadeNine, TestData.SpadeKing);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -242,9 +242,9 @@ namespace TexasHoldEmTest
         }
 
         [TestMethod]
-        public void BestHandContainsStraightFlusgTwoToSix()
+        public void BestHandContainsStraightFlushTwoToSix()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.HeartSix, TestData.HeartThree);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartSix, TestData.HeartThree);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartFive, TestData.HeartTwo, TestData.HeartFour, TestData.SpadeNine, TestData.SpadeKing);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -256,7 +256,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void DetectsRoyalFlush()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen, TestData.HeartNine, TestData.ClubAce);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -268,7 +268,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void BestHandContainsRoyalFlush()
         {
-            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
+            IEnumerable<ICard> theHoleCards = CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
             IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen, TestData.HeartNine, TestData.ClubAce);
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
@@ -278,15 +278,43 @@ namespace TexasHoldEmTest
         }
 
 
-
-        private IEnumerable<ICard> CreateCommunityCards(ICard card1, ICard card2, ICard card3, ICard card4, ICard card5)
+        private static IEnumerable<ICard> CreateNewHoleCards(ICard firstCard, ICard secondCard)
         {
-
-            IEnumerable<ICard> theFlop = texasHoldEmBuilder.CreateNewFlop(card1, card2, card3);
-            return texasHoldEmBuilder.CreateNewCommunityCards(theFlop, card4, card5);
+            var cards = new List<ICard>();
+            cards.Add(firstCard);
+            cards.Add(secondCard);
+            return cards;
         }
 
-        private void AssertContainsTwoOfThree(ReadOnlyCollection<ICard> bestHand, ICard first, ICard second, ICard third)
+        private static IEnumerable<ICard> CreateNewFlop(ICard firstCard, ICard secondCard, ICard thirdCard)
+        {
+            var cards = new List<ICard>();
+            cards.Add(firstCard);
+            cards.Add(secondCard);
+            cards.Add(thirdCard);
+            return cards;
+        }
+
+        private static IEnumerable<ICard> CreateNewCommunityCards(IEnumerable<ICard> flop, ICard turn, ICard river)
+        {
+            var cards = new List<ICard>();
+            foreach (var card in flop)
+            {
+                cards.Add(card);
+            }
+            cards.Add(turn);
+            cards.Add(river);
+            return cards;
+        }
+
+        private static IEnumerable<ICard> CreateCommunityCards(ICard card1, ICard card2, ICard card3, ICard card4, ICard card5)
+        {
+
+            IEnumerable<ICard> theFlop = CreateNewFlop(card1, card2, card3);
+            return CreateNewCommunityCards(theFlop, card4, card5);
+        }
+
+        private static void AssertContainsTwoOfThree(ReadOnlyCollection<ICard> bestHand, ICard first, ICard second, ICard third)
         {
             int counter = 0;
             if (bestHand.Contains(first))
@@ -304,7 +332,7 @@ namespace TexasHoldEmTest
             Assert.AreEqual(2, counter, "There are more or less than two of the given cards in result.");
         }
 
-        private void AssertContainsAll(ReadOnlyCollection<ICard> bestHand, params ICard[] cards)
+        private static void AssertContainsAll(ReadOnlyCollection<ICard> bestHand, params ICard[] cards)
         {
             foreach (ICard card in cards)
             {

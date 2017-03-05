@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using TexasHoldEm.Interfaces;
 using TexasHoldEm.Properties;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class Player : IPlayer
     {

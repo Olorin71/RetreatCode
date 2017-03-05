@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class CheckerData
     {
@@ -49,7 +49,7 @@ namespace TexasHoldEm.Internals
             }
         }
 
-        private IDictionary<CardValue, int> CreateCardValuesDictionary()
+        private static IDictionary<CardValue, int> CreateCardValuesDictionary()
         {
             IDictionary<CardValue, int> values = new Dictionary<CardValue, int>();
             foreach (CardValue value in Enum.GetValues(typeof(CardValue)))
@@ -59,7 +59,7 @@ namespace TexasHoldEm.Internals
             return values;
         }
 
-        private IDictionary<CardSuit, int> CreateCardSuitsDictionary()
+        private static IDictionary<CardSuit, int> CreateCardSuitsDictionary()
         {
             IDictionary<CardSuit, int> suits = new Dictionary<CardSuit, int>();
             foreach (CardSuit suit in Enum.GetValues(typeof(CardSuit)))

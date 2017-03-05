@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class FullHouseChecker : CheckerBase
     {
-        public FullHouseChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
+        public FullHouseChecker(CheckerData data) : base(data)
         {
             HandName = HandName.FullHouse;
         }

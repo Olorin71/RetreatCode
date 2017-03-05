@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class HandInvestigator : IHandInvestigator
     {
         private IList<CheckerBase> checkers = new List<CheckerBase>();
-        private ComparerHelper comparer;
 
-        public HandInvestigator(ComparerHelper comparer)
-        {
-            this.comparer = comparer;
-        }
         public IBestPossibleHand LocateBestHand(IEnumerable<ICard> theHoleCards, IEnumerable<ICard> theCommunityCards)
         {
             IList<ICard> cards = CreateCardsList(theHoleCards, theCommunityCards);
@@ -33,16 +28,16 @@ namespace TexasHoldEm.Internals
         private void CreateCheckers(CheckerData data)
         {
             // The checkers are added sorted by hand value, most valuable first.
-            checkers.Add(new RoyalAndStraightFlushChecker(data, comparer));
-            checkers.Add(new FourOfAKindChecker(data, comparer));
-            checkers.Add(new FullHouseChecker(data, comparer));
-            checkers.Add(new StraightChecker(data, comparer));
-            checkers.Add(new ThreeOfAKindChecker(data, comparer));
-            checkers.Add(new TwoPairsChecker(data, comparer));
-            checkers.Add(new PairChecker(data, comparer));
+            checkers.Add(new RoyalAndStraightFlushChecker(data));
+            checkers.Add(new FourOfAKindChecker(data));
+            checkers.Add(new FullHouseChecker(data));
+            checkers.Add(new StraightChecker(data));
+            checkers.Add(new ThreeOfAKindChecker(data));
+            checkers.Add(new TwoPairsChecker(data));
+            checkers.Add(new PairChecker(data));
         }
 
-        private IList<ICard> CreateCardsList(IEnumerable<ICard> theHoleCards, IEnumerable<ICard> theCommunityCards)
+        private static IList<ICard> CreateCardsList(IEnumerable<ICard> theHoleCards, IEnumerable<ICard> theCommunityCards)
         {
             IList<ICard> cards = new List<ICard>();
             foreach (ICard card in theHoleCards)

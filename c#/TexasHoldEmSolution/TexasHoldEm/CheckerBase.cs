@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal abstract class CheckerBase
     {
-        private ComparerHelper comparer;
         private CheckerData data;
 
-        protected CheckerBase(CheckerData data, ComparerHelper comparer)
+        protected CheckerBase(CheckerData data)
         {
             this.data = data;
-            this.comparer = comparer;
         }
 
         protected CheckerData Data
@@ -24,9 +22,24 @@ namespace TexasHoldEm.Internals
 
         protected HandName HandName { get; set; }
 
-        protected void SortByCardValue(List<CardValue> list)
+        protected static void SortByCardValue(List<CardValue> list)
         {
-            list.Sort((x, y) => comparer.CompareCardValues(x, y));
+            list.Sort((x, y) => CompareCardValues(x, y));
+        }
+
+        private static int CompareCardValues(CardValue x, CardValue y)
+        {
+            var a = (int)x;
+            var b = (int)y;
+            if (a > b)
+            {
+                return -1;
+            }
+            if (a < b)
+            {
+                return 1;
+            }
+            return 0;
         }
 
         protected abstract IList<ICard> GetCards();

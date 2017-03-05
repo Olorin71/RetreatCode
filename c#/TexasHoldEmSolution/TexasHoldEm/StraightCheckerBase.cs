@@ -2,11 +2,11 @@
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal abstract class StraightCheckerBase : CheckerBase
     {
-        protected StraightCheckerBase(CheckerData data, ComparerHelper comparer) : base(data, comparer)
+        protected StraightCheckerBase(CheckerData data) : base(data)
         {
         }
 
@@ -29,7 +29,7 @@ namespace TexasHoldEm.Internals
         }
 
 
-        protected CardValue CalculateKey(int lowerPosition, int position)
+        protected static CardValue CalculateKey(int lowerPosition, int position)
         {
             var value = (lowerPosition + position - 1);
             return value == 1 ? CardValue.Ace : (CardValue)value;

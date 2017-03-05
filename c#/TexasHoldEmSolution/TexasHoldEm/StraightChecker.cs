@@ -1,10 +1,10 @@
 ﻿using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class StraightChecker : StraightCheckerBase
     {
-        public StraightChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
+        public StraightChecker(CheckerData data) : base(data)
         {
             HandName = HandName.Straight;
         }

@@ -2,15 +2,13 @@
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class RoyalAndStraightFlushChecker : StraightCheckerBase
     {
-        public RoyalAndStraightFlushChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
+        public RoyalAndStraightFlushChecker(CheckerData data) : base(data)
         {
         }
-
-        private List<ICard> cards = new List<ICard>();
 
         protected override bool HasHand()
         {

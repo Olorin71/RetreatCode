@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class Deck : IDeck
     {
@@ -14,7 +14,7 @@ namespace TexasHoldEm.Internals
             Shuffle(cards);
         }
 
-        private IList<ICard> CreateCards()
+        private static IList<ICard> CreateCards()
         {
             IList<ICard> cards = new List<ICard>();
             foreach (CardSuit suit in AllCardSuits())
@@ -28,12 +28,12 @@ namespace TexasHoldEm.Internals
             return cards;
         }
 
-        private IEnumerable<CardSuit> AllCardSuits()
+        private static IEnumerable<CardSuit> AllCardSuits()
         {
             return (IEnumerable<CardSuit>)Enum.GetValues(typeof(CardSuit));
         }
 
-        private IEnumerable<CardValue> AllCardValues()
+        private static IEnumerable<CardValue> AllCardValues()
         {
             return (IEnumerable<CardValue>)Enum.GetValues(typeof(CardValue));
         }

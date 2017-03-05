@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class FourOfAKindChecker : CheckerBase
     {
-        public FourOfAKindChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
+        public FourOfAKindChecker(CheckerData data) : base(data)
         {
             HandName = HandName.FourOfAKind;
         }

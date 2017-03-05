@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
-namespace TexasHoldEm.Internals
+namespace TexasHoldEm
 {
     internal class PairChecker : CheckerBase
     {
-        public PairChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
+        public PairChecker(CheckerData data) : base(data)
         {
             HandName = HandName.Pair;
         }
