@@ -7,13 +7,13 @@ namespace TexasHoldEm
 {
     internal abstract class CheckerBase
     {
-        private CheckerData data;
+        private CheckerData theCheckerData;
 
         protected CheckerData Data
         {
             get
             {
-                return data;
+                return theCheckerData;
             }
         }
 
@@ -41,7 +41,7 @@ namespace TexasHoldEm
 
         public IBestPossibleHand Check(CheckerData data)
         {
-            this.data = data;
+            this.theCheckerData = data;
             if (HasHand())
             {
                 IList<ICard> bestHand = GetCards();

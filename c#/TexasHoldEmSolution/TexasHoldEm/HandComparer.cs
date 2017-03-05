@@ -16,7 +16,6 @@ namespace TexasHoldEm
         {
             Dictionary<Guid, IBestPossibleHand> bestHands = GetPlayersBestHand(players, communityCards);
             IList<Guid> bestBestHand = FindRoundWinner(bestHands);
-            ConsoleOutput(players, bestBestHand);
             return bestBestHand;
         }
 
@@ -47,15 +46,6 @@ namespace TexasHoldEm
             return bestBestHand;
         }
 
-        private void ConsoleOutput(IDictionary<Guid, IPlayer> players, IList<Guid> bestBestHand)
-        {
-            foreach (var item in bestBestHand)
-            {
-                var player = players[item];
-            }
-
-        }
-
         private Dictionary<Guid, IBestPossibleHand> GetPlayersBestHand(IDictionary<Guid, IPlayer> players, IList<ICard> communityCards)
         {
             var bestHands = new Dictionary<Guid, IBestPossibleHand>();
@@ -72,7 +62,7 @@ namespace TexasHoldEm
             return bestHands;
         }
 
-        private int Compare(IBestPossibleHand lastResult, IBestPossibleHand second)
+        private static int Compare(IBestPossibleHand lastResult, IBestPossibleHand second)
         {
             var difference = lastResult.HandName - second.HandName;
             return difference > 0 ? 1 : difference < 0 ? -1 : 0;
