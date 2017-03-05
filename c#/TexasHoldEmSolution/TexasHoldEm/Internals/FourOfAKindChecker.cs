@@ -9,11 +9,7 @@ namespace TexasHoldEm.Internals
     {
         public FourOfAKindChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
         {
-        }
-
-        public override IBestPossibleHand Check()
-        {
-            return GetHand(HandName.FourOfAKind);
+            HandName = HandName.FourOfAKind;
         }
 
         protected override IList<ICard> GetCards()

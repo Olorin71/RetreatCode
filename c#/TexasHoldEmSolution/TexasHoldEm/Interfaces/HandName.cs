@@ -2,8 +2,11 @@
 {
     public enum HandName
     {
-        FullHouse,
+        RoyalFlush,
+        StraightFlush,
         FourOfAKind,
+        FullHouse,
+        Straight,
         ThreeOfAKind,
         TwoPairs,
         Pair,

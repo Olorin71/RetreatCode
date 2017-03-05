@@ -157,6 +157,128 @@ namespace TexasHoldEmTest
             AssertContainsAll(result.BestHand, TestData.DiamondKing, TestData.HeartKing, TestData.DiamondNine, TestData.HeartNine, TestData.ClubNine);
         }
 
+        [TestMethod]
+        public void DetectsStraightAceToFive()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.ClubAce, TestData.HeartThree);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour, TestData.SpadeNine, TestData.HeartNine);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.AreEqual(HandName.Straight, result.HandName);
+
+        }
+
+        [TestMethod]
+        public void BestHandContainsStraightAceToFive()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.ClubAce, TestData.HeartThree);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour, TestData.SpadeNine, TestData.HeartNine);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            AssertContainsAll(result.BestHand, TestData.ClubAce, TestData.HeartThree, TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour);
+
+        }
+
+        [TestMethod]
+        public void DetectsStraightTwoToSix()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.SpadeSix, TestData.HeartThree);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour, TestData.SpadeNine, TestData.HeartNine);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.AreEqual(HandName.Straight, result.HandName);
+
+        }
+
+        [TestMethod]
+        public void BestHandContainsStraightTwoToSix()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.SpadeSix, TestData.HeartThree);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour, TestData.SpadeNine, TestData.HeartNine);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            AssertContainsAll(result.BestHand, TestData.SpadeSix, TestData.HeartThree, TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour);
+
+        }
+
+        [TestMethod]
+        public void DetectsStraightTenToAce()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.SpadeTen, TestData.ClubAce);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.DiamondKing, TestData.HeartTwo, TestData.HeartQueen, TestData.SpadeNine, TestData.HeartJack);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.AreEqual(HandName.Straight, result.HandName);
+
+        }
+
+        [TestMethod]
+        public void BestHandContainsStraightTenToAce()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.SpadeTen, TestData.ClubAce);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.DiamondKing, TestData.HeartTwo, TestData.HeartQueen, TestData.SpadeNine, TestData.HeartJack);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            AssertContainsAll(result.BestHand, TestData.SpadeTen, TestData.ClubAce, TestData.DiamondKing, TestData.HeartQueen, TestData.HeartJack);
+
+        }
+
+        [TestMethod]
+        public void DetectsStraightFlushTwoToSix()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.HeartSix, TestData.HeartThree);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartFive, TestData.HeartTwo, TestData.HeartFour, TestData.SpadeNine, TestData.SpadeKing);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.AreEqual(HandName.StraightFlush, result.HandName);
+
+        }
+
+        [TestMethod]
+        public void BestHandContainsStraightFlusgTwoToSix()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.HeartSix, TestData.HeartThree);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartFive, TestData.HeartTwo, TestData.HeartFour, TestData.SpadeNine, TestData.SpadeKing);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            AssertContainsAll(result.BestHand, TestData.HeartSix, TestData.HeartThree, TestData.HeartFive, TestData.HeartTwo, TestData.HeartFour);
+
+        }
+
+        [TestMethod]
+        public void DetectsRoyalFlush()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen, TestData.HeartNine, TestData.ClubAce);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            Assert.AreEqual(HandName.RoyalFlush, result.HandName);
+
+        }
+
+        [TestMethod]
+        public void BestHandContainsRoyalFlush()
+        {
+            IEnumerable<ICard> theHoleCards = texasHoldEmBuilder.CreateNewHoleCards(TestData.HeartAce, TestData.HeartKing);
+            IEnumerable<ICard> theCommunityCards = CreateCommunityCards(TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen, TestData.HeartNine, TestData.ClubAce);
+
+            IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
+
+            AssertContainsAll(result.BestHand, TestData.HeartAce, TestData.HeartKing, TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen);
+
+        }
+
+
+
         private IEnumerable<ICard> CreateCommunityCards(ICard card1, ICard card2, ICard card3, ICard card4, ICard card5)
         {
 

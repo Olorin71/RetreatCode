@@ -9,12 +9,8 @@ namespace TexasHoldEm.Internals
     {
         public FullHouseChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
         {
+            HandName = HandName.FullHouse;
         }
-        public override IBestPossibleHand Check()
-        {
-            return GetHand(HandName.FullHouse);
-        }
-
         protected override bool HasHand()
         {
             var pairs = CountPairs();

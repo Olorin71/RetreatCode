@@ -33,8 +33,10 @@ namespace TexasHoldEm.Internals
         private void CreateCheckers(CheckerData data)
         {
             // The checkers are added sorted by hand value, most valuable first.
+            checkers.Add(new RoyalAndStraightFlushChecker(data, comparer));
             checkers.Add(new FourOfAKindChecker(data, comparer));
             checkers.Add(new FullHouseChecker(data, comparer));
+            checkers.Add(new StraightChecker(data, comparer));
             checkers.Add(new ThreeOfAKindChecker(data, comparer));
             checkers.Add(new TwoPairsChecker(data, comparer));
             checkers.Add(new PairChecker(data, comparer));

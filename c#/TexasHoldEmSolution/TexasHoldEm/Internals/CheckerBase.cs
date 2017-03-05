@@ -22,6 +22,8 @@ namespace TexasHoldEm.Internals
             }
         }
 
+        protected HandName HandName { get; set; }
+
         protected void SortByCardValue(List<CardValue> list)
         {
             list.Sort((x, y) => comparer.CompareCardValues(x, y));
@@ -31,18 +33,15 @@ namespace TexasHoldEm.Internals
 
         protected abstract bool HasHand();
 
-        public abstract IBestPossibleHand Check();
-
-        protected IBestPossibleHand GetHand(HandName name)
+        public IBestPossibleHand Check()
         {
             if (HasHand())
             {
-                IList<ICard> bestHand = GetCards(); ;
-                BestPossibleHand hand = new BestPossibleHand(name, bestHand);
+                IList<ICard> bestHand = GetCards();
+                BestPossibleHand hand = new BestPossibleHand(HandName, bestHand);
                 return hand;
             }
             return null;
         }
-
     }
 }

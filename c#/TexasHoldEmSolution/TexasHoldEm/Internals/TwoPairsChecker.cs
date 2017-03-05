@@ -9,12 +9,8 @@ namespace TexasHoldEm.Internals
     {
         public TwoPairsChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
         {
+            HandName = HandName.TwoPairs;
         }
-        public override IBestPossibleHand Check()
-        {
-            return GetHand(HandName.TwoPairs);
-        }
-
         protected override bool HasHand()
         {
             var pairs = Data.CardValues.Where(x => x.Value == 2).Select(x => x.Key);

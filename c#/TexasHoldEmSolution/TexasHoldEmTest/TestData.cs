@@ -22,6 +22,13 @@ namespace TexasHoldEmTest
                 return texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Diamond);
             }
         }
+        internal static ICard ClubFive
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Five, CardSuit.Club);
+            }
+        }
         internal static ICard ClubNine
         {
             get
@@ -29,11 +36,25 @@ namespace TexasHoldEmTest
                 return texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Club);
             }
         }
+        internal static ICard ClubAce
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
+            }
+        }
         internal static ICard HeartTwo
         {
             get
             {
                 return texasHoldEmBuilder.CreateNewCard(CardValue.Two, CardSuit.Heart);
+            }
+        }
+        internal static ICard HeartThree
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Three, CardSuit.Heart);
             }
         }
         internal static ICard HeartFour
@@ -64,11 +85,46 @@ namespace TexasHoldEmTest
                 return texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Heart);
             }
         }
+        internal static ICard HeartTen
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Ten, CardSuit.Heart);
+            }
+        }
+        internal static ICard HeartJack
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Jack, CardSuit.Heart);
+            }
+        }
+        internal static ICard HeartQueen
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Queen, CardSuit.Heart);
+            }
+        }
         internal static ICard HeartKing
         {
             get
             {
                 return texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Heart);
+            }
+        }
+        internal static ICard HeartAce
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Heart);
+            }
+        }
+        internal static ICard SpadeFour
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Four, CardSuit.Spade);
             }
         }
         internal static ICard SpadeSix
@@ -83,6 +139,13 @@ namespace TexasHoldEmTest
             get
             {
                 return texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Spade);
+            }
+        }
+        internal static ICard SpadeTen
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Ten, CardSuit.Spade);
             }
         }
         internal static ICard SpadeKing

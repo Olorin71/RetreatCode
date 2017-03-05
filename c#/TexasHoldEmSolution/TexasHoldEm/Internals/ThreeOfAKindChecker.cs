@@ -9,12 +9,8 @@ namespace TexasHoldEm.Internals
     {
         public ThreeOfAKindChecker(CheckerData data, ComparerHelper comparer) : base(data, comparer)
         {
+            HandName = HandName.ThreeOfAKind;
         }
-        public override IBestPossibleHand Check()
-        {
-            return GetHand(HandName.ThreeOfAKind);
-        }
-
         protected override IList<ICard> GetCards()
         {
             var pairs = Data.CardValues.Where(x => x.Value == 3).Select(x => x.Key).ToList();
