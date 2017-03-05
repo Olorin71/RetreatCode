@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
@@ -53,7 +52,6 @@ namespace TexasHoldEm
             foreach (var item in bestBestHand)
             {
                 var player = players[item];
-                Debug.Print(" Winner: " + player.Name + " with " + player.BestHand.ToString());
             }
 
         }
@@ -68,7 +66,6 @@ namespace TexasHoldEm
                     var best = investigator.LocateBestHand(p.Value.HoleCards, communityCards);
                     p.Value.BestHand = best;
                     bestHands.Add(p.Key, best);
-                    Debug.Print(p.Key + " " + p.Value.Name + "     " + best.ToString());
                 }
             }
 
