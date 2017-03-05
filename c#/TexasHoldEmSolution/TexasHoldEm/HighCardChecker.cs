@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TexasHoldEm.Interfaces;
 
@@ -20,11 +21,11 @@ namespace TexasHoldEm
                 if (Data.CardValues.ContainsKey(cardValue) && Data.CardValues[cardValue] == 1)
                 {
                     cards.Add(Data.Cards.First(x => x.Value == cardValue));
+                    break;
                 }
             }
             return cards;
         }
-
         protected override bool HasHand()
         {
             return true;

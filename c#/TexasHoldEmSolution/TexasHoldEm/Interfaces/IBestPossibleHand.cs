@@ -7,6 +7,7 @@ namespace TexasHoldEm.Interfaces
     {
         ReadOnlyCollection<ICard> BestHand { get; }
         HandName HandName { get; }
+        ReadOnlyCollection<CardValue> Kickers { get; }
 
         string ToString();
     }

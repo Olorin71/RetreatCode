@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TexasHoldEm.Interfaces;
 
 namespace TexasHoldEm
@@ -44,10 +45,28 @@ namespace TexasHoldEm
             if (HasHand())
             {
                 IList<ICard> bestHand = GetCards();
-                BestPossibleHand hand = new BestPossibleHand(HandName, bestHand);
+                IList<CardValue> kickers = GetKickers(bestHand);
+                BestPossibleHand hand = new BestPossibleHand(HandName, bestHand, kickers);
                 return hand;
             }
             return null;
+        }
+
+        private IList<CardValue> GetKickers(IList<ICard> bestHand)
+        {
+            var list = new List<CardValue>();
+            if (bestHand.Count < 5)
+            {
+                var openCards = Data.Cards.Where(x => !bestHand.Contains(x)).Select(x => x.Value).Distinct().ToList();
+                SortByCardValue(openCards);
+                for (int counter = bestHand.Count; counter < 5; counter++)
+                {
+                    var cardValue = openCards.First();
+                    list.Add(cardValue);
+                    openCards.Remove(cardValue);
+                }
+            }
+            return list;
         }
 
         protected abstract IList<ICard> GetCards();
