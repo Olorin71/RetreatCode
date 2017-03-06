@@ -19,7 +19,7 @@ namespace TexasHoldEm
             return bestBestHand;
         }
 
-        private IList<Guid> FindRoundWinner(Dictionary<Guid, IBestPossibleHand> bestHands)
+        private static IList<Guid> FindRoundWinner(Dictionary<Guid, IBestPossibleHand> bestHands)
         {
             IList<Guid> bestBestHand = new List<Guid>();
             var lastResult = bestHands.First();
