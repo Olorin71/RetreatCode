@@ -46,14 +46,14 @@ namespace TexasHoldEm
             {
                 if (compareResult == 0)
                 {
-                    CheckKickers(bestBestHand, lastResult, second, compareResult);
+                    CheckKickers(bestBestHand, lastResult, second);
                 }
             }
 
             return lastResult;
         }
 
-        private static void CheckKickers(IList<Guid> bestBestHand, KeyValuePair<Guid, IBestPossibleHand> lastResult, KeyValuePair<Guid, IBestPossibleHand> second, int compareResult)
+        private static void CheckKickers(IList<Guid> bestBestHand, KeyValuePair<Guid, IBestPossibleHand> lastResult, KeyValuePair<Guid, IBestPossibleHand> second)
         {
             var compareKickers = CompareKickers(lastResult.Value.Kickers, second.Value.Kickers);
             if (compareKickers == 0)
