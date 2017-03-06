@@ -24,15 +24,13 @@ namespace TexasHoldEm
             list.Sort((x, y) => CompareCardValues(x, y));
         }
 
-        private static int CompareCardValues(CardValue x, CardValue y)
+        private static int CompareCardValues(CardValue firstCard, CardValue secondCard)
         {
-            var a = (int)x;
-            var b = (int)y;
-            if (a > b)
+            if (firstCard > secondCard)
             {
                 return -1;
             }
-            if (a < b)
+            if (firstCard < secondCard)
             {
                 return 1;
             }
@@ -57,13 +55,12 @@ namespace TexasHoldEm
             var list = new List<CardValue>();
             if (bestHand.Count < 5)
             {
-                var openCards = Data.Cards.Where(x => !bestHand.Contains(x)).Select(x => x.Value).Distinct().ToList();
-                SortByCardValue(openCards);
-                for (int counter = bestHand.Count; counter < 5; counter++)
+                var remainingCardsValues = Data.Cards.Where(x => !bestHand.Contains(x)).Select(x => x.Value).Distinct().ToList();
+                SortByCardValue(remainingCardsValues);
+                var numberOfKickers = 5 - bestHand.Count;
+                if (numberOfKickers > 0)
                 {
-                    var cardValue = openCards.First();
-                    list.Add(cardValue);
-                    openCards.Remove(cardValue);
+                    list = remainingCardsValues.Take(numberOfKickers).ToList();
                 }
             }
             return list;
