@@ -8,11 +8,15 @@ namespace TexasHoldEm
     {
         private IList<CheckerBase> checkers = new List<CheckerBase>();
 
+        public HandInvestigator()
+        {
+            CreateCheckers();
+        }
+
         public IBestPossibleHand LocateBestHand(IEnumerable<ICard> theHoleCards, IEnumerable<ICard> theCommunityCards)
         {
             IList<ICard> cards = CreateCardsList(theHoleCards, theCommunityCards);
             CheckerData data = new CheckerData(cards);
-            CreateCheckers();
             IBestPossibleHand hand = null;
             foreach (CheckerBase checker in checkers)
             {
