@@ -133,5 +133,115 @@ namespace TexasHoldEmTest
             Assert.AreEqual(1, result.Count);
             Assert.IsTrue(result.Contains(player1Guid));
         }
+
+        [TestMethod]
+        public void BothPlayersOnePairPlayerOnesWinsWithHigherFirstKickerCard()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.ClubAce, TestData.SpadeSix, TestData.SpadeTen, TestData.HeartTwo);
+            var communityCards = new List<ICard> { TestData.HeartQueen, TestData.DiamondNine, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(1, result.Count);
+            Assert.IsTrue(result.Contains(player1Guid));
+        }
+
+        [TestMethod]
+        public void BothPlayersOnePairPlayerTwosWinsWithHigherSecondKickerCard()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.SpadeTen, TestData.SpadeSix, TestData.HeartQueen, TestData.HeartTwo);
+            var communityCards = new List<ICard> { TestData.ClubAce, TestData.DiamondNine, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(1, result.Count);
+            Assert.IsTrue(result.Contains(player2Guid));
+        }
+        [TestMethod]
+        public void BothPlayersOnePairPlayerOnesWinsWithHigherThirdKickerCard()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.SpadeTen, TestData.SpadeSix, TestData.DiamondNine, TestData.HeartTwo);
+            var communityCards = new List<ICard> { TestData.ClubAce, TestData.HeartQueen, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(1, result.Count);
+            Assert.IsTrue(result.Contains(player1Guid));
+        }
+        [TestMethod]
+        public void BothPlayersOnePairAndSameKickersBothPlayerWins()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.SpadeFour, TestData.SpadeSix, TestData.DiamondNine, TestData.HeartTwo);
+            var communityCards = new List<ICard> { TestData.ClubAce, TestData.HeartQueen, TestData.SpadeTen, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Contains(player1Guid));
+            Assert.IsTrue(result.Contains(player2Guid));
+        }
+
+        [TestMethod]
+        public void BothPlayersThreeOfAKindPlayerTwosWinsWithHigherFirstKickerCard()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.ClubKing, TestData.SpadeSix, TestData.DiamondKing, TestData.ClubAce);
+            var communityCards = new List<ICard> { TestData.HeartTwo, TestData.DiamondNine, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(1, result.Count);
+            Assert.IsTrue(result.Contains(player2Guid));
+        }
+
+        [TestMethod]
+        public void BothPlayersThreeOfAKindPlayerOnesWinsWithHigherSecondKickerCard()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.ClubKing, TestData.DiamondNine, TestData.DiamondKing, TestData.HeartTwo);
+            var communityCards = new List<ICard> { TestData.ClubAce, TestData.SpadeSix, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(1, result.Count);
+            Assert.IsTrue(result.Contains(player1Guid));
+        }
+
+        [TestMethod]
+        public void BothPlayersThreeOfAKindAndSameKickersBothPlayersWins()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.ClubKing, TestData.SpadeSix, TestData.DiamondKing, TestData.HeartTwo);
+            var communityCards = new List<ICard> { TestData.ClubAce, TestData.DiamondNine, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Contains(player1Guid));
+            Assert.IsTrue(result.Contains(player2Guid));
+        }
+
+        [TestMethod]
+        public void BothPlayersTwoPairsPlayerOnesWinsWithHigherFirstKickerCard()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.HeartQueen, TestData.HeartTwo, TestData.ClubFive, TestData.HeartFour);
+            var communityCards = new List<ICard> { TestData.SpadeTen, TestData.SpadeNine, TestData.DiamondNine, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(1, result.Count);
+            Assert.IsTrue(result.Contains(player1Guid));
+        }
+
+        [TestMethod]
+        public void BothPlayersTwoPairsSameKickerBothPlayersWins()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.SpadeTen, TestData.HeartTwo, TestData.ClubFive, TestData.HeartFour);
+            var communityCards = new List<ICard> { TestData.HeartQueen, TestData.SpadeNine, TestData.DiamondNine, TestData.HeartKing, TestData.SpadeKing };
+
+            var result = comparer.FindRoundWinners(players, communityCards);
+
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Contains(player1Guid));
+            Assert.IsTrue(result.Contains(player2Guid));
+        }
+
     }
 }

@@ -23,10 +23,20 @@ namespace TexasHoldEm
 
         public override string ToString()
         {
-            var toString = HandName.ToString(); ;
+            var toString = HandName.ToString();
             foreach (var item in BestHand)
             {
                 toString += " / " + item.ToString();
+            }
+
+            if (Kickers.Count > 0)
+            {
+                toString += " ( ";
+                foreach (var item in Kickers)
+                {
+                    toString += item + " ";
+                }
+                toString += ") ";
             }
             return toString;
         }

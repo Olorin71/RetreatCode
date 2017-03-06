@@ -62,6 +62,7 @@
     <Compile Include="PlayerTest.cs" />
     <Compile Include="HandInvestigatorTest.cs" />
     <Compile Include="HandComparerTest.cs" />
+    <Compile Include="BestPossibleHandTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TexasHoldEm\TexasHoldEm.csproj">
