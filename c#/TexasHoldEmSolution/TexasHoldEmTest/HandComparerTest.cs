@@ -12,6 +12,8 @@ namespace TexasHoldEmTest
     {
         private TexasHoldEmBuilder builder;
         private IHandComparer comparer;
+        private Guid player1Guid = Guid.NewGuid();
+        private Guid player2Guid = Guid.NewGuid();
 
         [TestInitialize]
         public void Initialize()
@@ -22,15 +24,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void PlayerOneRoyalFlushPlayerTwoStraightFlushPlayerOneWins()
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.HeartAce);
-            player1.AddHoleCard(TestData.HeartKing);
-            player2.AddHoleCard(TestData.HeartNine);
-            player2.AddHoleCard(TestData.HeartEight);
+            var players = CreateToPlayerWithHoleCards(TestData.HeartAce, TestData.HeartKing, TestData.HeartNine, TestData.HeartEight);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen, TestData.ClubAce, TestData.SpadeNine };
 
             var result = comparer.FindRoundWinners(players, communityCards);
@@ -39,18 +33,22 @@ namespace TexasHoldEmTest
             Assert.IsTrue(result.Contains(player1Guid));
         }
 
-        [TestMethod]
-        public void PlayerTwoStraightFlushPlayerOneFourOfAKindPlayerTwoWins()
+        private IDictionary<Guid, IPlayer> CreateToPlayerWithHoleCards(ICard firstCardFirstPlayer, ICard secondCardFirstPlayer, ICard firstCardSecondPlayer, ICard secondCardSecondPlayer)
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
             var player1 = builder.CreateNewPlayer("player1", 1000);
             var player2 = builder.CreateNewPlayer("player2", 1000);
             var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.DiamondKing);
-            player1.AddHoleCard(TestData.HeartKing);
-            player2.AddHoleCard(TestData.HeartNine);
-            player2.AddHoleCard(TestData.HeartEight);
+            player1.AddHoleCard(firstCardFirstPlayer);
+            player1.AddHoleCard(secondCardFirstPlayer);
+            player2.AddHoleCard(firstCardSecondPlayer);
+            player2.AddHoleCard(secondCardSecondPlayer);
+            return players;
+        }
+
+        [TestMethod]
+        public void PlayerTwoStraightFlushPlayerOneFourOfAKindPlayerTwoWins()
+        {
+            var players = CreateToPlayerWithHoleCards(TestData.DiamondKing, TestData.HeartKing, TestData.HeartNine, TestData.HeartEight);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen, TestData.ClubKing, TestData.SpadeKing };
 
             var result = comparer.FindRoundWinners(players, communityCards);
@@ -61,15 +59,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void PlayerTwoFullHousePlayerOneFourOfAKindPlayerOneWins()
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.ClubFive);
-            player1.AddHoleCard(TestData.HeartKing);
-            player2.AddHoleCard(TestData.HeartNine);
-            player2.AddHoleCard(TestData.ClubNine);
+            var players = CreateToPlayerWithHoleCards(TestData.ClubFive, TestData.HeartKing, TestData.HeartNine, TestData.ClubNine);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.HeartJack, TestData.DiamondKing, TestData.ClubKing, TestData.SpadeKing };
 
             var result = comparer.FindRoundWinners(players, communityCards);
@@ -80,15 +70,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void PlayerTwoFullHousePlayerOneFlushPlayerTwoWins()
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.HeartFour);
-            player1.AddHoleCard(TestData.HeartEight);
-            player2.AddHoleCard(TestData.HeartNine);
-            player2.AddHoleCard(TestData.ClubNine);
+            var players = CreateToPlayerWithHoleCards(TestData.HeartFour, TestData.HeartEight, TestData.HeartNine, TestData.ClubNine);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.HeartJack, TestData.HeartKing, TestData.ClubKing, TestData.SpadeKing };
 
             var result = comparer.FindRoundWinners(players, communityCards);
@@ -99,15 +81,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void PlayerTwoStraightPlayerOneFlushPlayerOneWins()
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.HeartFour);
-            player1.AddHoleCard(TestData.HeartEight);
-            player2.AddHoleCard(TestData.SpadeTen);
-            player2.AddHoleCard(TestData.ClubNine);
+            var players = CreateToPlayerWithHoleCards(TestData.HeartFour, TestData.HeartEight, TestData.SpadeTen, TestData.ClubNine);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.HeartJack, TestData.HeartKing, TestData.ClubKing, TestData.SpadeKing };
 
             var result = comparer.FindRoundWinners(players, communityCards);
@@ -118,15 +92,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void PlayerTwoStraightPlayerOneThreeOfAKindPlayerTwoWins()
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.ClubFive);
-            player1.AddHoleCard(TestData.ClubKing);
-            player2.AddHoleCard(TestData.SpadeTen);
-            player2.AddHoleCard(TestData.ClubNine);
+            var players = CreateToPlayerWithHoleCards(TestData.ClubFive, TestData.ClubKing, TestData.SpadeTen, TestData.ClubNine);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.HeartJack, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
 
             var result = comparer.FindRoundWinners(players, communityCards);
@@ -137,15 +103,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void PlayerTwoTwoPairsPlayerOneThreeOfAKindPlayerOneWins()
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.ClubFive);
-            player1.AddHoleCard(TestData.ClubKing);
-            player2.AddHoleCard(TestData.SpadeTen);
-            player2.AddHoleCard(TestData.ClubNine);
+            var players = CreateToPlayerWithHoleCards(TestData.ClubFive, TestData.ClubKing, TestData.SpadeTen, TestData.ClubNine);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.DiamondNine, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
 
             var result = comparer.FindRoundWinners(players, communityCards);
@@ -156,15 +114,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void PlayerTwoTwoPairsPlayerOnePairPlayerTwoWins()
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.ClubFive);
-            player1.AddHoleCard(TestData.SpadeSix);
-            player2.AddHoleCard(TestData.SpadeTen);
-            player2.AddHoleCard(TestData.ClubNine);
+            var players = CreateToPlayerWithHoleCards(TestData.ClubFive, TestData.SpadeSix, TestData.SpadeTen, TestData.ClubNine);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.DiamondNine, TestData.SpadeFour, TestData.HeartKing, TestData.SpadeKing };
 
             var result = comparer.FindRoundWinners(players, communityCards);
@@ -175,15 +125,7 @@ namespace TexasHoldEmTest
         [TestMethod]
         public void PlayerTwoHighCardPlayerOnePairPlayerOneWins()
         {
-            var player1Guid = Guid.NewGuid();
-            var player2Guid = Guid.NewGuid();
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(TestData.ClubFive);
-            player1.AddHoleCard(TestData.HeartKing);
-            player2.AddHoleCard(TestData.SpadeTen);
-            player2.AddHoleCard(TestData.HeartTwo);
+            var players = CreateToPlayerWithHoleCards(TestData.ClubFive, TestData.HeartKing, TestData.SpadeTen, TestData.HeartTwo);
             var communityCards = new List<ICard> { TestData.HeartQueen, TestData.DiamondNine, TestData.SpadeFour, TestData.SpadeSix, TestData.SpadeKing };
 
             var result = comparer.FindRoundWinners(players, communityCards);
