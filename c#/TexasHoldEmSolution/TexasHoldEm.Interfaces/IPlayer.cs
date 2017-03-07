@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace TexasHoldEm.Interfaces
+namespace TexasHoldEmEngine.Interfaces
 {
     public interface IPlayer
     {

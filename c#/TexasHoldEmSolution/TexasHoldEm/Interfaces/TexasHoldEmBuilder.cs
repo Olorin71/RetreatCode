@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using TexasHoldEm;
-
-namespace TexasHoldEm.Interfaces
+﻿namespace TexasHoldEmEngine.Interfaces
 {
-    public class TexasHoldEmBuilder
+    public class TexasHoldEmEngineBuilder
     {
         public IDeck CreateNewDeck()
         {

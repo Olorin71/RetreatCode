@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TexasHoldEm.Interfaces
+namespace TexasHoldEmEngine.Interfaces
 {
     public interface ICard : IEquatable<ICard>
     {

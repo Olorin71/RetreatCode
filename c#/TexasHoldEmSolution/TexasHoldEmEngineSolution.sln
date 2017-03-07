@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexasHoldEmTest", "TexasHoldEmTest\TexasHoldEmTest.csproj", "{B257DB59-876A-4977-B6E5-1183AEF3E246}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexasHoldEmEngineTest", "TexasHoldEmTest\TexasHoldEmEngineTest.csproj", "{B257DB59-876A-4977-B6E5-1183AEF3E246}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexasHoldEm", "TexasHoldEm\TexasHoldEm.csproj", "{20C84139-EBA2-4FBE-912E-1D4AC9F63F92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexasHoldEmEngine", "TexasHoldEm\TexasHoldEmEngine.csproj", "{20C84139-EBA2-4FBE-912E-1D4AC9F63F92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexasHoldEm.Interfaces", "TexasHoldEm.Interfaces\TexasHoldEm.Interfaces.csproj", "{07ED8924-F2B7-47D5-9B5C-F8501829CCA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexasHoldEmEngine.Interfaces", "TexasHoldEm.Interfaces\TexasHoldEmEngine.Interfaces.csproj", "{07ED8924-F2B7-47D5-9B5C-F8501829CCA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

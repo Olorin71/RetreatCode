@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TexasHoldEm;
-using TexasHoldEm.Interfaces;
+using TexasHoldEmEngine;
+using TexasHoldEmEngine.Interfaces;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace TexasHoldEmTest
+namespace TexasHoldEmEngineTest
 {
     [TestClass]
     [ExcludeFromCodeCoverage]

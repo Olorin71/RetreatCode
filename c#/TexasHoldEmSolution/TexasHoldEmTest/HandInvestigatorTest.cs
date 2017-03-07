@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TexasHoldEm.Interfaces;
-using TexasHoldEm;
+using TexasHoldEmEngine.Interfaces;
+using TexasHoldEmEngine;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Collections.ObjectModel;
 
-namespace TexasHoldEmTest
+namespace TexasHoldEmEngineTest
 {
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -14,12 +14,12 @@ namespace TexasHoldEmTest
     {
         private IHandInvestigator investigator;
 
-        private TexasHoldEmBuilder texasHoldEmBuilder;
+        private TexasHoldEmEngineBuilder texasHoldEmBuilder;
 
         [TestInitialize]
         public void Initialize()
         {
-            texasHoldEmBuilder = new TexasHoldEmBuilder();
+            texasHoldEmBuilder = new TexasHoldEmEngineBuilder();
             investigator = texasHoldEmBuilder.CreateNewHandInvestigator();
         }
         [TestMethod]

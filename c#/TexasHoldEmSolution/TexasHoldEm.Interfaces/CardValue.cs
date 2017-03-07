@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TexasHoldEm.Interfaces
+namespace TexasHoldEmEngine.Interfaces
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1008:EnumsShouldHaveZeroValue", 
         Justification = "Zero is not a valid value.")]

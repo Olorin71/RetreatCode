@@ -1,16 +1,16 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TexasHoldEm.Interfaces;
+using TexasHoldEmEngine.Interfaces;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace TexasHoldEmTest
+namespace TexasHoldEmEngineTest
 {
     [TestClass]
     [ExcludeFromCodeCoverage]
     public class HandComparerTest
     {
-        private TexasHoldEmBuilder builder;
+        private TexasHoldEmEngineBuilder builder;
         private IHandComparer comparer;
         private Guid player1Guid = Guid.NewGuid();
         private Guid player2Guid = Guid.NewGuid();
@@ -18,7 +18,7 @@ namespace TexasHoldEmTest
         [TestInitialize]
         public void Initialize()
         {
-            builder = new TexasHoldEmBuilder();
+            builder = new TexasHoldEmEngineBuilder();
             comparer = builder.CreateNewHandComparer();
         }
         [TestMethod]

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TexasHoldEm.Interfaces;
+using TexasHoldEmEngine.Interfaces;
 using System.Diagnostics.CodeAnalysis;
 
-namespace TexasHoldEmTest
+namespace TexasHoldEmEngineTest
 {
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -13,12 +13,12 @@ namespace TexasHoldEmTest
         int testChipAmount = 1000;
         IPlayer player;
 
-        private TexasHoldEmBuilder texasHoldEmBuilder;
+        private TexasHoldEmEngineBuilder texasHoldEmBuilder;
 
         [TestInitialize]
         public void Initialize()
         {
-            texasHoldEmBuilder = new TexasHoldEmBuilder();
+            texasHoldEmBuilder = new TexasHoldEmEngineBuilder();
             player = texasHoldEmBuilder.CreateNewPlayer(testPlayerName, testChipAmount);
         }
         [TestMethod]

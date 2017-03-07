@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TexasHoldEm.Interfaces;
+using TexasHoldEmEngine.Interfaces;
 
-namespace TexasHoldEm
+namespace TexasHoldEmEngine
 {
     public class BestPossibleHand : IBestPossibleHand
     {

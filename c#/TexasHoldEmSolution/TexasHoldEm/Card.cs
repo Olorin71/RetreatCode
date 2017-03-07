@@ -1,7 +1,6 @@
-﻿using System;
-using TexasHoldEm.Interfaces;
+﻿using TexasHoldEmEngine.Interfaces;
 
-namespace TexasHoldEm
+namespace TexasHoldEmEngine
 {
     public class Card : ICard
     {

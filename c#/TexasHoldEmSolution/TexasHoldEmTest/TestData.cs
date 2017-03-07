@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using TexasHoldEm.Interfaces;
+using TexasHoldEmEngine.Interfaces;
 
-namespace TexasHoldEmTest
+namespace TexasHoldEmEngineTest
 {
     [ExcludeFromCodeCoverage]
     internal static class TestData
     {
-        private static TexasHoldEmBuilder texasHoldEmBuilder = new TexasHoldEmBuilder();
+        private static TexasHoldEmEngineBuilder texasHoldEmBuilder = new TexasHoldEmEngineBuilder();
 
         internal static ICard DiamondNine
         {

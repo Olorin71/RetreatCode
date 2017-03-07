@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TexasHoldEm.Interfaces;
+using TexasHoldEmEngine.Interfaces;
 
-namespace TexasHoldEm
+namespace TexasHoldEmEngine
 {
     internal class FourOfAKindChecker : CheckerBase
     {

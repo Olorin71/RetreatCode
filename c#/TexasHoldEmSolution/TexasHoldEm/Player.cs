@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TexasHoldEm.Interfaces;
-using TexasHoldEm.Properties;
+using TexasHoldEmEngine.Interfaces;
+using TexasHoldEmEngine.Properties;
 
-namespace TexasHoldEm
+namespace TexasHoldEmEngine
 {
     internal class Player : IPlayer
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TexasHoldEm.Interfaces;
+using TexasHoldEmEngine.Interfaces;
 
-namespace TexasHoldEm
+namespace TexasHoldEmEngine
 {
     internal abstract class StraightCheckerBase : CheckerBase
     {

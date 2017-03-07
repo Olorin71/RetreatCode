@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using TexasHoldEm.Interfaces;
+﻿using System.Linq;
+using TexasHoldEmEngine.Interfaces;
 
-namespace TexasHoldEm
+namespace TexasHoldEmEngine
 {
     internal class RoyalAndStraightFlushChecker : StraightCheckerBase
     {

@@ -1,19 +1,19 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics.CodeAnalysis;
-using TexasHoldEm.Interfaces;
+using TexasHoldEmEngine.Interfaces;
 
-namespace TexasHoldEmTest
+namespace TexasHoldEmEngineTest
 {
     [TestClass]
     [ExcludeFromCodeCoverage]
     public class DeckTest
     {
-        private TexasHoldEmBuilder texasHoldEmBuilder;
+        private TexasHoldEmEngineBuilder texasHoldEmBuilder;
 
         [TestInitialize]
         public void Initialize()
         {
-            texasHoldEmBuilder = new TexasHoldEmBuilder();
+            texasHoldEmBuilder = new TexasHoldEmEngineBuilder();
         }
 
         [TestMethod]

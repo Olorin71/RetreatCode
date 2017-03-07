@@ -7,8 +7,8 @@
     <ProjectGuid>{20C84139-EBA2-4FBE-912E-1D4AC9F63F92}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TexasHoldEm</RootNamespace>
-    <AssemblyName>TexasHoldEm</AssemblyName>
+    <RootNamespace>TexasHoldEmEngine</RootNamespace>
+    <AssemblyName>TexasHoldEmEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -76,9 +76,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TexasHoldEm.Interfaces\TexasHoldEm.Interfaces.csproj">
+    <ProjectReference Include="..\TexasHoldEm.Interfaces\TexasHoldEmEngine.Interfaces.csproj">
       <Project>{07ed8924-f2b7-47d5-9b5c-f8501829cca6}</Project>
-      <Name>TexasHoldEm.Interfaces</Name>
+      <Name>TexasHoldEmEngine.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

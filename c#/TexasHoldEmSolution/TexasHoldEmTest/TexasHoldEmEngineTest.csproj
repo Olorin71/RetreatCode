@@ -6,8 +6,8 @@
     <ProjectGuid>{B257DB59-876A-4977-B6E5-1183AEF3E246}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TexasHoldEmTest</RootNamespace>
-    <AssemblyName>TexasHoldEmTest</AssemblyName>
+    <RootNamespace>TexasHoldEmEngineTest</RootNamespace>
+    <AssemblyName>TexasHoldEmEngineTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -65,13 +65,13 @@
     <Compile Include="BestPossibleHandTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TexasHoldEm.Interfaces\TexasHoldEm.Interfaces.csproj">
+    <ProjectReference Include="..\TexasHoldEm.Interfaces\TexasHoldEmEngine.Interfaces.csproj">
       <Project>{07ed8924-f2b7-47d5-9b5c-f8501829cca6}</Project>
-      <Name>TexasHoldEm.Interfaces</Name>
+      <Name>TexasHoldEmEngine.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TexasHoldEm\TexasHoldEm.csproj">
+    <ProjectReference Include="..\TexasHoldEm\TexasHoldEmEngine.csproj">
       <Project>{20c84139-eba2-4fbe-912e-1d4ac9f63f92}</Project>
-      <Name>TexasHoldEm</Name>
+      <Name>TexasHoldEmEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

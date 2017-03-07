@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TexasHoldEm.Interfaces
+namespace TexasHoldEmEngine.Interfaces
 {
     public interface IHandComparer
     {
