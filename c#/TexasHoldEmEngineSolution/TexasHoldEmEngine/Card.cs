@@ -4,40 +4,15 @@ namespace TexasHoldEmEngine
 {
     public class Card : ICard
     {
-        private CardValue cardValue;
-        private CardSuit cardSuit;
-
-        public CardValue Value
-        {
-            get
-            {
-                return cardValue;
-            }
-
-            private set
-            {
-                this.cardValue = value;
-            }
-        }
-
-        public CardSuit Suit
-        {
-            get
-            {
-                return cardSuit;
-            }
-
-            private set
-            {
-                cardSuit = value;
-            }
-        }
-
         public Card(CardValue value, CardSuit suit)
         {
             Value = value;
             Suit = suit;
         }
+
+        public CardValue Value { get; set; }
+
+        public CardSuit Suit { get; set; }
 
         public override string ToString()
         {

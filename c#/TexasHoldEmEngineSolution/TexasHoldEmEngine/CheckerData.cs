@@ -30,7 +30,7 @@ namespace TexasHoldEmEngine
             }
         }
 
-        public IReadOnlyDictionary<CardValue, int> CardValues
+        public IReadOnlyDictionary<CardValue, int> CardValuesDistibution
         {
             get
             {
@@ -38,7 +38,7 @@ namespace TexasHoldEmEngine
             }
         }
 
-        public IReadOnlyDictionary<CardSuit, int> CardSuits
+        public IReadOnlyDictionary<CardSuit, int> CardSuitsDistribution
         {
             get
             {

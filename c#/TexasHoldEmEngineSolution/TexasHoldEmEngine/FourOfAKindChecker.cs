@@ -14,14 +14,14 @@ namespace TexasHoldEmEngine
 
         protected override IList<ICard> GetCards()
         {
-            var fours = Data.CardValues.Where(x => x.Value == 4).Select(x => x.Key).ToList();
+            var fours = Data.CardValuesDistibution.Where(x => x.Value == 4).Select(x => x.Key).ToList();
             SortByCardValue(fours);
             return Data.Cards.Where(x => x.Value == fours.First()).ToList();
         }
 
         protected override bool HasHand()
         {
-            return Data.CardValues.Where(x => x.Value == 4).Select(x => x.Key).Any();
+            return Data.CardValuesDistibution.Where(x => x.Value == 4).Select(x => x.Key).Any();
         }
 
     }

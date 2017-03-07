@@ -20,18 +20,18 @@ namespace TexasHoldEmEngine
 
         private int CountPairs()
         {
-            return Data.CardValues.Where(x => x.Value == 2).Select(x => x.Key).Count();
+            return Data.CardValuesDistibution.Where(x => x.Value == 2).Select(x => x.Key).Count();
         }
 
         private int CountThreeOfAKinds()
         {
-            return Data.CardValues.Where(x => x.Value == 3).Select(x => x.Key).Count();
+            return Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).Count();
         }
 
         protected override IList<ICard> GetCards()
         {
-            var thirds = Data.CardValues.Where(x => x.Value == 3).Select(x => x.Key).ToList();
-            var pairs = Data.CardValues.Where(x => x.Value == 2).Select(x => x.Key).ToList();
+            var thirds = Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).ToList();
+            var pairs = Data.CardValuesDistibution.Where(x => x.Value == 2).Select(x => x.Key).ToList();
             SortByCardValue(thirds);
             SortByCardValue(pairs);
             if (pairs.Count() > 0)

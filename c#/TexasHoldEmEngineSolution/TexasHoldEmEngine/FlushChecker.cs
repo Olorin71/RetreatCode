@@ -14,7 +14,7 @@ namespace TexasHoldEmEngine
 
         protected override IList<ICard> GetCards()
         {
-            var suit = Data.CardSuits.Where(x => x.Value >= 5);
+            var suit = Data.CardSuitsDistribution.Where(x => x.Value >= 5);
             var allSuitedCards = Data.Cards.Where(x => x.Suit == suit.First().Key).Select(x => x.Value).ToList();
             SortByCardValue(allSuitedCards);
             IList<ICard> cards = new List<ICard>();
@@ -27,7 +27,7 @@ namespace TexasHoldEmEngine
 
         protected override bool HasHand()
         {
-            return Data.CardSuits.Any(x => x.Value >= 5);
+            return Data.CardSuitsDistribution.Any(x => x.Value >= 5);
 
         }
     }

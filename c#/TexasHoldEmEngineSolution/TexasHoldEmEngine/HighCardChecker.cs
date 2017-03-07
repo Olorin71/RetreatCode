@@ -17,7 +17,7 @@ namespace TexasHoldEmEngine
             for (int actualCardValue = 14; actualCardValue > 2; actualCardValue--)
             {
                 CardValue cardValue = (CardValue)actualCardValue;
-                if (Data.CardValues.ContainsKey(cardValue) && Data.CardValues[cardValue] == 1)
+                if (Data.CardValuesDistibution.ContainsKey(cardValue) && Data.CardValuesDistibution[cardValue] == 1)
                 {
                     cards.Add(Data.Cards.First(x => x.Value == cardValue));
                     break;
