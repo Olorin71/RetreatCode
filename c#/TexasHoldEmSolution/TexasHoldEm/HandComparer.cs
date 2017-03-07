@@ -78,7 +78,6 @@ namespace TexasHoldEm
                 if (p.Value.HoleCards.Count == 2)
                 {
                     var best = investigator.LocateBestHand(p.Value.HoleCards, communityCards);
-                    p.Value.BestHand = best;
                     bestHands.Add(p.Key, best);
                 }
             }

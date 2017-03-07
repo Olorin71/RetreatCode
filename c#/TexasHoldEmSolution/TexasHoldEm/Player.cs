@@ -20,8 +20,6 @@ namespace TexasHoldEm
             Chips = chipsAmount;
         }
 
-        public IBestPossibleHand BestHand { get; set; }
-
         public int Chips { get; private set; }
 
         public ReadOnlyCollection<ICard> HoleCards
