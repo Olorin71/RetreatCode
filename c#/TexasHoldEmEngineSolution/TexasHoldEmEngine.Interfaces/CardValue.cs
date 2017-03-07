@@ -2,6 +2,10 @@
 
 namespace TexasHoldEmEngine.Interfaces
 {
+    /// <summary>
+    /// The card values in the game.
+    /// Each enum value has an assigned int value to simplify comparisions. The higher the value rank, the higher the number.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1008:EnumsShouldHaveZeroValue", 
         Justification = "Zero is not a valid value.")]
     public enum CardValue

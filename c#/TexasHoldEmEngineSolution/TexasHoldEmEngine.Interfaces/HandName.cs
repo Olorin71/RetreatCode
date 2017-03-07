@@ -1,5 +1,9 @@
 ﻿namespace TexasHoldEmEngine.Interfaces
 {
+    /// <summary>
+    /// The Texas hold'em hand names from highest to lowest.
+    /// Each enum value has an assigned int value to simplify comparisions. The higher the hand rank, the higher the number.
+    /// </summary>
     public enum HandName
     {
         RoyalFlush = 9,
