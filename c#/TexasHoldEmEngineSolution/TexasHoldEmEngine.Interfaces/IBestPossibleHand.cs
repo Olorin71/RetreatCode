@@ -4,11 +4,11 @@ namespace TexasHoldEmEngine.Interfaces
 {
     public interface IBestPossibleHand
     {
-        ReadOnlyCollection<ICard> BestHand { get; }
+        ReadOnlyCollection<ICard> HandCards { get; }
 
         HandName HandName { get; }
 
-        ReadOnlyCollection<CardValue> Kickers { get; }
+        ReadOnlyCollection<CardValue> KickerValues { get; }
 
         string ToString();
     }

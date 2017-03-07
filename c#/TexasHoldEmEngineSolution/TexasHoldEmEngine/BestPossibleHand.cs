@@ -9,29 +9,29 @@ namespace TexasHoldEmEngine
         public BestPossibleHand(HandName name, IList<ICard> bestHand, IList<CardValue> kickers)
         {
             HandName = name;
-            BestHand = new ReadOnlyCollection<ICard>(bestHand);
-            Kickers = new ReadOnlyCollection<CardValue>(kickers);
+            HandCards = new ReadOnlyCollection<ICard>(bestHand);
+            KickerValues = new ReadOnlyCollection<CardValue>(kickers);
             
         }
 
-        public ReadOnlyCollection<ICard> BestHand { get; private set; }
+        public ReadOnlyCollection<ICard> HandCards { get; private set; }
 
         public HandName HandName { get; private set;}
 
-        public ReadOnlyCollection<CardValue> Kickers { get; private set; }
+        public ReadOnlyCollection<CardValue> KickerValues { get; private set; }
 
         public override string ToString()
         {
             var toString = HandName.ToString() + ": ";
-            foreach (var item in BestHand)
+            foreach (var item in HandCards)
             {
                 toString += item.ToString() + " ";
             }
 
-            if (Kickers.Count > 0)
+            if (KickerValues.Count > 0)
             {
                 toString += "( ";
-                foreach (var item in Kickers)
+                foreach (var item in KickerValues)
                 {
                     toString += item + " ";
                 }

@@ -40,7 +40,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.DiamondNine, TestData.ClubNine);
+            AssertContainsAllCards(result.HandCards, TestData.DiamondNine, TestData.ClubNine);
         }
         [TestMethod]
         public void PairBestHandContainsThreeKickers()
@@ -50,7 +50,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(3, result.Kickers.Count);
+            Assert.AreEqual(3, result.KickerValues.Count);
         }
 
         [TestMethod]
@@ -61,7 +61,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCardValues(result.Kickers, CardValue.King, CardValue.Six, CardValue.Five);
+            AssertContainsAllCardValues(result.KickerValues, CardValue.King, CardValue.Six, CardValue.Five);
         }
 
         [TestMethod]
@@ -83,10 +83,10 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.IsTrue(result.BestHand.Contains(TestData.DiamondKing));
-            Assert.IsTrue(result.BestHand.Contains(TestData.HeartKing));
-            Assert.IsTrue(result.BestHand.Contains(TestData.ClubNine));
-            Assert.IsTrue(result.BestHand.Contains(TestData.DiamondNine));
+            Assert.IsTrue(result.HandCards.Contains(TestData.DiamondKing));
+            Assert.IsTrue(result.HandCards.Contains(TestData.HeartKing));
+            Assert.IsTrue(result.HandCards.Contains(TestData.ClubNine));
+            Assert.IsTrue(result.HandCards.Contains(TestData.DiamondNine));
         }
 
         [TestMethod]
@@ -98,7 +98,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(1, result.Kickers.Count);
+            Assert.AreEqual(1, result.KickerValues.Count);
         }
 
         [TestMethod]
@@ -110,7 +110,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCardValues(result.Kickers, CardValue.Six);
+            AssertContainsAllCardValues(result.KickerValues, CardValue.Six);
         }
 
 
@@ -134,11 +134,11 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.IsTrue(result.BestHand.Contains(TestData.DiamondKing));
-            Assert.IsTrue(result.BestHand.Contains(TestData.HeartKing));
-            Assert.IsTrue(result.BestHand.Contains(TestData.SpadeKing));
+            Assert.IsTrue(result.HandCards.Contains(TestData.DiamondKing));
+            Assert.IsTrue(result.HandCards.Contains(TestData.HeartKing));
+            Assert.IsTrue(result.HandCards.Contains(TestData.SpadeKing));
 
-            AssertContainsAllCards(result.BestHand, TestData.DiamondKing, TestData.HeartKing, TestData.SpadeKing);
+            AssertContainsAllCards(result.HandCards, TestData.DiamondKing, TestData.HeartKing, TestData.SpadeKing);
         }
 
         [TestMethod]
@@ -149,7 +149,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(2, result.Kickers.Count);
+            Assert.AreEqual(2, result.KickerValues.Count);
         }
 
         [TestMethod]
@@ -160,7 +160,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCardValues(result.Kickers, CardValue.Six, CardValue.King);
+            AssertContainsAllCardValues(result.KickerValues, CardValue.Six, CardValue.King);
         }
 
 
@@ -183,10 +183,10 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.IsTrue(result.BestHand.Contains(TestData.DiamondNine));
-            Assert.IsTrue(result.BestHand.Contains(TestData.HeartNine));
-            Assert.IsTrue(result.BestHand.Contains(TestData.ClubNine));
-            Assert.IsTrue(result.BestHand.Contains(TestData.SpadeNine));
+            Assert.IsTrue(result.HandCards.Contains(TestData.DiamondNine));
+            Assert.IsTrue(result.HandCards.Contains(TestData.HeartNine));
+            Assert.IsTrue(result.HandCards.Contains(TestData.ClubNine));
+            Assert.IsTrue(result.HandCards.Contains(TestData.SpadeNine));
 
         }
 
@@ -198,7 +198,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(1, result.Kickers.Count);
+            Assert.AreEqual(1, result.KickerValues.Count);
         }
 
         [TestMethod]
@@ -209,7 +209,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCardValues(result.Kickers, CardValue.King);
+            AssertContainsAllCardValues(result.KickerValues, CardValue.King);
         }
 
 
@@ -234,8 +234,8 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.DiamondKing, TestData.HeartKing, TestData.SpadeKing);
-            AssertContainsTwoOfThreeCards(result.BestHand, TestData.DiamondNine, TestData.ClubNine, TestData.HeartNine);
+            AssertContainsAllCards(result.HandCards, TestData.DiamondKing, TestData.HeartKing, TestData.SpadeKing);
+            AssertContainsTwoOfThreeCards(result.HandCards, TestData.DiamondNine, TestData.ClubNine, TestData.HeartNine);
         }
 
         [TestMethod]
@@ -246,7 +246,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.DiamondKing, TestData.HeartKing, TestData.DiamondNine, TestData.HeartNine, TestData.ClubNine);
+            AssertContainsAllCards(result.HandCards, TestData.DiamondKing, TestData.HeartKing, TestData.DiamondNine, TestData.HeartNine, TestData.ClubNine);
         }
 
         [TestMethod]
@@ -257,7 +257,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(0, result.Kickers.Count);
+            Assert.AreEqual(0, result.KickerValues.Count);
         }
 
 
@@ -282,7 +282,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(0, result.Kickers.Count);
+            Assert.AreEqual(0, result.KickerValues.Count);
         }
 
         [TestMethod]
@@ -293,7 +293,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.ClubAce, TestData.HeartThree, TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour);
+            AssertContainsAllCards(result.HandCards, TestData.ClubAce, TestData.HeartThree, TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour);
 
         }
 
@@ -317,7 +317,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.SpadeSix, TestData.HeartThree, TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour);
+            AssertContainsAllCards(result.HandCards, TestData.SpadeSix, TestData.HeartThree, TestData.ClubFive, TestData.HeartTwo, TestData.SpadeFour);
 
         }
 
@@ -341,7 +341,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.SpadeTen, TestData.ClubAce, TestData.DiamondKing, TestData.HeartQueen, TestData.HeartJack);
+            AssertContainsAllCards(result.HandCards, TestData.SpadeTen, TestData.ClubAce, TestData.DiamondKing, TestData.HeartQueen, TestData.HeartJack);
 
         }
 
@@ -365,7 +365,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(0, result.Kickers.Count);
+            Assert.AreEqual(0, result.KickerValues.Count);
         }
 
 
@@ -377,7 +377,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.HeartSix, TestData.HeartThree, TestData.HeartFive, TestData.HeartTwo, TestData.HeartFour);
+            AssertContainsAllCards(result.HandCards, TestData.HeartSix, TestData.HeartThree, TestData.HeartFive, TestData.HeartTwo, TestData.HeartFour);
 
         }
 
@@ -400,7 +400,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(0, result.Kickers.Count);
+            Assert.AreEqual(0, result.KickerValues.Count);
         }
 
 
@@ -412,7 +412,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.HeartAce, TestData.HeartKing, TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen);
+            AssertContainsAllCards(result.HandCards, TestData.HeartAce, TestData.HeartKing, TestData.HeartQueen, TestData.HeartJack, TestData.HeartTen);
         }
 
 
@@ -435,7 +435,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(4, result.Kickers.Count);
+            Assert.AreEqual(4, result.KickerValues.Count);
         }
 
         [TestMethod]
@@ -446,7 +446,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCardValues(result.Kickers, CardValue.King, CardValue.Queen, CardValue.Ten);
+            AssertContainsAllCardValues(result.KickerValues, CardValue.King, CardValue.Queen, CardValue.Ten);
         }
 
         [TestMethod]
@@ -457,7 +457,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.HeartAce);
+            AssertContainsAllCards(result.HandCards, TestData.HeartAce);
         }
 
         [TestMethod]
@@ -468,7 +468,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.HeartQueen);
+            AssertContainsAllCards(result.HandCards, TestData.HeartQueen);
         }
 
         [TestMethod]
@@ -490,7 +490,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            Assert.AreEqual(0, result.Kickers.Count);
+            Assert.AreEqual(0, result.KickerValues.Count);
         }
 
 
@@ -503,7 +503,7 @@ namespace TexasHoldEmEngineTest
 
             IBestPossibleHand result = investigator.LocateBestHand(theHoleCards, theCommunityCards);
 
-            AssertContainsAllCards(result.BestHand, TestData.HeartAce, TestData.HeartKing, TestData.HeartFour, TestData.HeartFive, TestData.HeartNine);
+            AssertContainsAllCards(result.HandCards, TestData.HeartAce, TestData.HeartKing, TestData.HeartFour, TestData.HeartFive, TestData.HeartNine);
         }
 
 

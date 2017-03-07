@@ -55,7 +55,7 @@ namespace TexasHoldEmEngine
 
         private static void CheckKickers(IList<Guid> bestBestHand, KeyValuePair<Guid, IBestPossibleHand> lastResult, KeyValuePair<Guid, IBestPossibleHand> second)
         {
-            var compareKickers = CompareKickers(lastResult.Value.Kickers, second.Value.Kickers);
+            var compareKickers = CompareKickers(lastResult.Value.KickerValues, second.Value.KickerValues);
             if (compareKickers == 0)
             {
                 bestBestHand.Add(second.Key);
