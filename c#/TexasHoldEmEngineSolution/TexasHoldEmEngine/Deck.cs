@@ -17,25 +17,15 @@ namespace TexasHoldEmEngine
         private static IList<ICard> CreateCards()
         {
             IList<ICard> cards = new List<ICard>();
-            foreach (CardSuit suit in AllCardSuits())
+            foreach (CardSuit suit in Helpers.AllCardSuits)
             {
-                foreach (CardValue rank in AllCardValues())
+                foreach (CardValue rank in Helpers.AllCardValues)
                 {
                     cards.Add(new Card(rank, suit));
                 }
             }
 
             return cards;
-        }
-
-        private static IEnumerable<CardSuit> AllCardSuits()
-        {
-            return (IEnumerable<CardSuit>)Enum.GetValues(typeof(CardSuit));
-        }
-
-        private static IEnumerable<CardValue> AllCardValues()
-        {
-            return (IEnumerable<CardValue>)Enum.GetValues(typeof(CardValue));
         }
 
         private void Shuffle(IList<ICard> cards)

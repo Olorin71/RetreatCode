@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TexasHoldEmEngine.Interfaces;
 
@@ -8,17 +7,17 @@ namespace TexasHoldEmEngine
     internal class CheckerData
     {
         private IList<ICard> cards;
-        IDictionary<CardValue, int> cardValues;
-        IDictionary<CardSuit, int> cardSuits;
+        IDictionary<CardValue, int> valuesDistribution;
+        IDictionary<CardSuit, int> suitsDistribution;
         public CheckerData(IList<ICard> cards)
         {
-            cardValues = CreateCardValuesDictionary();
-            cardSuits = CreateCardSuitsDictionary();
+            valuesDistribution = CreateDistributionDictionary(Helpers.AllCardValues);
+            suitsDistribution = CreateDistributionDictionary(Helpers.AllCardSuits);
             this.cards = cards;
             foreach (ICard card in cards)
             {
-                cardValues[card.Value]++;
-                cardSuits[card.Suit]++;
+                valuesDistribution[card.Value]++;
+                suitsDistribution[card.Suit]++;
             }
 
         }
@@ -34,7 +33,7 @@ namespace TexasHoldEmEngine
         {
             get
             {
-                return new ReadOnlyDictionary<CardValue, int>(cardValues);
+                return new ReadOnlyDictionary<CardValue, int>(valuesDistribution);
             }
         }
 
@@ -42,28 +41,18 @@ namespace TexasHoldEmEngine
         {
             get
             {
-                return new ReadOnlyDictionary<CardSuit, int>(cardSuits);
+                return new ReadOnlyDictionary<CardSuit, int>(suitsDistribution);
             }
         }
 
-        private static IDictionary<CardValue, int> CreateCardValuesDictionary()
+        private static IDictionary<T, int> CreateDistributionDictionary<T>(IEnumerable<T> items)
         {
-            IDictionary<CardValue, int> values = new Dictionary<CardValue, int>();
-            foreach (CardValue value in Enum.GetValues(typeof(CardValue)))
+            IDictionary<T, int> values = new Dictionary<T, int>();
+            foreach (T item in items)
             {
-                values.Add(value, 0);
+                values.Add(item, 0);
             }
             return values;
-        }
-
-        private static IDictionary<CardSuit, int> CreateCardSuitsDictionary()
-        {
-            IDictionary<CardSuit, int> suits = new Dictionary<CardSuit, int>();
-            foreach (CardSuit suit in Enum.GetValues(typeof(CardSuit)))
-            {
-                suits.Add(suit, 0);
-            }
-            return suits;
         }
     }
 }

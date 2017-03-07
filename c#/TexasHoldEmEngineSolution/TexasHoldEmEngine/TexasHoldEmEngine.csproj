@@ -46,6 +46,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="CheckerBase.cs" />
     <Compile Include="CheckerData.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="HighCardChecker.cs" />
     <Compile Include="HandComparer.cs" />
     <Compile Include="Interfaces\TexasHoldEmBuilder.cs" />
