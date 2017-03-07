@@ -3,10 +3,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TexasHoldEm;
 using TexasHoldEm.Interfaces;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TexasHoldEmTest
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class BestPossibleHandTest
     {
         private BestPossibleHand best;
