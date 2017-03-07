@@ -26,15 +26,7 @@ namespace TexasHoldEm
 
         private static int CompareCardValues(CardValue firstCard, CardValue secondCard)
         {
-            if (firstCard > secondCard)
-            {
-                return -1;
-            }
-            if (firstCard < secondCard)
-            {
-                return 1;
-            }
-            return 0;
+            return firstCard > secondCard ? -1 : 1;
         }
 
         public IBestPossibleHand Check(CheckerData data)

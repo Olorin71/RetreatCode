@@ -57,5 +57,18 @@ namespace TexasHoldEmTest
             ICard clubAce = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
             Assert.AreNotEqual(diamondEight.Suit, clubAce.Suit);
         }
+        [TestMethod]
+        public void SameCardsAreEqual()
+        {
+            ICard cardOne = texasHoldEmBuilder.CreateNewCard(CardValue.Eight, CardSuit.Diamond);
+            ICard cardTwo = texasHoldEmBuilder.CreateNewCard(CardValue.Eight, CardSuit.Diamond);
+            Assert.IsTrue(cardOne.Equals(cardTwo));
+        }
+        [TestMethod]
+        public void EqualityToNullIsFalse()
+        {
+            ICard cardOne = texasHoldEmBuilder.CreateNewCard(CardValue.Eight, CardSuit.Diamond);
+            Assert.IsFalse(cardOne.Equals(null));
+        }
     }
 }
