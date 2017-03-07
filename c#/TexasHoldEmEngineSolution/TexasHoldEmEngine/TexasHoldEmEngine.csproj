@@ -76,7 +76,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TexasHoldEm.Interfaces\TexasHoldEmEngine.Interfaces.csproj">
+    <ProjectReference Include="..\TexasHoldEmEngine.Interfaces\TexasHoldEmEngine.Interfaces.csproj">
       <Project>{07ed8924-f2b7-47d5-9b5c-f8501829cca6}</Project>
       <Name>TexasHoldEmEngine.Interfaces</Name>
     </ProjectReference>

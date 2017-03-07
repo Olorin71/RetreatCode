@@ -65,11 +65,11 @@
     <Compile Include="BestPossibleHandTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TexasHoldEm.Interfaces\TexasHoldEmEngine.Interfaces.csproj">
+    <ProjectReference Include="..\TexasHoldEmEngine.Interfaces\TexasHoldEmEngine.Interfaces.csproj">
       <Project>{07ed8924-f2b7-47d5-9b5c-f8501829cca6}</Project>
       <Name>TexasHoldEmEngine.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TexasHoldEm\TexasHoldEmEngine.csproj">
+    <ProjectReference Include="..\TexasHoldEmEngine\TexasHoldEmEngine.csproj">
       <Project>{20c84139-eba2-4fbe-912e-1d4ac9f63f92}</Project>
       <Name>TexasHoldEmEngine</Name>
     </ProjectReference>
