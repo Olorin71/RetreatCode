@@ -12,6 +12,5 @@ namespace TexasHoldEm.Interfaces
         void AddHoleCard(ICard card);
         void SetAmount(int amount);
         void AllIn();
-        void ClearHoleCards();
     }
 }

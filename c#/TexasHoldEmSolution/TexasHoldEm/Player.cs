@@ -67,12 +67,6 @@ namespace TexasHoldEm
             Chips = 0;
         }
 
-        public void ClearHoleCards()
-        {
-            firstHoleCard = null;
-            secondHoleCard = null;
-        }
-
         public void SetAmount(int amount)
         {
             if (Chips >= amount)
