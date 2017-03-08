@@ -15,12 +15,7 @@ namespace TexasHoldEmEngineTest
         {
             texasHoldEmBuilder = new TexasHoldEmEngineBuilder();
         }
-        [TestMethod]
-        public void CanCreateCard()
-        {
-            ICard card = texasHoldEmBuilder.CreateNewCard(CardValue.Four, CardSuit.Diamond);
-            Assert.IsNotNull(card);
-        }
+
         [TestMethod]
         public void CardFourDiamondAsStringReturnFourOfDiamonds()
         {
