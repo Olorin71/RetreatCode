@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexasHoldEmEngine", "TexasH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexasHoldEmEngine.Interfaces", "TexasHoldEmEngine.Interfaces\TexasHoldEmEngine.Interfaces.csproj", "{07ED8924-F2B7-47D5-9B5C-F8501829CCA6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{AB120A02-64AF-4280-B9CE-AC1E5ED76AE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B257DB59-876A-4977-B6E5-1183AEF3E246} = {AB120A02-64AF-4280-B9CE-AC1E5ED76AE2}
+		{20C84139-EBA2-4FBE-912E-1D4AC9F63F92} = {AB120A02-64AF-4280-B9CE-AC1E5ED76AE2}
+		{07ED8924-F2B7-47D5-9B5C-F8501829CCA6} = {AB120A02-64AF-4280-B9CE-AC1E5ED76AE2}
 	EndGlobalSection
 EndGlobal
