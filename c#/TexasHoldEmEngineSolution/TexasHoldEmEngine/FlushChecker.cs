@@ -11,18 +11,18 @@ namespace TexasHoldEmEngine
             HandName = HandName.Flush;
         }
 
-        protected override IList<ICard> GetCards()
+        protected override List<ICard> GetHandCards()
         {
             var suit = Data.CardSuitsDistribution.First(x => x.Value >= 5).Key;
             var allSuitedCards = Data.Cards.Where(x => x.Suit == suit).Select(x => x.Value).ToList();
-            IList<ICard> cards = GetTheFiveHigherCards(suit, allSuitedCards);
+            List<ICard> cards = GetTheFiveHigherCards(suit, allSuitedCards);
             return cards;
         }
 
-        private IList<ICard> GetTheFiveHigherCards(CardSuit suit, List<CardValue> allSuitedCards)
+        private List<ICard> GetTheFiveHigherCards(CardSuit suit, List<CardValue> allSuitedCards)
         {
             SortByCardValue(allSuitedCards);
-            IList<ICard> cards = new List<ICard>();
+            List<ICard> cards = new List<ICard>();
             for (var index = 0; index < 5; index++)
             {
                 cards.Add(Data.Cards.First(x => x.Value == allSuitedCards[index] && x.Suit == suit));
@@ -33,7 +33,6 @@ namespace TexasHoldEmEngine
 
         protected override bool HasHand()
         {
-            // True if there is one suit with at least five cards
             return Data.CardSuitsDistribution.Any(x => x.Value >= 5);
 
         }

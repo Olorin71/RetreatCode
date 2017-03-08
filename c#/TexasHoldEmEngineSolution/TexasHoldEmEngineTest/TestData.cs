@@ -85,6 +85,13 @@ namespace TexasHoldEmEngineTest
                 return texasHoldEmBuilder.CreateNewCard(CardValue.Six, CardSuit.Heart);
             }
         }
+        internal static ICard HeartSeven
+        {
+            get
+            {
+                return texasHoldEmBuilder.CreateNewCard(CardValue.Seven, CardSuit.Heart);
+            }
+        }
         internal static ICard HeartEight
         {
             get

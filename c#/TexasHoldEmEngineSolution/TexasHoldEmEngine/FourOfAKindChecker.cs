@@ -12,7 +12,7 @@ namespace TexasHoldEmEngine
             HandName = HandName.FourOfAKind;
         }
 
-        protected override IList<ICard> GetCards()
+        protected override List<ICard> GetHandCards()
         {
             var fours = Data.CardValuesDistibution.Where(x => x.Value == 4).Select(x => x.Key).ToList();
             SortByCardValue(fours);

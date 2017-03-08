@@ -11,9 +11,9 @@ namespace TexasHoldEmEngine
             HandName = HandName.HighCard;
         }
 
-        protected override IList<ICard> GetCards()
+        protected override List<ICard> GetHandCards()
         {
-            IList<ICard> cards = new List<ICard>();
+            List<ICard> cards = new List<ICard>();
             for (int actualCardValue = 14; actualCardValue > 2; actualCardValue--)
             {
                 CardValue cardValue = (CardValue)actualCardValue;

@@ -28,7 +28,7 @@ namespace TexasHoldEmEngine
             return Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).Count();
         }
 
-        protected override IList<ICard> GetCards()
+        protected override List<ICard> GetHandCards()
         {
             var thirds = Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).ToList();
             var pairs = Data.CardValuesDistibution.Where(x => x.Value == 2).Select(x => x.Key).ToList();

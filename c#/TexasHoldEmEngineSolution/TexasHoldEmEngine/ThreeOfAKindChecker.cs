@@ -10,7 +10,7 @@ namespace TexasHoldEmEngine
         {
             HandName = HandName.ThreeOfAKind;
         }
-        protected override IList<ICard> GetCards()
+        protected override List<ICard> GetHandCards()
         {
             var pairs = Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).ToList();
             SortByCardValue(pairs);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TexasHoldEmEngine.Interfaces;
 
@@ -25,15 +26,21 @@ namespace TexasHoldEmEngine
             Data = data;
             if (HasHand())
             {
-                IList<ICard> bestHand = GetCards();
-                IList<CardValue> kickers = GetKickers(bestHand);
+                List<ICard> bestHand = GetHandCards();
+                SortByCardValue(bestHand);
+                IList<CardValue> kickers = GetHandKickers(bestHand);
                 BestPossibleHand hand = new BestPossibleHand(HandName, bestHand, kickers);
                 return hand;
             }
             return null;
         }
 
-        private IList<CardValue> GetKickers(IList<ICard> bestHand)
+        private static void SortByCardValue(List<ICard> list)
+        {
+            list.Sort((x, y) => CompareCardValues(x.Value, y.Value));
+        }
+
+        private IList<CardValue> GetHandKickers(IList<ICard> bestHand)
         {
             var list = new List<CardValue>();
             if (bestHand.Count < 5)
@@ -49,7 +56,7 @@ namespace TexasHoldEmEngine
             return list;
         }
 
-        protected abstract IList<ICard> GetCards();
+        protected abstract List<ICard> GetHandCards();
 
         protected abstract bool HasHand();
     }

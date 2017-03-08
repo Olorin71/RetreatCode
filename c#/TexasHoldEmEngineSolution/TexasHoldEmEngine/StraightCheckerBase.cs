@@ -8,7 +8,7 @@ namespace TexasHoldEmEngine
     {
         protected int MinValue { get; set; }
 
-        protected override IList<ICard> GetCards()
+        protected override List<ICard> GetHandCards()
         {
             List<ICard> cards = new List<ICard>();
             var ace = Data.Cards.First(x => x.Value == (MinValue == 1 ? CardValue.Ace : (CardValue)MinValue));

@@ -17,7 +17,7 @@ namespace TexasHoldEmEngine
             return pairs.Count() > 1;
         }
 
-        protected override IList<ICard> GetCards()
+        protected override List<ICard> GetHandCards()
         {
             var pairs = Data.CardValuesDistibution.Where(x => x.Value == 2).Select(x => x.Key).ToList();
             SortByCardValue(pairs);
