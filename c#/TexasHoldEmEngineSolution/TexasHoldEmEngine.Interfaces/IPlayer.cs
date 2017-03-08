@@ -9,7 +9,5 @@ namespace TexasHoldEmEngine.Interfaces
         string Name { get; }
 
         void AddHoleCard(ICard card);
-        void SetAmount(int amount);
-        void AllIn();
     }
 }

@@ -55,22 +55,5 @@ namespace TexasHoldEmEngine
                 }
             }
         }
-
-        public void AllIn()
-        {
-            Chips = 0;
-        }
-
-        public void SetAmount(int amount)
-        {
-            if (Chips >= amount)
-            {
-                Chips -= amount;
-            }
-            else
-            {
-                throw new InvalidOperationException(Resources.NotEnoughChips);
-            }
-        }
     }
 }

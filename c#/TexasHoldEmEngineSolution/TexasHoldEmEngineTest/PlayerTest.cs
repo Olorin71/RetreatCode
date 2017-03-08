@@ -30,33 +30,6 @@ namespace TexasHoldEmEngineTest
         }
 
         [TestMethod]
-        public void CanSetIfEnoughChips()
-        {
-            player.SetAmount(100);
-            Assert.AreEqual(testChipAmount - 100, player.Chips);
-        }
-
-        [TestMethod]
-        public void CanGoAllIn()
-        {
-            player.AllIn();
-            Assert.AreEqual(0, player.Chips);
-        }
-
-        [TestMethod]
-        public void SettingMoreThanAvailableThrows()
-        {
-            try
-            {
-                player.SetAmount(1001);
-            }
-            catch(InvalidOperationException ioe)
-            {
-                Assert.AreEqual("Not enough Chips.", ioe.Message);
-            }
-        }
-
-        [TestMethod]
         public void CanAddTwoHoleCards()
         {
             var firstHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
