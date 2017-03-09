@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TexasHoldEmEngine.Interfaces;
-using TexasHoldEmEngine.Properties;
 
 namespace TexasHoldEmEngine
 {
-    internal class Player : IPlayer
+    internal class PlayerHoleCards : IPlayerHoleCards
     {
         private ICard firstHoleCard;
         private ICard secondHoleCard;
-        public Player(string name, int chipsAmount)
+        public PlayerHoleCards(Guid id)
         {
-            Name = name;
-            Chips = chipsAmount;
+            Indentification = id;
         }
-
-        public int Chips { get; private set; }
-
         public ReadOnlyCollection<ICard> HoleCards
         {
             get
@@ -35,25 +30,13 @@ namespace TexasHoldEmEngine
             }
         }
 
-        public string Name { get; private set; }
+        public Guid Indentification { get; private set; }
 
-        public void AddHoleCard(ICard card)
+
+        public void AddHoleCards(ICard card1, ICard card2)
         {
-            if (firstHoleCard == null)
-            {
-                firstHoleCard = card;
-            }
-            else
-            {
-                if (secondHoleCard == null)
-                {
-                    secondHoleCard = card;
-                }
-                else
-                {
-                    throw new InvalidOperationException(Resources.ThirdHoleCardNotAllowed);
-                }
-            }
+            firstHoleCard = card1;
+            secondHoleCard = card2;
         }
     }
 }

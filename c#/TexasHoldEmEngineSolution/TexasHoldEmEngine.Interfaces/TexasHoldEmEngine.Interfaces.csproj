@@ -48,7 +48,7 @@
     <Compile Include="IDeck.cs" />
     <Compile Include="IHandComparer.cs" />
     <Compile Include="IHandInvestigator.cs" />
-    <Compile Include="IPlayer.cs" />
+    <Compile Include="IPlayerHoleCards.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

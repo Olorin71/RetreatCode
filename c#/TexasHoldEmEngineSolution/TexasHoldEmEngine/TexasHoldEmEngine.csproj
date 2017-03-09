@@ -57,7 +57,7 @@
     <Compile Include="FullHouseChecker.cs" />
     <Compile Include="HandInvestigator.cs" />
     <Compile Include="PairChecker.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="PlayerHoleCards.cs" />
     <Compile Include="StraightChecker.cs" />
     <Compile Include="StraightCheckerBase.cs" />
     <Compile Include="RoyalAndStraightFlushChecker.cs" />

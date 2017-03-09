@@ -12,7 +12,7 @@ namespace TexasHoldEmEngine
         {
             investigator = new HandInvestigator();
         }
-        public IList<Guid> FindRoundWinners(IDictionary<Guid, IPlayer> players, IList<ICard> communityCards)
+        public IList<Guid> FindRoundWinners(IDictionary<Guid, IPlayerHoleCards> players, IList<ICard> communityCards)
         {
             var playersBestHands = GetPlayersBestHand(players, communityCards);
             return DecideWhichPlayersWin(playersBestHands);
@@ -49,7 +49,7 @@ namespace TexasHoldEmEngine
             playersBestHands.Remove(lastResult.Key);
             return lastResult;
         }
-        private Dictionary<Guid, IBestPossibleHand> GetPlayersBestHand(IDictionary<Guid, IPlayer> players, IList<ICard> communityCards)
+        private Dictionary<Guid, IBestPossibleHand> GetPlayersBestHand(IDictionary<Guid, IPlayerHoleCards> players, IList<ICard> communityCards)
         {
             var bestHands = new Dictionary<Guid, IBestPossibleHand>();
             foreach (var p in players)
