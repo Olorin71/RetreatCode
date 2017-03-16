@@ -5,6 +5,7 @@ using TexasHoldEmEngine.Interfaces;
 
 namespace TexasHoldEmEngine
 {
+    //ToDo: Darüber nachdenken: Zusammenlegen mit twoPairs
     internal class PairChecker : CheckerBase
     {
         public PairChecker()

@@ -44,8 +44,7 @@ namespace TexasHoldEmEngine
 
         public ICard Deal()
         {
-            var card = deck.Dequeue();
-            return card;
+            return deck.Dequeue();
         }
     }
 }

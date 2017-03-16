@@ -7,26 +7,21 @@ namespace TexasHoldEmEngine
 {
     internal class PlayerHoleCards : IPlayerHoleCards
     {
-        private ICard firstHoleCard;
-        private ICard secondHoleCard;
+        private bool hasCards;
+
+        private IList<ICard> cards;
+
         public PlayerHoleCards(Guid id)
         {
             Indentification = id;
+            cards = new List<ICard>();
+            hasCards = false;
         }
         public ReadOnlyCollection<ICard> HoleCards
         {
             get
             {
-                var list = new List<ICard>();
-                if (firstHoleCard != null)
-                {
-                    list.Add(firstHoleCard);
-                }
-                if (secondHoleCard != null)
-                {
-                    list.Add(secondHoleCard);
-                }
-                return new ReadOnlyCollection<ICard>(list);
+                return new ReadOnlyCollection<ICard>(cards);
             }
         }
 
@@ -35,8 +30,17 @@ namespace TexasHoldEmEngine
 
         public void AddHoleCards(ICard card1, ICard card2)
         {
-            firstHoleCard = card1;
-            secondHoleCard = card2;
+            if (!hasCards)
+            {
+                cards.Add(card1);
+                cards.Add(card2);
+                hasCards = true;
+            }
+            else
+            {
+                //ToDo: Test fehlt!
+                throw new InvalidOperationException("Player has already cards!");
+            }
         }
     }
 }

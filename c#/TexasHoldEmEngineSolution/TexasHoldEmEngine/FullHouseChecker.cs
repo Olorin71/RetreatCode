@@ -41,9 +41,9 @@ namespace TexasHoldEmEngine
             else
             {
                 var cards =  Data.Cards.Where(x => x.Value == thirds[0]).ToList();
-                var t = Data.Cards.Where(x => x.Value == thirds[1]).ToList();
-                cards.Add(t[0]);
-                cards.Add(t[1]);
+                var lowerThree = Data.Cards.Where(x => x.Value == thirds[1]).ToList();
+                cards.Add(lowerThree[0]);
+                cards.Add(lowerThree[1]);
                 return cards;
             }
         }

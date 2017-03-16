@@ -41,20 +41,14 @@ namespace TexasHoldEmEngine
             return compareResult;
         }
 
-        private int CompareHandValues(ReadOnlyCollection<ICard> handCards)
+        private int CompareHandValues(ReadOnlyCollection<ICard> otherHandCards)
         {
             int result = 0;
             int counter = 0;
             while (result == 0 && counter < HandCards.Count)
             {
-                if (HandCards[counter].Value > handCards[counter].Value)
-                {
-                    result = 1;
-                }
-                if (HandCards[counter].Value < handCards[counter].Value)
-                {
-                    result = -1;
-                }
+                var difference = HandCards[counter].Value - otherHandCards[counter].Value;
+                result =  difference > 0 ? 1 : difference < 0 ? -1 : 0;
                 counter++;
             }
             return result;

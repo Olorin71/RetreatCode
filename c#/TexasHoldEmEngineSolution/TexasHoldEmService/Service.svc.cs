@@ -28,18 +28,17 @@ namespace TexasHoldEmService
             IServiceCallback callback = OperationContext.Current.GetCallbackChannel<IServiceCallback>();
             callbacksHandler.Add(guid, callback);
             callbacksHandler.SendMessageToPlayer(guid, string.Format("Registered for next Game: {0} {1}", guid, playerName));
-
-            Play();
+            if (players.Count >= 2)
+            {
+                Play();
+            }
         }
 
         private void Play()
         {
-            foreach (var player in players)
-            {
-                player.Value.FirstHoleCard = deck.Deal();
-                player.Value.SecondHoleCard = deck.Deal();
-                callbacksHandler.SendHoleCardsToPlayer(player.Key, player.Value.FirstHoleCard, player.Value.SecondHoleCard);
-            }
+            DealFirstHoleCardForEachPlayer();
+            DealSecondHoleCardForEachPlayer();
+            SendHoleCardsToEachPlayer();
 
             IList<ICard> communityCards = DealFlop();
             callbacksHandler.SendFlopToAllPlayers(communityCards);
@@ -48,15 +47,15 @@ namespace TexasHoldEmService
             communityCards.Add(turn);
             callbacksHandler.SendTurnToAllPlayers(turn);
 
-            var r = deck.Deal();
-            communityCards.Add(r);
-            callbacksHandler.SendRiverToAllPlayers(r);
+            var river = deck.Deal();
+            communityCards.Add(river);
+            callbacksHandler.SendRiverToAllPlayers(river);
 
-            var s = builder.CreateNewHandInvestigator();
+            var investigator = builder.CreateNewHandInvestigator();
             var bestHands = new Dictionary<Guid, IBestPossibleHand>();
             foreach (var player in players)
             {
-                var result = s.LocateBestHand(new List<ICard> { player.Value.FirstHoleCard, player.Value.SecondHoleCard }, communityCards);
+                var result = investigator.LocateBestHand(new List<ICard> { player.Value.FirstHoleCard, player.Value.SecondHoleCard }, communityCards);
                 bestHands.Add(player.Key, result);
                 callbacksHandler.SendMessageToPlayer(player.Key, result.ToString());
             }
@@ -65,6 +64,30 @@ namespace TexasHoldEmService
             var comparer = builder.CreateNewHandComparer();
             var winners = comparer.FindRoundWinners(playerHoleCards, communityCards);
             callbacksHandler.SendRoundResultsToAllPlayers(winners, bestHands);
+        }
+
+        private void SendHoleCardsToEachPlayer()
+        {
+            foreach (var player in players)
+            {
+                callbacksHandler.SendHoleCardsToPlayer(player.Key, player.Value.FirstHoleCard, player.Value.SecondHoleCard);
+            }
+        }
+
+        private void DealSecondHoleCardForEachPlayer()
+        {
+            foreach (var player in players)
+            {
+                player.Value.SecondHoleCard = deck.Deal();
+            }
+        }
+
+        private void DealFirstHoleCardForEachPlayer()
+        {
+            foreach (var player in players)
+            {
+                player.Value.FirstHoleCard = deck.Deal();
+            }
         }
 
         private Dictionary<Guid, IPlayerHoleCards> CreatePlayerHoleCards()

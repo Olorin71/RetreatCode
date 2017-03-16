@@ -35,7 +35,7 @@ namespace TexasHoldEmEngine
             return null;
         }
 
-        private static void SortByCardValue(List<ICard> list)
+        public static void SortByCardValue(List<ICard> list)
         {
             list.Sort((x, y) => CompareCardValues(x.Value, y.Value));
         }

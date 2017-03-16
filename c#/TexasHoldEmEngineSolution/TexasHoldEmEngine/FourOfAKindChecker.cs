@@ -15,7 +15,6 @@ namespace TexasHoldEmEngine
         protected override List<ICard> GetHandCards()
         {
             var fours = Data.CardValuesDistibution.Where(x => x.Value == 4).Select(x => x.Key).ToList();
-            SortByCardValue(fours);
             return Data.Cards.Where(x => x.Value == fours.First()).ToList();
         }
 
