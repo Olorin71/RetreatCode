@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// The card suit in the game.
-    /// There are fout possible suits: Spade, Heart, Club, Diamond
+    /// There are four possible suits: Spade, Heart, Club, Diamond
     /// </summary>
     public enum CardSuit
     {

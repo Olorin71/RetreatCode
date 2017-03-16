@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TexasHoldEmEngine.Interfaces
+﻿namespace TexasHoldEmEngine.Interfaces
 {
     /// <summary>
     /// The card values in the game.
