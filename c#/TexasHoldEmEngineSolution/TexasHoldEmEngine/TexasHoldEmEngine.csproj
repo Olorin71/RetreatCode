@@ -46,6 +46,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="CheckerBase.cs" />
     <Compile Include="CheckerData.cs" />
+    <Compile Include="HandNullObject.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="HighCardChecker.cs" />
     <Compile Include="HandComparer.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="FourOfAKindChecker.cs" />
     <Compile Include="FullHouseChecker.cs" />
     <Compile Include="HandInvestigator.cs" />
+    <Compile Include="NumberOfCardsHandCheckerBase.cs" />
     <Compile Include="PairChecker.cs" />
     <Compile Include="PlayerHoleCards.cs" />
     <Compile Include="StraightChecker.cs" />

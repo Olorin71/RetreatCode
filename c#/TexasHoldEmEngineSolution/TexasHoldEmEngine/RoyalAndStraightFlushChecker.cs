@@ -17,7 +17,7 @@ namespace TexasHoldEmEngine
                 theSuit = possibleSuits.First().Key;
                 for (int lowerPosition = 10; lowerPosition >= 1; lowerPosition--)
                 {
-                    if (HasStraightBeginningAtPositionInTheGivenSuit(lowerPosition, theSuit))
+                    if (HasStraightOfSuitBeginningAtPosition(theSuit, lowerPosition))
                     {
                         MinValue = lowerPosition;
                         HandName = lowerPosition == 10 ? HandName.RoyalFlush : HandName.StraightFlush;
@@ -47,12 +47,12 @@ namespace TexasHoldEmEngine
         }
 
 
-        private bool HasStraightBeginningAtPositionInTheGivenSuit(int initialPosition, CardSuit suit)
+        private bool HasStraightOfSuitBeginningAtPosition(CardSuit suit, int initialPosition)
         {
             int position;
             for (position = 1; position <= 5; position++)
             {
-                var cardValue = CalculateKey(initialPosition, position);
+                var cardValue = CalculateCardValue(initialPosition, position);
                 ICard card = Data.Cards.FirstOrDefault(x => x.Value == cardValue && x.Suit == suit);
                 if (card == null)
                 {

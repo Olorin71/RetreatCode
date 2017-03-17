@@ -5,9 +5,10 @@ using TexasHoldEmEngine.Interfaces;
 
 namespace TexasHoldEmEngine
 {
-    //ToDo: Darüber nachdenken: Zusammenlegen mit twoPairs
-    internal class PairChecker : CheckerBase
+    internal class PairChecker : NumberOfOccurrencesCheckerBase
     {
+        private List<CardValue> pairedCardValues;
+
         public PairChecker()
         {
             HandName = HandName.Pair;
@@ -15,15 +16,14 @@ namespace TexasHoldEmEngine
  
        protected override bool HasHand()
         {
-            var pairs = Data.CardValuesDistibution.Where(x => x.Value == 2).Select(x => x.Key);
-            return pairs.Count() == 1;
+            pairedCardValues = GetCardValuesWithNumberOfOccurrences(2);
+            return pairedCardValues.Count() == 1;
         }
 
         protected override List<ICard> GetHandCards()
         {
-            var pairs = Data.CardValuesDistibution.Where(x => x.Value == 2).Select(x => x.Key).ToList();
-            SortByCardValue(pairs);
-            return Data.Cards.Where(x => x.Value == pairs.First()).ToList();
+            return Data.Cards.Where(x => x.Value == pairedCardValues.First()).ToList();
         }
+
     }
 }

@@ -28,21 +28,21 @@ namespace TexasHoldEmEngine
         {
             var winners = new List<Guid>();
             // Hole die erste Hand und betracte diese als der gewinner.
-            var lastResult = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
-            winners.Add(lastResult.Key);
+            var actualWinner = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
+            winners.Add(actualWinner.Key);
             // Dann so lange es Hände zu vergleichen gibt
             while (playersBestHandsToBeCompared.Count > 0)
             {
                 // Hole die nächste Hand und vergleiche
                 var nextHand = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
-                var compareResult = lastResult.Value.CompareTo(nextHand.Value);
+                var compareResult = actualWinner.Value.CompareTo(nextHand.Value);
                 if (compareResult == -1)
                 {
                     // Wenn die neue Hand besser ist als die von vorhandenen gewinner. 
                     // Dann sind die beisherige gewinner es nicht mehr sonder die neue Hand
                     winners.Clear();
                     winners.Add(nextHand.Key);
-                    lastResult = nextHand;
+                    actualWinner = nextHand;
                 }
                 else
                 {

@@ -5,43 +5,34 @@ using TexasHoldEmEngine.Interfaces;
 
 namespace TexasHoldEmEngine
 {
-    internal class FullHouseChecker : CheckerBase
+    internal class FullHouseChecker : NumberOfOccurrencesCheckerBase
     {
+        private List<CardValue> pairedCardValues;
+        private List<CardValue> threeOfAKindCardValues;
+
         public FullHouseChecker()
         {
             HandName = HandName.FullHouse;
         }
         protected override bool HasHand()
         {
-            var pairs = CountPairs();
-            var threes = CountThreeOfAKinds();
-            return (pairs >= 1 && threes == 1) || (threes >= 2);
+            pairedCardValues = GetCardValuesWithNumberOfOccurrences(2);
+            threeOfAKindCardValues = GetCardValuesWithNumberOfOccurrences(3);
+            return (pairedCardValues.Count >= 1 && threeOfAKindCardValues.Count == 1) 
+                || (threeOfAKindCardValues.Count >= 2);
         }
-
-        private int CountPairs()
-        {
-            return Data.CardValuesDistibution.Where(x => x.Value == 2).Select(x => x.Key).Count();
-        }
-
-        private int CountThreeOfAKinds()
-        {
-            return Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).Count();
-        }
-
         protected override List<ICard> GetHandCards()
         {
-            var thirds = Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).ToList();
-            var pairs = Data.CardValuesDistibution.Where(x => x.Value == 2).Select(x => x.Key).ToList();
-            SortByCardValue(thirds);
-            SortByCardValue(pairs);
-            if (pairs.Count() > 0)
+            SortByCardValue(pairedCardValues);
+            SortByCardValue(threeOfAKindCardValues);
+            if (pairedCardValues.Count > 0)
             {
-                return Data.Cards.Where(x => x.Value == pairs.First() || x.Value == thirds.First()).ToList();
+                return Data.Cards.Where(x => x.Value == pairedCardValues.First() || x.Value == threeOfAKindCardValues.First()).ToList();
             }
             else
             {
-                var cards =  Data.Cards.Where(x => x.Value == thirds[0]).ToList();
-                var lowerThree = Data.Cards.Where(x => x.Value == thirds[1]).ToList();
+                var cards =  Data.Cards.Where(x => x.Value == threeOfAKindCardValues[0]).ToList();
+                var lowerThree = Data.Cards.Where(x => x.Value == threeOfAKindCardValues[1]).ToList();
                 cards.Add(lowerThree[0]);
                 cards.Add(lowerThree[1]);
                 return cards;

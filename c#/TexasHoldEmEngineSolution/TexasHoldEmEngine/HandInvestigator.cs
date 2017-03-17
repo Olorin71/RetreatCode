@@ -17,13 +17,13 @@ namespace TexasHoldEmEngine
         {
             IList<ICard> cards = CreateCardsList(theHoleCards, theCommunityCards);
             CheckerData data = new CheckerData(cards);
-            IBestPossibleHand hand = null;
+            IBestPossibleHand hand = new HandNullObject();
             foreach (CheckerBase checker in checkers)
             {
                 hand = checker.Check(data);
-                if (hand != null)
+                if (hand.HandName != HandName.NoHand)
                 {
-                    break; ;
+                    break;
                 }
             }
             return hand;

@@ -19,7 +19,7 @@ namespace TexasHoldEmEngine
                 int position;
                 for (position = 1; position <= 5; position ++)
                 {
-                    if(Data.CardValuesDistibution[CalculateKey(lowerPosition, position)] < 1)
+                    if(Data.CardValuesDistibution[CalculateCardValue(lowerPosition, position)] < 1)
                     {
                         break;
                     }

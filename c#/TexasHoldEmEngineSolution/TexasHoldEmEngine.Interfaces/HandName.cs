@@ -6,15 +6,16 @@
     /// </summary>
     public enum HandName
     {
-        RoyalFlush = 9,
-        StraightFlush = 8,
-        FourOfAKind = 7,
-        FullHouse = 6,
-        Flush = 5,
-        Straight = 4,
-        ThreeOfAKind = 3,
-        TwoPairs = 2,
-        Pair = 1,
-        HighCard = 0
+        RoyalFlush = 10,
+        StraightFlush = 9,
+        FourOfAKind = 8,
+        FullHouse = 7,
+        Flush = 6,
+        Straight = 5,
+        ThreeOfAKind = 4,
+        TwoPairs = 3,
+        Pair = 2,
+        HighCard = 1,
+        NoHand = 0
     }
 }
