@@ -9,6 +9,7 @@ namespace TexasHoldEmEngine
         private IList<ICard> cards;
         IDictionary<CardValue, int> valuesDistribution;
         IDictionary<CardSuit, int> suitsDistribution;
+
         public CheckerData(IList<ICard> cards)
         {
             valuesDistribution = CreateDistributionDictionary(Helpers.AllCardValues);
@@ -21,6 +22,7 @@ namespace TexasHoldEmEngine
             }
 
         }
+
         public IReadOnlyCollection<ICard> Cards
         {
             get

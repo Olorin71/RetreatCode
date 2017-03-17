@@ -14,7 +14,7 @@ namespace TexasHoldEmEngine
         protected override List<ICard> GetHandCards()
         {
             List<ICard> cards = new List<ICard>();
-            for (int actualCardValue = 14; actualCardValue > 2; actualCardValue--)
+            for (int actualCardValue = (int)CardValue.Ace; actualCardValue >= (int)CardValue.Six; actualCardValue--)
             {
                 CardValue cardValue = (CardValue)actualCardValue;
                 if (Data.CardValuesDistibution.ContainsKey(cardValue) && Data.CardValuesDistibution[cardValue] == 1)

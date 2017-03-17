@@ -33,15 +33,13 @@ namespace TexasHoldEmEngineTest
             Assert.IsTrue(result.Contains(player1Guid));
         }
 
-        private IDictionary<Guid, IPlayer> CreateToPlayerWithHoleCards(ICard firstCardFirstPlayer, ICard secondCardFirstPlayer, ICard firstCardSecondPlayer, ICard secondCardSecondPlayer)
+        private IDictionary<Guid, IPlayerHoleCards> CreateToPlayerWithHoleCards(ICard firstCardFirstPlayer, ICard secondCardFirstPlayer, ICard firstCardSecondPlayer, ICard secondCardSecondPlayer)
         {
-            var player1 = builder.CreateNewPlayer("player1", 1000);
-            var player2 = builder.CreateNewPlayer("player2", 1000);
-            var players = new Dictionary<Guid, IPlayer> { { player1Guid, player1 }, { player2Guid, player2 } };
-            player1.AddHoleCard(firstCardFirstPlayer);
-            player1.AddHoleCard(secondCardFirstPlayer);
-            player2.AddHoleCard(firstCardSecondPlayer);
-            player2.AddHoleCard(secondCardSecondPlayer);
+            var player1 = builder.CreateNewPlayer(Guid.NewGuid());
+            var player2 = builder.CreateNewPlayer(Guid.NewGuid());
+            var players = new Dictionary<Guid, IPlayerHoleCards> { { player1Guid, player1 }, { player2Guid, player2 } };
+            player1.AddHoleCards(firstCardFirstPlayer, secondCardFirstPlayer);
+            player2.AddHoleCards(firstCardSecondPlayer, secondCardSecondPlayer);
             return players;
         }
 

@@ -12,7 +12,13 @@ namespace TexasHoldEmEngine
         {
             investigator = new HandInvestigator();
         }
-        public IList<Guid> FindRoundWinners(IDictionary<Guid, IPlayer> players, IList<ICard> communityCards)
+        /// <summary>
+        /// Finds the round winners.
+        /// </summary>
+        /// <param name="players">The players. Only the players, who actually are in game.</param>
+        /// <param name="communityCards">The community cards.</param>
+        /// <returns></returns>
+        public IList<Guid> FindRoundWinners(IDictionary<Guid, IPlayerHoleCards> players, IList<ICard> communityCards)
         {
             var playersBestHands = GetPlayersBestHand(players, communityCards);
             return DecideWhichPlayersWin(playersBestHands);
@@ -21,22 +27,29 @@ namespace TexasHoldEmEngine
         private static IList<Guid> DecideWhichPlayersWin(Dictionary<Guid, IBestPossibleHand> playersBestHandsToBeCompared)
         {
             var winners = new List<Guid>();
-            var lastResult = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
-            winners.Add(lastResult.Key);
+            // Hole die erste Hand und betracte diese als der gewinner.
+            var actualWinner = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
+            winners.Add(actualWinner.Key);
+            // Dann so lange es Hände zu vergleichen gibt
             while (playersBestHandsToBeCompared.Count > 0)
             {
-                var second = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
-                var compareResult = lastResult.Value.CompareTo(second.Value);
+                // Hole die nächste Hand und vergleiche
+                var nextHand = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
+                var compareResult = actualWinner.Value.CompareTo(nextHand.Value);
                 if (compareResult == -1)
                 {
+                    // Wenn die neue Hand besser ist als die von vorhandenen gewinner. 
+                    // Dann sind die beisherige gewinner es nicht mehr sonder die neue Hand
                     winners.Clear();
-                    winners.Add(second.Key);
+                    winners.Add(nextHand.Key);
+                    actualWinner = nextHand;
                 }
                 else
                 {
                     if (compareResult == 0)
                     {
-                        winners.Add(second.Key);
+                        // Bei einer Pattsituation gewinnen alle mit der gleiche Hand
+                        winners.Add(nextHand.Key);
                     }
                 }
             }
@@ -49,16 +62,14 @@ namespace TexasHoldEmEngine
             playersBestHands.Remove(lastResult.Key);
             return lastResult;
         }
-        private Dictionary<Guid, IBestPossibleHand> GetPlayersBestHand(IDictionary<Guid, IPlayer> players, IList<ICard> communityCards)
+
+        private Dictionary<Guid, IBestPossibleHand> GetPlayersBestHand(IDictionary<Guid, IPlayerHoleCards> players, IList<ICard> communityCards)
         {
             var bestHands = new Dictionary<Guid, IBestPossibleHand>();
             foreach (var p in players)
             {
-                if (p.Value.HoleCards.Count == 2)
-                {
-                    var best = investigator.LocateBestHand(p.Value.HoleCards, communityCards);
-                    bestHands.Add(p.Key, best);
-                }
+                var best = investigator.LocateBestHand(p.Value.HoleCards, communityCards);
+                bestHands.Add(p.Key, best);
             }
 
             return bestHands;

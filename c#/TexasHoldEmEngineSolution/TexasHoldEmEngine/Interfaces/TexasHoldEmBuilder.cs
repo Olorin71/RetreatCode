@@ -1,4 +1,6 @@
-﻿namespace TexasHoldEmEngine.Interfaces
+﻿using System;
+
+namespace TexasHoldEmEngine.Interfaces
 {
     public class TexasHoldEmEngineBuilder
     {
@@ -25,9 +27,9 @@
         }
 
 
-        public IPlayer CreateNewPlayer(string name, int chipsAmount)
+        public IPlayerHoleCards CreateNewPlayer(Guid id)
         {
-            return new Player(name, chipsAmount);
+            return new PlayerHoleCards(id);
         }
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TexasHoldEmService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TexasHoldEmService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:7330/Service.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TexasHoldEmEngine.Interfaces" />
+  <xs:complexType name="CardData">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TexasHoldEmEngine.Interfaces" minOccurs="0" name="Suit" type="q1:CardSuit" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TexasHoldEmEngine.Interfaces" minOccurs="0" name="Value" type="q2:CardValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardData" nillable="true" type="tns:CardData" />
+</xs:schema>
