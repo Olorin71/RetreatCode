@@ -11,10 +11,13 @@ namespace TexasHoldEmService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class Service : IService
     {
-        IDictionary<Guid, Player> players = new Dictionary<Guid, Player>();
-        TexasHoldEmEngineBuilder builder = new TexasHoldEmEngineBuilder();
-        CallBacksHandler callbacksHandler = new CallBacksHandler();
-        private IDeck deck;
+        private readonly IDictionary<Guid, Player> players = new Dictionary<Guid, Player>();
+
+        private readonly TexasHoldEmEngineBuilder builder = new TexasHoldEmEngineBuilder();
+
+        private readonly CallBacksHandler callbacksHandler = new CallBacksHandler();
+
+        private readonly IDeck deck;
 
         public Service()
         {
@@ -27,7 +30,7 @@ namespace TexasHoldEmService
             players.Add(guid, new Player(playerName, 1000));
             IServiceCallback callback = OperationContext.Current.GetCallbackChannel<IServiceCallback>();
             callbacksHandler.Add(guid, callback);
-            callbacksHandler.SendMessageToPlayer(guid, string.Format("Registered for next Game: {0} {1}", guid, playerName));
+            callbacksHandler.SendMessageToPlayer(guid, $"Registered for next Game: {guid} {playerName}");
             if (players.Count >= 2)
             {
                 Play();

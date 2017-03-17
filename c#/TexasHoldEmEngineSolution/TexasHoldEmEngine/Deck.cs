@@ -6,7 +6,7 @@ namespace TexasHoldEmEngine
 {
     internal class Deck : IDeck
     {
-        Queue<ICard> deck = new Queue<ICard>();
+        readonly Queue<ICard> deck = new Queue<ICard>();
 
         public void Initialize()
         {

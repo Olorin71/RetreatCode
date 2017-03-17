@@ -11,7 +11,7 @@ namespace TexasHoldEmEngine
         protected override bool HasHand()
         {
             bool straightFound = false;
-            var possibleSuits = Data.CardSuitsDistribution.Where(x => x.Value >= 5);
+            var possibleSuits = Data.CardSuitsDistribution.Where(x => x.Value >= 5).ToList();
             if (possibleSuits.Any())
             {
                 theSuit = possibleSuits.First().Key;

@@ -7,7 +7,7 @@ namespace TexasHoldEmEngine
 {
     internal class HandComparer : IHandComparer
     {
-        private IHandInvestigator investigator;
+        private readonly IHandInvestigator investigator;
         public HandComparer()
         {
             investigator = new HandInvestigator();

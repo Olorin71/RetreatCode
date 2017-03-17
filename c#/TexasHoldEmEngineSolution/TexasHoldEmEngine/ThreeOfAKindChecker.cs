@@ -15,7 +15,7 @@ namespace TexasHoldEmEngine
         protected override bool HasHand()
         {
             threeOfAKindCardValues = GetCardValuesWithNumberOfOccurrences(3);
-            return threeOfAKindCardValues.Any(); ;
+            return threeOfAKindCardValues.Any();
         }
 
         protected override List<ICard> GetHandCards()

@@ -21,9 +21,9 @@ namespace TexasHoldEmConsoleClient
 
     public class Player : TexasHoldEm.IServiceCallback, IDisposable
     {
-        ServiceClient client;
-        private IList<CardData> holeCards;
-        private IList<CardData> communityCards;
+        readonly ServiceClient client;
+        private readonly IList<CardData> holeCards;
+        private readonly IList<CardData> communityCards;
         public Player()
         {
 

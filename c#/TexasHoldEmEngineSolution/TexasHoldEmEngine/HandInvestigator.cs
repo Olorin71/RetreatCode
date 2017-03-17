@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TexasHoldEmEngine.Interfaces;
 
 namespace TexasHoldEmEngine
 {
     internal class HandInvestigator : IHandInvestigator
     {
-        private IList<CheckerBase> checkers = new List<CheckerBase>();
+        private readonly IList<CheckerBase> checkers = new List<CheckerBase>();
 
         public HandInvestigator()
         {
@@ -45,11 +45,7 @@ namespace TexasHoldEmEngine
 
         private static IList<ICard> CreateCardsList(IEnumerable<ICard> theHoleCards, IEnumerable<ICard> theCommunityCards)
         {
-            IList<ICard> cards = new List<ICard>();
-            foreach (ICard card in theHoleCards)
-            {
-                cards.Add(card);
-            }
+            IList<ICard> cards = theHoleCards.ToList();
             foreach (ICard card in theCommunityCards)
             {
                 cards.Add(card);

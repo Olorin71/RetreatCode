@@ -17,7 +17,7 @@ namespace TexasHoldEmEngine
             // Get all cards in the found suit, sort then and return the first five.
             var allSuitedCards = Data.Cards.Where(x => x.Suit == suit).ToList();
             SortByCardValue(allSuitedCards);
-            return allSuitedCards.Take(5).ToList(); ;
+            return allSuitedCards.Take(5).ToList();
         }
 
         protected override bool HasHand()

@@ -9,7 +9,7 @@ namespace TexasHoldEmEngine
     {
         private bool hasCards;
 
-        private IList<ICard> cards;
+        private readonly IList<ICard> cards;
 
         public PlayerHoleCards(Guid id)
         {
@@ -17,15 +17,9 @@ namespace TexasHoldEmEngine
             cards = new List<ICard>();
             hasCards = false;
         }
-        public ReadOnlyCollection<ICard> HoleCards
-        {
-            get
-            {
-                return new ReadOnlyCollection<ICard>(cards);
-            }
-        }
+        public ReadOnlyCollection<ICard> HoleCards => new ReadOnlyCollection<ICard>(cards);
 
-        public Guid Indentification { get; private set; }
+        public Guid Indentification { get; }
 
 
         public void AddHoleCards(ICard card1, ICard card2)

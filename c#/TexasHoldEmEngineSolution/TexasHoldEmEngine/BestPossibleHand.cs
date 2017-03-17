@@ -6,7 +6,7 @@ using TexasHoldEmEngine.Interfaces;
 
 namespace TexasHoldEmEngine
 {
-    public class BestPossibleHand : IBestPossibleHand, IEquatable<IBestPossibleHand>, IComparable<IBestPossibleHand>
+    public class BestPossibleHand : IBestPossibleHand, IEquatable<IBestPossibleHand>
     {
         public BestPossibleHand(HandName name, IList<ICard> bestHand, IList<CardValue> kickers)
         {
@@ -16,11 +16,11 @@ namespace TexasHoldEmEngine
             
         }
 
-        public ReadOnlyCollection<ICard> HandCards { get; private set; }
+        public ReadOnlyCollection<ICard> HandCards { get; }
 
-        public HandName HandName { get; private set;}
+        public HandName HandName { get; }
 
-        public ReadOnlyCollection<CardValue> KickerValues { get; private set; }
+        public ReadOnlyCollection<CardValue> KickerValues { get; }
 
         public int CompareTo(IBestPossibleHand other)
         {
@@ -56,19 +56,13 @@ namespace TexasHoldEmEngine
 
         public override string ToString()
         {
-            var toString = HandName.ToString() + ": ";
-            foreach (var item in HandCards)
-            {
-                toString += item.ToString() + " ";
-            }
+            var toString = HandName + ": ";
+            toString = HandCards.Aggregate(toString, (current, item) => current + (item.ToString() + " "));
 
             if (KickerValues.Count > 0)
             {
                 toString += "( ";
-                foreach (var item in KickerValues)
-                {
-                    toString += item + " ";
-                }
+                toString = KickerValues.Aggregate(toString, (current, item) => current + (item + " "));
                 toString += ") ";
             }
             return toString;
@@ -82,7 +76,7 @@ namespace TexasHoldEmEngine
 
         private int CompareKickers(IList<CardValue> secondPlayerKickers)
         {
-            int compareResult = 0; ;
+            int compareResult = 0;
             var numberOfKikersToCompare = KickerValues.Count;
             if (numberOfKikersToCompare > 0)
             {
@@ -111,42 +105,23 @@ namespace TexasHoldEmEngine
 
         public override int GetHashCode()
         {
-            var kickersSum = 0;
-            foreach (var item in KickerValues)
-            {
-                kickersSum += (int)item;
-            }
+            var kickersSum = KickerValues.Sum(item => (int) item);
 
             return (137 * (int)HandName) + kickersSum;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
-        public static bool operator ==(BestPossibleHand firstOperator, BestPossibleHand secondOperator)
-        {
-            return firstOperator.CompareTo(secondOperator) == 0;
-        }
+        public static bool operator ==(BestPossibleHand firstOperator, BestPossibleHand secondOperator) => firstOperator.CompareTo(secondOperator) == 0;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
-        public static bool operator !=(BestPossibleHand firstOperator, BestPossibleHand secondOperator)
-        {
-            return firstOperator.CompareTo(secondOperator) != 0;
-        }
+        public static bool operator !=(BestPossibleHand firstOperator, BestPossibleHand secondOperator) => firstOperator.CompareTo(secondOperator) != 0;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
-        public static bool operator <(BestPossibleHand firstOperator, BestPossibleHand secondOperator)
-        {
-            return firstOperator.CompareTo(secondOperator) == -1;
-        }
+        public static bool operator <(BestPossibleHand firstOperator, BestPossibleHand secondOperator) => firstOperator.CompareTo(secondOperator) == -1;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
-        public static bool operator >(BestPossibleHand firstOperator, BestPossibleHand secondOperator)
-        {
-            return firstOperator.CompareTo(secondOperator) == 1;
-        }
+        public static bool operator >(BestPossibleHand firstOperator, BestPossibleHand secondOperator) => firstOperator.CompareTo(secondOperator) == 1;
 
-        public bool Equals(IBestPossibleHand other)
-        {
-            return other == null ? false : CompareTo(other) == 0;
-        }
+        public bool Equals(IBestPossibleHand other) => other != null && CompareTo(other) == 0;
     }
 }

@@ -6,9 +6,11 @@ namespace TexasHoldEmEngine
 {
     internal class CheckerData
     {
-        private IList<ICard> cards;
-        IDictionary<CardValue, int> valuesDistribution;
-        IDictionary<CardSuit, int> suitsDistribution;
+        private readonly IList<ICard> cards;
+
+        private readonly IDictionary<CardValue, int> valuesDistribution;
+
+        private readonly IDictionary<CardSuit, int> suitsDistribution;
 
         public CheckerData(IList<ICard> cards)
         {
@@ -23,29 +25,11 @@ namespace TexasHoldEmEngine
 
         }
 
-        public IReadOnlyCollection<ICard> Cards
-        {
-            get
-            {
-                return new ReadOnlyCollection<ICard>(cards);
-            }
-        }
+        public IReadOnlyCollection<ICard> Cards => new ReadOnlyCollection<ICard>(cards);
 
-        public IReadOnlyDictionary<CardValue, int> CardValuesDistibution
-        {
-            get
-            {
-                return new ReadOnlyDictionary<CardValue, int>(valuesDistribution);
-            }
-        }
+        public IReadOnlyDictionary<CardValue, int> CardValuesDistibution => new ReadOnlyDictionary<CardValue, int>(valuesDistribution);
 
-        public IReadOnlyDictionary<CardSuit, int> CardSuitsDistribution
-        {
-            get
-            {
-                return new ReadOnlyDictionary<CardSuit, int>(suitsDistribution);
-            }
-        }
+        public IReadOnlyDictionary<CardSuit, int> CardSuitsDistribution => new ReadOnlyDictionary<CardSuit, int>(suitsDistribution);
 
         private static IDictionary<T, int> CreateDistributionDictionary<T>(IEnumerable<T> items)
         {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TexasHoldEmEngine.Interfaces;
 
@@ -32,7 +31,7 @@ namespace TexasHoldEmEngine
 
         protected static void SortByCardValue(List<CardValue> list)
         {
-            list.Sort((x, y) => CompareCardValues(x, y));
+            list.Sort(CompareCardValues);
         }
 
         protected static int CompareCardValues(CardValue firstCard, CardValue secondCard)

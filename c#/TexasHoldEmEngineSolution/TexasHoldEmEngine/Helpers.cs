@@ -6,21 +6,8 @@ namespace TexasHoldEmEngine
 {
     public static class Helpers
     {
-        public static IEnumerable<CardSuit> AllCardSuits
-        {
-            get
-            {
-                return (IEnumerable<CardSuit>)Enum.GetValues(typeof(CardSuit));
-            }
-        }
+        public static IEnumerable<CardSuit> AllCardSuits => (IEnumerable<CardSuit>)Enum.GetValues(typeof(CardSuit));
 
-        public static IEnumerable<CardValue> AllCardValues
-        {
-            get
-            {
-                return (IEnumerable<CardValue>)Enum.GetValues(typeof(CardValue));
-            }
-        }
-
+        public static IEnumerable<CardValue> AllCardValues => (IEnumerable<CardValue>)Enum.GetValues(typeof(CardValue));
     }
 }
