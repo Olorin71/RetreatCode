@@ -27,19 +27,19 @@ namespace TexasHoldEmEngine
         private static IList<Guid> DecideWhichPlayersWin(Dictionary<Guid, IBestPossibleHand> playersBestHandsToBeCompared)
         {
             var winners = new List<Guid>();
-            // Hole die erste Hand und betracte diese als der gewinner.
+            // Get the first hand and set it as the winner.
             var actualWinner = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
             winners.Add(actualWinner.Key);
-            // Dann so lange es Hände zu vergleichen gibt
+            // As long as we have hands to compare
             while (playersBestHandsToBeCompared.Count > 0)
             {
-                // Hole die nächste Hand und vergleiche
+                // Get the next hand to compare with
                 var nextHand = GetNextPlayerHandToBeCompared(playersBestHandsToBeCompared);
                 var compareResult = actualWinner.Value.CompareTo(nextHand.Value);
                 if (compareResult == -1)
                 {
-                    // Wenn die neue Hand besser ist als die von vorhandenen gewinner. 
-                    // Dann sind die beisherige gewinner es nicht mehr sonder die neue Hand
+                    // If the new hand is better than the actual winner hands 
+                    // then the actual winners are not winners anymore. The new Hand is the new winner.
                     winners.Clear();
                     winners.Add(nextHand.Key);
                     actualWinner = nextHand;
@@ -48,7 +48,7 @@ namespace TexasHoldEmEngine
                 {
                     if (compareResult == 0)
                     {
-                        // Bei einer Pattsituation gewinnen alle mit der gleiche Hand
+                        // Whenn a draw is detected, all the players with the same hand win
                         winners.Add(nextHand.Key);
                     }
                 }
