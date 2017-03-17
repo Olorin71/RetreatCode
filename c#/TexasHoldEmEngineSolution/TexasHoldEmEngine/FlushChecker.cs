@@ -14,21 +14,10 @@ namespace TexasHoldEmEngine
         protected override List<ICard> GetHandCards()
         {
             var suit = Data.CardSuitsDistribution.First(x => x.Value >= 5).Key;
-            var allSuitedCards = Data.Cards.Where(x => x.Suit == suit).Select(x => x.Value).ToList();
-            List<ICard> cards = GetTheFiveHigherCards(suit, allSuitedCards);
-            return cards;
-        }
-
-        private List<ICard> GetTheFiveHigherCards(CardSuit suit, List<CardValue> allSuitedCards)
-        {
+            // Get all cards in the found suit, sort then and return the first five.
+            var allSuitedCards = Data.Cards.Where(x => x.Suit == suit).ToList();
             SortByCardValue(allSuitedCards);
-            List<ICard> cards = new List<ICard>();
-            for (var index = 0; index < 5; index++)
-            {
-                cards.Add(Data.Cards.First(x => x.Value == allSuitedCards[index] && x.Suit == suit));
-            }
-
-            return cards;
+            return allSuitedCards.Take(5).ToList(); ;
         }
 
         protected override bool HasHand()

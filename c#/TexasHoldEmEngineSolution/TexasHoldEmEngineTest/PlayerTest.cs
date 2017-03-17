@@ -9,9 +9,8 @@ namespace TexasHoldEmEngineTest
     [ExcludeFromCodeCoverage]
     public class PlayerTest
     {
-        string testPlayerName = "Player Name";
-        int testChipAmount = 1000;
-        IPlayer player;
+        IPlayerHoleCards player;
+        Guid defaultGuid = Guid.NewGuid();
 
         private TexasHoldEmEngineBuilder texasHoldEmBuilder;
 
@@ -19,49 +18,23 @@ namespace TexasHoldEmEngineTest
         public void Initialize()
         {
             texasHoldEmBuilder = new TexasHoldEmEngineBuilder();
-            player = texasHoldEmBuilder.CreateNewPlayer(testPlayerName, testChipAmount);
+            player = texasHoldEmBuilder.CreateNewPlayer(defaultGuid);
         }
         [TestMethod]
-        public void AfterCreatePlayerTheNameAndTheChipsAmountIsSet()
+        public void AfterCreatePlayerTheGuidIsSet()
         {
             Assert.IsNotNull(player);
-            Assert.AreEqual(testPlayerName, player.Name);
-            Assert.AreEqual(testChipAmount, player.Chips);
+            Assert.AreEqual(defaultGuid, player.Indentification);
         }
 
         [TestMethod]
         public void CanAddTwoHoleCards()
         {
             var firstHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
-            player.AddHoleCard(firstHoleCard);
             var secondHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Diamond);
-            player.AddHoleCard(secondHoleCard);
+            player.AddHoleCards(firstHoleCard, secondHoleCard);
             CollectionAssert.Contains(player.HoleCards, firstHoleCard);
             CollectionAssert.Contains(player.HoleCards, secondHoleCard);
         }
-
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        [TestMethod]
-        public void CannotAddAThirdHoleCard()
-        {
-            var firstHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
-            player.AddHoleCard(firstHoleCard);
-            var secondHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Diamond);
-            player.AddHoleCard(secondHoleCard);
-            var thirdHoleCard = texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Heart);
-            try
-            {
-                player.AddHoleCard(thirdHoleCard);
-            }
-            catch (InvalidOperationException ioe)
-            {
-                Assert.AreEqual("A third hole card is not allowed.", ioe.Message);
-            }
-            catch
-            {
-                Assert.Fail();
-            }
-        }
-
     }
 }

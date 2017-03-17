@@ -4,22 +4,24 @@ using TexasHoldEmEngine.Interfaces;
 
 namespace TexasHoldEmEngine
 {
-    internal class ThreeOfAKindChecker : CheckerBase
+    internal class ThreeOfAKindChecker : NumberOfOccurrencesCheckerBase
     {
+        private List<CardValue> threeOfAKindCardValues;
+
         public ThreeOfAKindChecker()
         {
             HandName = HandName.ThreeOfAKind;
         }
-        protected override List<ICard> GetHandCards()
-        {
-            var pairs = Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).ToList();
-            SortByCardValue(pairs);
-            return Data.Cards.Where(x => x.Value == pairs.First()).ToList();
-        }
-
         protected override bool HasHand()
         {
-            return Data.CardValuesDistibution.Where(x => x.Value == 3).Select(x => x.Key).Any();
+            threeOfAKindCardValues = GetCardValuesWithNumberOfOccurrences(3);
+            return threeOfAKindCardValues.Any(); ;
+        }
+
+        protected override List<ICard> GetHandCards()
+        {
+            SortByCardValue(threeOfAKindCardValues);
+            return Data.Cards.Where(x => x.Value == threeOfAKindCardValues.First()).ToList();
         }
     }
 }

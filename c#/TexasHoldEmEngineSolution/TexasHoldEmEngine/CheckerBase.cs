@@ -11,16 +11,6 @@ namespace TexasHoldEmEngine
 
         protected HandName HandName { get; set; }
 
-        protected static void SortByCardValue(List<CardValue> list)
-        {
-            list.Sort((x, y) => CompareCardValues(x, y));
-        }
-
-        private static int CompareCardValues(CardValue firstCard, CardValue secondCard)
-        {
-            return firstCard > secondCard ? -1 : 1;
-        }
-
         public IBestPossibleHand Check(CheckerData data)
         {
             Data = data;
@@ -32,13 +22,27 @@ namespace TexasHoldEmEngine
                 BestPossibleHand hand = new BestPossibleHand(HandName, bestHand, kickers);
                 return hand;
             }
-            return null;
+            return new HandNullObject();
         }
 
-        private static void SortByCardValue(List<ICard> list)
+        protected static void SortByCardValue(List<ICard> list)
         {
             list.Sort((x, y) => CompareCardValues(x.Value, y.Value));
         }
+
+        protected static void SortByCardValue(List<CardValue> list)
+        {
+            list.Sort((x, y) => CompareCardValues(x, y));
+        }
+
+        protected static int CompareCardValues(CardValue firstCard, CardValue secondCard)
+        {
+            return firstCard > secondCard ? -1 : 1;
+        }
+
+        protected abstract List<ICard> GetHandCards();
+
+        protected abstract bool HasHand();
 
         private IList<CardValue> GetHandKickers(IList<ICard> bestHand)
         {
@@ -56,8 +60,5 @@ namespace TexasHoldEmEngine
             return list;
         }
 
-        protected abstract List<ICard> GetHandCards();
-
-        protected abstract bool HasHand();
     }
 }

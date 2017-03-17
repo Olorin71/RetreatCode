@@ -5,8 +5,10 @@ using TexasHoldEmEngine.Interfaces;
 
 namespace TexasHoldEmEngine
 {
-    internal class FourOfAKindChecker : CheckerBase
+    internal class FourOfAKindChecker : NumberOfOccurrencesCheckerBase
     {
+        private List<CardValue> fourOfAKindCardValues;
+
         public FourOfAKindChecker()
         {
             HandName = HandName.FourOfAKind;
@@ -14,14 +16,13 @@ namespace TexasHoldEmEngine
 
         protected override List<ICard> GetHandCards()
         {
-            var fours = Data.CardValuesDistibution.Where(x => x.Value == 4).Select(x => x.Key).ToList();
-            SortByCardValue(fours);
-            return Data.Cards.Where(x => x.Value == fours.First()).ToList();
+            return Data.Cards.Where(x => x.Value == fourOfAKindCardValues.First()).ToList();
         }
 
         protected override bool HasHand()
         {
-            return Data.CardValuesDistibution.Where(x => x.Value == 4).Select(x => x.Key).Any();
+            fourOfAKindCardValues = GetCardValuesWithNumberOfOccurrences(4);
+            return fourOfAKindCardValues.Any();
         }
 
     }
