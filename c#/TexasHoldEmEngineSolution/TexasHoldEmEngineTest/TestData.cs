@@ -6,175 +6,54 @@ namespace TexasHoldEmEngineTest
     [ExcludeFromCodeCoverage]
     internal static class TestData
     {
-        private static TexasHoldEmEngineBuilder texasHoldEmBuilder = new TexasHoldEmEngineBuilder();
+        private static readonly TexasHoldEmEngineBuilder texasHoldEmBuilder = new TexasHoldEmEngineBuilder();
 
-        internal static ICard DiamondNine
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Diamond);
-            }
-        }
-        internal static ICard DiamondKing
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Diamond);
-            }
-        }
-        internal static ICard ClubFive
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Five, CardSuit.Club);
-            }
-        }
-        internal static ICard ClubNine
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Club);
-            }
-        }
-        internal static ICard ClubKing
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Club);
-            }
-        }
-        internal static ICard ClubAce
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
-            }
-        }
-        internal static ICard HeartTwo
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Two, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartThree
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Three, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartFour
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Four, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartFive
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Five, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartSix
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Six, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartSeven
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Seven, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartEight
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Eight, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartNine
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartTen
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Ten, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartJack
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Jack, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartQueen
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Queen, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartKing
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Heart);
-            }
-        }
-        internal static ICard HeartAce
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Heart);
-            }
-        }
-        internal static ICard SpadeFour
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Four, CardSuit.Spade);
-            }
-        }
-        internal static ICard SpadeSix
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Six, CardSuit.Spade);
-            }
-        }
-        internal static ICard SpadeNine
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Spade);
-            }
-        }
-        internal static ICard SpadeTen
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.Ten, CardSuit.Spade);
-            }
-        }
-        internal static ICard SpadeKing
-        {
-            get
-            {
-                return texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Spade);
-            }
-        }
+        internal static ICard DiamondNine => texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Diamond);
+
+        internal static ICard DiamondKing => texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Diamond);
+
+        internal static ICard ClubFive => texasHoldEmBuilder.CreateNewCard(CardValue.Five, CardSuit.Club);
+
+        internal static ICard ClubNine => texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Club);
+
+        internal static ICard ClubKing => texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Club);
+
+        internal static ICard ClubAce => texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Club);
+
+        internal static ICard HeartTwo => texasHoldEmBuilder.CreateNewCard(CardValue.Two, CardSuit.Heart);
+
+        internal static ICard HeartThree => texasHoldEmBuilder.CreateNewCard(CardValue.Three, CardSuit.Heart);
+
+        internal static ICard HeartFour => texasHoldEmBuilder.CreateNewCard(CardValue.Four, CardSuit.Heart);
+
+        internal static ICard HeartFive => texasHoldEmBuilder.CreateNewCard(CardValue.Five, CardSuit.Heart);
+
+        internal static ICard HeartSix => texasHoldEmBuilder.CreateNewCard(CardValue.Six, CardSuit.Heart);
+
+        internal static ICard HeartSeven => texasHoldEmBuilder.CreateNewCard(CardValue.Seven, CardSuit.Heart);
+
+        internal static ICard HeartEight => texasHoldEmBuilder.CreateNewCard(CardValue.Eight, CardSuit.Heart);
+
+        internal static ICard HeartNine => texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Heart);
+
+        internal static ICard HeartTen => texasHoldEmBuilder.CreateNewCard(CardValue.Ten, CardSuit.Heart);
+
+        internal static ICard HeartJack => texasHoldEmBuilder.CreateNewCard(CardValue.Jack, CardSuit.Heart);
+
+        internal static ICard HeartQueen => texasHoldEmBuilder.CreateNewCard(CardValue.Queen, CardSuit.Heart);
+
+        internal static ICard HeartKing => texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Heart);
+
+        internal static ICard HeartAce => texasHoldEmBuilder.CreateNewCard(CardValue.Ace, CardSuit.Heart);
+
+        internal static ICard SpadeFour => texasHoldEmBuilder.CreateNewCard(CardValue.Four, CardSuit.Spade);
+
+        internal static ICard SpadeSix => texasHoldEmBuilder.CreateNewCard(CardValue.Six, CardSuit.Spade);
+
+        internal static ICard SpadeNine => texasHoldEmBuilder.CreateNewCard(CardValue.Nine, CardSuit.Spade);
+
+        internal static ICard SpadeTen => texasHoldEmBuilder.CreateNewCard(CardValue.Ten, CardSuit.Spade);
+
+        internal static ICard SpadeKing => texasHoldEmBuilder.CreateNewCard(CardValue.King, CardSuit.Spade);
     }
 }

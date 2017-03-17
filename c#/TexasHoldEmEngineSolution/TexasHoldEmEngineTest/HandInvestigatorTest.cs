@@ -1,10 +1,9 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TexasHoldEmEngine.Interfaces;
-using TexasHoldEmEngine;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Collections.ObjectModel;
 
 namespace TexasHoldEmEngineTest
 {
@@ -509,28 +508,19 @@ namespace TexasHoldEmEngineTest
 
         private static IEnumerable<ICard> CreateNewHoleCards(ICard firstCard, ICard secondCard)
         {
-            var cards = new List<ICard>();
-            cards.Add(firstCard);
-            cards.Add(secondCard);
+            var cards = new List<ICard> {firstCard, secondCard};
             return cards;
         }
 
         private static IEnumerable<ICard> CreateNewFlop(ICard firstCard, ICard secondCard, ICard thirdCard)
         {
-            var cards = new List<ICard>();
-            cards.Add(firstCard);
-            cards.Add(secondCard);
-            cards.Add(thirdCard);
+            var cards = new List<ICard> {firstCard, secondCard, thirdCard};
             return cards;
         }
 
         private static IEnumerable<ICard> CreateNewCommunityCards(IEnumerable<ICard> flop, ICard turn, ICard river)
         {
-            var cards = new List<ICard>();
-            foreach (var card in flop)
-            {
-                cards.Add(card);
-            }
+            var cards = flop.ToList();
             cards.Add(turn);
             cards.Add(river);
             return cards;
@@ -561,6 +551,7 @@ namespace TexasHoldEmEngineTest
             Assert.AreEqual(2, counter, "There are more or less than two of the given cards in result.");
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private static void AssertContainsAllCards(ReadOnlyCollection<ICard> bestHand, params ICard[] cards)
         {
             foreach (ICard card in cards)
@@ -569,6 +560,7 @@ namespace TexasHoldEmEngineTest
             }
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private static void AssertContainsAllCardValues(ReadOnlyCollection<CardValue> values, params CardValue[] cards)
         {
             foreach (CardValue card in cards)

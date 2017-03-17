@@ -12,8 +12,8 @@ namespace TexasHoldEmEngineTest
     {
         private TexasHoldEmEngineBuilder builder;
         private IHandComparer comparer;
-        private Guid player1Guid = Guid.NewGuid();
-        private Guid player2Guid = Guid.NewGuid();
+        private readonly Guid player1Guid = Guid.NewGuid();
+        private readonly Guid player2Guid = Guid.NewGuid();
 
         [TestInitialize]
         public void Initialize()

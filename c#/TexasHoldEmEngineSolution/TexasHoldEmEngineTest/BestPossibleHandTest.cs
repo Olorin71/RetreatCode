@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TexasHoldEmEngine;
 using TexasHoldEmEngine.Interfaces;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace TexasHoldEmEngineTest
 {

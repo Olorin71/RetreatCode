@@ -9,8 +9,9 @@ namespace TexasHoldEmEngineTest
     [ExcludeFromCodeCoverage]
     public class PlayerTest
     {
-        IPlayerHoleCards player;
-        Guid defaultGuid = Guid.NewGuid();
+        private IPlayerHoleCards player;
+
+        private readonly Guid defaultGuid = Guid.NewGuid();
 
         private TexasHoldEmEngineBuilder texasHoldEmBuilder;
 
