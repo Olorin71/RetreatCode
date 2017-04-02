@@ -28,4 +28,28 @@ public class CardImplTest {
         Card card = Factory.newCard(CARDVALUE.EIGHT, CARDSUIT.DIAMOND);
         assertTrue(card.toString().equals("Eight of Diamonds"));
     }
+
+    @Test
+    public void callingEqualsOnTwoCardsOfSameValueAndSuitShouldReturnTrue() {
+        Card card1 = Factory.newCard(CARDVALUE.EIGHT, CARDSUIT.DIAMOND);
+        Card card2 = Factory.newCard(CARDVALUE.EIGHT, CARDSUIT.DIAMOND);
+
+        assertEquals(true, card1.equals(card2));
+    }
+
+    @Test
+    public void comparingAceOfDiamondsWithSevenOfDiamondsShouldReturnAceIsHigher() {
+        Card card1 = Factory.newCard(CARDVALUE.ACE, CARDSUIT.DIAMOND);
+        Card card2 = Factory.newCard(CARDVALUE.SEVEN, CARDSUIT.DIAMOND);
+
+        assertEquals(1, card1.compare(card2));
+    }
+
+    @Test
+    public void comparingSevenOfDiamondsWithAceOfDiamondsShouldReturnSevenIsLower() {
+        Card card1 = Factory.newCard(CARDVALUE.SEVEN, CARDSUIT.DIAMOND);
+        Card card2 = Factory.newCard(CARDVALUE.ACE, CARDSUIT.DIAMOND);
+
+        assertEquals(-1, card1.compare(card2));
+    }
 }

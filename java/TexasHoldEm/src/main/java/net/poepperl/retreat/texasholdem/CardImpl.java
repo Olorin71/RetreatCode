@@ -6,7 +6,7 @@ import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 
-public class CardImpl implements Card, Comparator<CardImpl> {
+public class CardImpl implements Card, Comparator<Card> {
 
     private CARDVALUE value;
     private CARDSUIT suit;
@@ -49,8 +49,27 @@ public class CardImpl implements Card, Comparator<CardImpl> {
     }
 
     @Override
-    public int compare(CardImpl arg0, CardImpl arg1) {
-        // 1 < 2 == -1
+    public boolean equals(Object obj) {
+        if (obj instanceof CardImpl) {
+            CardImpl other = (CardImpl) obj;
+            return other.getSuit() == this.getSuit() && other.getValue().getValue() == this.getValue().getValue();
+        }
+
+        return super.equals(obj);
+    }
+
+    public int compare(Card other) {
+        return this.compare(this, other);
+    }
+
+    @Override
+    public int compare(Card leftCard, Card rightCard) {
+        if (leftCard.getValue().getValue() < rightCard.getValue().getValue())
+            return -1;
+
+        if (leftCard.getValue().getValue() > rightCard.getValue().getValue())
+            return 1;
+
         return 0;
     }
 }
