@@ -12,7 +12,7 @@ import net.poepperl.retreat.texasholdem.interfaces.NoCardsException;
 public class DeckImplTest {
 
     @Test
-    public void onANewDeckFityTwoCardsCanBeDealt() throws NoCardsException {
+    public void onANewDeckFiftyTwoCardsCanBeDealt() throws NoCardsException {
         Deck deck = Factory.newDeck();
         int counter = 0;
         for (; counter < 52; counter++) {
