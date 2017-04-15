@@ -1,5 +1,6 @@
 package net.poepperl.retreat.texasholdem;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import net.poepperl.retreat.texasholdem.interfaces.BestPossibleHand;
@@ -13,39 +14,81 @@ import net.poepperl.retreat.texasholdem.interfaces.UpperBoundReachedException;
 
 public class HandInvestigatorImpl implements HandInvestigator {
 
-    
     @Override
     public BestPossibleHand locateBestHand(List<Card> holeCards, List<Card> communityCards) {
         DataToCheck data = new DataToCheck(holeCards, communityCards);
 
         CARDSUIT possibleSuit = null;
-        
-        for (CARDSUIT suit : CARDSUIT.values()){
-            if(data.getSuitCount(suit) >= 5){
-                possibleSuit = suit;
-                break;
+
+        possibleSuit = findPossibleCardSuit(data);
+
+        if (possibleSuit == null) {
+            return null;
+        }
+
+        CARDVALUE lowerBound = findLowerBoundOfStraight(data, possibleSuit);
+
+        if (lowerBound == null) {
+            return null;
+        }
+
+        return new BestPossibleHandImpl(lowerBound == CARDVALUE.TEN ? HANDNAME.ROYALFLUSH : HANDNAME.STRAIGHTFLUSH,
+                createHandCardsList(lowerBound, possibleSuit), new LinkedList<Card>());
+
+    }
+
+    private List<Card> createHandCardsList(CARDVALUE lowerBound, CARDSUIT suit) {
+        List<Card> handCards = new LinkedList<Card>();
+
+        for (int i = 0; i < 5; i++) {
+            handCards.add(new CardImpl(lowerBound, suit));
+
+            try {
+                if (lowerBound.getValue() != 14) {
+                    lowerBound = lowerBound.next();
+                }
+            } catch (UpperBoundReachedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
-        
-        CARDVALUE lowerPosition = CARDVALUE.TEN;
-        for (int n = 10; n >= 1 ; n--){
-            CARDVALUE currentPosition = lowerPosition;
-            int x;
-            for(x = 0; x < 5; x++){
-                if(!data.hasCard(possibleSuit, currentPosition)){
-                    break;
-                }
-                try {
-                    currentPosition = currentPosition.next();
-                } catch (UpperBoundReachedException e) {
-                    e.printStackTrace();
-                }
-            }
-            
-            if(x == 5){
+
+        return handCards;
+    }
+
+    private boolean hasStraightStartingByLowerBound(DataToCheck data, CARDSUIT suit, CARDVALUE position) {
+        boolean hasStraight = true;
+
+        for (int x = 0; x < 5; x++) {
+            if (!data.hasCard(suit, position)) {
+                hasStraight = false;
                 break;
             }
-            
+
+            try {
+                if (position.getValue() != 14) {
+                    position = position.next();
+                }
+            } catch (UpperBoundReachedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return hasStraight;
+    }
+
+    private CARDVALUE findLowerBoundOfStraight(DataToCheck data, CARDSUIT suit) {
+        boolean foundStraight = false;
+        CARDVALUE lowerPosition = CARDVALUE.TEN; // For a Straight (five cards
+                                                 // in a row) lowest card can't
+                                                 // be higher than ten
+
+        for (int n = 10; n >= 1; n--) {
+            if (hasStraightStartingByLowerBound(data, suit, lowerPosition)) {
+                foundStraight = true;
+                break;
+            }
+
             try {
                 lowerPosition = lowerPosition.previous();
             } catch (LowerBoundReachedException e) {
@@ -53,11 +96,22 @@ public class HandInvestigatorImpl implements HandInvestigator {
                 e.printStackTrace();
             }
         }
-        
-        if(data.hasCard(possibleSuit, CARDVALUE.ACE)){
-            return new BestPossibleHandImpl(HANDNAME.ROYALFLUSH);
+
+        if (foundStraight) {
+            return lowerPosition;
         }
-        
-        return new BestPossibleHandImpl(HANDNAME.STRAIGHTFLUSH);
+
+        return null;
+    }
+
+    private CARDSUIT findPossibleCardSuit(DataToCheck data) {
+        CARDSUIT possibleSuit = null;
+        for (CARDSUIT suit : CARDSUIT.values()) {
+            if (data.getSuitCount(suit) >= 5) {
+                possibleSuit = suit;
+                break;
+            }
+        }
+        return possibleSuit;
     }
 }
