@@ -14,6 +14,22 @@ public enum CARDVALUE {
         return value;
     }
 
+    public CARDVALUE previous() throws LowerBoundReachedException{
+        // values are ordered descending so previous is ordinal +1 and vice versa
+        if(ordinal() + 1 == values().length)
+            throw new LowerBoundReachedException();
+        
+        return values()[ordinal() + 1];
+    }
+    
+    public CARDVALUE next() throws UpperBoundReachedException{
+        // values are ordered descending so previous is ordinal +1 and vice versa
+        if(ordinal() == 0)
+            throw new UpperBoundReachedException();
+        
+        return values()[ordinal() - 1];
+    }
+
     public String toString() {
         switch (value) {
         case 14:
