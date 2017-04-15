@@ -7,7 +7,6 @@ import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 import net.poepperl.retreat.texasholdem.interfaces.Deck;
-import net.poepperl.retreat.texasholdem.interfaces.Factory;
 import net.poepperl.retreat.texasholdem.interfaces.NoCardsException;
 
 public class DeckImpl implements Deck {
@@ -36,7 +35,7 @@ public class DeckImpl implements Deck {
 
         for (CARDSUIT suit : CARDSUIT.values()) {
             for (CARDVALUE value : CARDVALUE.values()) {
-                allCards.add(Factory.newCard(value, suit));
+                allCards.add(new CardImpl(value, suit));
             }
         }
         return allCards;
