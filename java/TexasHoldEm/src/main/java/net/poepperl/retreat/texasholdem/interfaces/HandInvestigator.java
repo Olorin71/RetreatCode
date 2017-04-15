@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface HandInvestigator {
 
-    BestPossibleHand LocateBestHand(List<Card> holeCards, List<Card> communityCards);
+    BestPossibleHand locateBestHand(List<Card> holeCards, List<Card> communityCards);
 }
