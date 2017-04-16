@@ -1,9 +1,8 @@
 package net.poepperl.retreat.texasholdem;
 
-import static org.junit.Assert.*;
-
-import java.util.LinkedList;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,40 +13,29 @@ import net.poepperl.retreat.texasholdem.interfaces.Card;
 
 public class DataToCheckTest {
 
-    private List<Card> holeCards;
-    private List<Card> communityCards;
-    private DataToCheck data;
-
-    private void buildCardsForDistributionTests() {
-        holeCards.add(new CardImpl(CARDVALUE.ACE, CARDSUIT.SPADE));
-        holeCards.add(new CardImpl(CARDVALUE.KING, CARDSUIT.SPADE));
-        
-        communityCards.add(new CardImpl(CARDVALUE.QUEEN, CARDSUIT.HEART));
-        communityCards.add(new CardImpl(CARDVALUE.JACK, CARDSUIT.HEART));
-        communityCards.add(new CardImpl(CARDVALUE.ACE, CARDSUIT.CLUB));
-        communityCards.add(new CardImpl(CARDVALUE.TWO, CARDSUIT.CLUB));
-        communityCards.add(new CardImpl(CARDVALUE.QUEEN, CARDSUIT.DIAMOND));
-    }
+    private CardData testData;
 
     @Before
-    public void initialize(){
-        holeCards = new LinkedList<Card>();
-        communityCards = new LinkedList<Card>();
-
-        buildCardsForDistributionTests();
-        data = new DataToCheck(holeCards, communityCards);
+    public void initialize() {
+        testData = new CardData();
     }
-    
+
     @Test
     public void checkSuitDistributionWithTwoSpadesAndTwoHeartsAndTwoClubsAndOneDiamond() {
+        testData.buildCardsForDistributionTests();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
         assertEquals(2, data.getSuitCount(CARDSUIT.SPADE));
         assertEquals(2, data.getSuitCount(CARDSUIT.HEART));
         assertEquals(2, data.getSuitCount(CARDSUIT.CLUB));
         assertEquals(1, data.getSuitCount(CARDSUIT.DIAMOND));
     }
-    
+
     @Test
-    public void checkValueDistributionWithTwoAcesAndOneKingAndTwoQueensAndOneJackAndOneTwo(){
+    public void checkValueDistributionWithTwoAcesAndOneKingAndTwoQueensAndOneJackAndOneTwo() {
+        testData.buildCardsForDistributionTests();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
         assertEquals(2, data.getValueCount(CARDVALUE.ACE));
         assertEquals(1, data.getValueCount(CARDVALUE.KING));
         assertEquals(2, data.getValueCount(CARDVALUE.QUEEN));
@@ -64,12 +52,71 @@ public class DataToCheckTest {
     }
 
     @Test
-    public void hasCardShouldReturnTrueForAceOfSpade(){
+    public void hasCardShouldReturnTrueForAceOfSpade() {
+        testData.buildCardsForDistributionTests();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
         assertTrue(data.hasCard(CARDSUIT.SPADE, CARDVALUE.ACE));
     }
 
     @Test
-    public void hasCardShouldReturnFalseForFiveOfHeart(){
+    public void hasCardShouldReturnFalseForFiveOfHeart() {
+        testData.buildCardsForDistributionTests();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
         assertFalse(data.hasCard(CARDSUIT.HEART, CARDVALUE.FIVE));
+    }
+
+    @Test
+    public void findValueWithFourCardsOfSameValue() {
+        testData.buildCardsForFourOfAKind();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
+        assertEquals(1, data.getValuesWithNumberOfOccurrences(4).size());
+    }
+    
+    @Test
+    public void popOnAExistingCardReturnsThatCard(){
+        testData.buildCardsForDistributionTests();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
+        Card expected = new CardImpl(CARDVALUE.ACE, CARDSUIT.SPADE);
+        Card card = data.pop(expected);
+
+        assertTrue(card != null);
+        assertEquals(true, card.equals(expected));
+    }
+
+    @Test
+    public void popOnANotExistingCardReturnsNull(){
+        testData.buildCardsForDistributionTests();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
+        Card expected = new CardImpl(CARDVALUE.FIVE, CARDSUIT.HEART);
+        Card card = data.pop(expected);
+
+        assertTrue(card == null);
+    }
+
+    @Test
+    public void popTwiceOnAExistingCardReturnsNullOnSecondPop(){
+        testData.buildCardsForDistributionTests();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
+        Card expected = new CardImpl(CARDVALUE.ACE, CARDSUIT.SPADE);
+
+        assertTrue(data.pop(expected) != null);
+        assertTrue(data.pop(expected) == null);
+    }
+
+    @Test
+    public void popHighCardReturnTheHighestCard(){
+        testData.buildCardsForDistributionTests();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
+        Card expected = new CardImpl(CARDVALUE.ACE, CARDSUIT.SPADE);
+        Card actual = data.popHighCard();
+        assertTrue(actual != null);
+        assertEquals(true, actual.equals(expected));
     }
 }
