@@ -51,4 +51,18 @@ public class CardImplTest {
 
         assertEquals(-1, card1.compare(card2));
     }
+    
+    @Test
+    public void callingEqualsOnAnAceWithAnAceAsOneShouldReturnTrue(){
+        Card card1 = new CardImpl(CARDVALUE.ACE, CARDSUIT.DIAMOND);
+        Card card2 = new CardImpl(CARDVALUE.ACEASONE, CARDSUIT.DIAMOND);
+
+        assertEquals(true, card1.equals(card2));
+    }
+
+    @Test
+    public void cardAceAsOneSpadeToStringReturnsAceOfSpadesTest() {
+        Card card = new CardImpl(CARDVALUE.ACEASONE, CARDSUIT.SPADE);
+        assertTrue(card.toString(), card.toString().equals("Ace of Spades"));
+    }
 }

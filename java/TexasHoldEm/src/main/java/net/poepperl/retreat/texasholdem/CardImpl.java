@@ -52,7 +52,7 @@ public class CardImpl implements Card, Comparator<Card> {
     public boolean equals(Object obj) {
         if (obj instanceof CardImpl) {
             CardImpl other = (CardImpl) obj;
-            return other.getSuit() == this.getSuit() && other.getValue().getValue() == this.getValue().getValue();
+            return this.suit == other.suit && this.compare(this, other) == 0;
         }
 
         return super.equals(obj);
@@ -64,10 +64,16 @@ public class CardImpl implements Card, Comparator<Card> {
 
     @Override
     public int compare(Card leftCard, Card rightCard) {
-        if (leftCard.getValue().getValue() < rightCard.getValue().getValue())
+        int leftCardValue = leftCard.getValue().getValue();
+        int rightCardValue = rightCard.getValue().getValue();
+
+        leftCardValue = leftCardValue == CARDVALUE.ACEASONE.getValue() ? CARDVALUE.ACE.getValue() : leftCardValue;
+        rightCardValue = rightCardValue == CARDVALUE.ACEASONE.getValue() ? CARDVALUE.ACE.getValue() : rightCardValue;
+
+        if (leftCardValue < rightCardValue)
             return -1;
 
-        if (leftCard.getValue().getValue() > rightCard.getValue().getValue())
+        if (leftCardValue > rightCardValue)
             return 1;
 
         return 0;

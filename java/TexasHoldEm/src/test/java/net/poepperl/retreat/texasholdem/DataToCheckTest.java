@@ -169,4 +169,29 @@ public class DataToCheckTest {
 
         assertEquals(null, data.popFirstCard(CARDVALUE.FIVE));
     }
+    
+    @Test
+    public void popFirstCardOfHeartShouldReturnAQueenOfHeart(){
+        testData.buildCardsForPopSuit();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
+        assertEquals(true, data.popFirstCard(CARDSUIT.HEART).equals(new CardImpl(CARDVALUE.QUEEN, CARDSUIT.HEART)));
+    }
+
+    @Test
+    public void secondPopFirstCardOfHeartsShouldReturnAJackOfHeart() {
+        testData.buildCardsForPopSuit();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
+        assertEquals(true, data.popFirstCard(CARDSUIT.HEART).equals(new CardImpl(CARDVALUE.QUEEN, CARDSUIT.HEART)));
+        assertEquals(true, data.popFirstCard(CARDSUIT.HEART).equals(new CardImpl(CARDVALUE.JACK, CARDSUIT.HEART)));
+    }
+    
+    @Test
+    public void popFirstCardOfDiamondShouldReturnNull(){
+        testData.buildCardsForPopSuit();
+        DataToCheck data = new DataToCheck(testData.getHoleCards(), testData.getCommunityCards());
+
+        assertEquals(null, data.popFirstCard(CARDSUIT.DIAMOND));
+    }
 }

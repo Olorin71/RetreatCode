@@ -51,4 +51,16 @@ public class HandInvestigatorImplTest {
         testData.buildCardsForFullHouse();
         assertHandFoundAndCorrectType(HANDNAME.FULLHOUSE);
     }
+
+    @Test
+    public void locateBestHandForFlush() {
+        testData.buildCardsForFlush();
+        assertHandFoundAndCorrectType(HANDNAME.FLUSH);
+    }
+
+    @Test
+    public void locateBestHandForStraight() {
+        testData.buildCardsForStraight();
+        assertHandFoundAndCorrectType(HANDNAME.STRAIGHT);
+    }
 }

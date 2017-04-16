@@ -35,7 +35,9 @@ public class DeckImpl implements Deck {
 
         for (CARDSUIT suit : CARDSUIT.values()) {
             for (CARDVALUE value : CARDVALUE.values()) {
-                allCards.add(new CardImpl(value, suit));
+                if (value != CARDVALUE.ACEASONE) {
+                    allCards.add(new CardImpl(value, suit));
+                }
             }
         }
         return allCards;

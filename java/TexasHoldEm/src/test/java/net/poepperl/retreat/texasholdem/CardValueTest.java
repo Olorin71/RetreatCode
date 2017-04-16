@@ -1,52 +1,38 @@
 package net.poepperl.retreat.texasholdem;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
-import net.poepperl.retreat.texasholdem.interfaces.LowerBoundReachedException;
-import net.poepperl.retreat.texasholdem.interfaces.UpperBoundReachedException;
 
 public class CardValueTest {
 
     @Test
-    public void nextOfAFourShuoldReturnAFive() throws UpperBoundReachedException {
+    public void nextOfAFourShuoldReturnAFive(){
         CARDVALUE value = CARDVALUE.FOUR;
         
         assertEquals(CARDVALUE.FIVE, value.next());
     }
 
     @Test
-    public void previousOfAFourShuoldReturnAThree() throws LowerBoundReachedException {
+    public void previousOfAFourShuoldReturnAThree(){
         CARDVALUE value = CARDVALUE.FOUR;
         
         assertEquals(CARDVALUE.THREE, value.previous());
     }
 
     @Test
-    public void nextOfAnAceShouldThrowAnUpperBoundReachedException(){
+    public void nextOfAnAceShouldReturnNull(){
         CARDVALUE value = CARDVALUE.ACE;
         
-        try {
-            value.next();
-        } catch (UpperBoundReachedException e) {
-
-        } catch (Exception e){
-            throw e;
-        }
+        assertEquals(null, value.next());
     }
 
     @Test
-    public void previousOfATwoShouldThrowALowerBoundReachedException(){
-        CARDVALUE value = CARDVALUE.TWO;
+    public void previousOfAnAceAsOneShouldReturnNull(){
+        CARDVALUE value = CARDVALUE.ACEASONE;
         
-        try {
-            value.previous();
-        } catch (LowerBoundReachedException e) {
-
-        } catch (Exception e){
-            throw e;
-        }
+        assertEquals(null, value.previous());
     }
 }

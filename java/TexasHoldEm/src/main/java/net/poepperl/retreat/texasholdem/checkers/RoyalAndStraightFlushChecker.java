@@ -11,8 +11,6 @@ import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
-import net.poepperl.retreat.texasholdem.interfaces.LowerBoundReachedException;
-import net.poepperl.retreat.texasholdem.interfaces.UpperBoundReachedException;
 
 public class RoyalAndStraightFlushChecker extends CheckerBase {
 
@@ -20,7 +18,7 @@ public class RoyalAndStraightFlushChecker extends CheckerBase {
     public BestPossibleHand Check(DataToCheck data) {
         CARDSUIT possibleSuit = null;
 
-        possibleSuit = findPossibleCardSuit(data);
+        possibleSuit = findSuitForAFlush(data);
 
         if (possibleSuit == null) {
             return null;
@@ -41,15 +39,7 @@ public class RoyalAndStraightFlushChecker extends CheckerBase {
 
         for (int i = 0; i < 5; i++) {
             handCards.add(new CardImpl(lowerBound, suit));
-
-            try {
-                if (lowerBound.getValue() != 14) {
-                    lowerBound = lowerBound.next();
-                }
-            } catch (UpperBoundReachedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            lowerBound = lowerBound.next();
         }
 
         return handCards;
@@ -63,14 +53,7 @@ public class RoyalAndStraightFlushChecker extends CheckerBase {
                 hasStraight = false;
                 break;
             }
-
-            try {
-                if (position.getValue() != 14) {
-                    position = position.next();
-                }
-            } catch (UpperBoundReachedException e) {
-                e.printStackTrace();
-            }
+            position = position.next();
         }
 
         return hasStraight;
@@ -88,12 +71,7 @@ public class RoyalAndStraightFlushChecker extends CheckerBase {
                 break;
             }
 
-            try {
-                lowerPosition = lowerPosition.previous();
-            } catch (LowerBoundReachedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            lowerPosition = lowerPosition.previous();
         }
 
         if (foundStraight) {
@@ -101,16 +79,5 @@ public class RoyalAndStraightFlushChecker extends CheckerBase {
         }
 
         return null;
-    }
-
-    private CARDSUIT findPossibleCardSuit(DataToCheck data) {
-        CARDSUIT possibleSuit = null;
-        for (CARDSUIT suit : CARDSUIT.values()) {
-            if (data.getSuitCount(suit) >= 5) {
-                possibleSuit = suit;
-                break;
-            }
-        }
-        return possibleSuit;
     }
 }

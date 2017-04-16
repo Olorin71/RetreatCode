@@ -104,4 +104,14 @@ public class DataToCheck {
 
         return null;
     }
+
+    public Card popFirstCard(CARDSUIT suit) {
+        for (Card card : cardsToCheck) {
+            if (card.getSuit() == suit) {
+                return pop(card);
+            }
+        }
+
+        return null;
+    }
 }

@@ -2,7 +2,7 @@ package net.poepperl.retreat.texasholdem.interfaces;
 
 public enum CARDVALUE {
     ACE(14), KING(13), QUEEN(12), JACK(11), TEN(10), NINE(9), EIGHT(8), SEVEN(7), SIX(6), FIVE(5), FOUR(4), THREE(
-            3), TWO(2);
+            3), TWO(2), ACEASONE(1);
 
     private final int value;
 
@@ -14,25 +14,28 @@ public enum CARDVALUE {
         return value;
     }
 
-    public CARDVALUE previous() throws LowerBoundReachedException{
-        // values are ordered descending so previous is ordinal +1 and vice versa
-        if(ordinal() + 1 == values().length)
-            throw new LowerBoundReachedException();
-        
+    public CARDVALUE previous() {
+        // values are ordered descending so previous is ordinal +1 and vice
+        // versa
+        if (ordinal() + 1 == values().length)
+            return null;
+
         return values()[ordinal() + 1];
     }
-    
-    public CARDVALUE next() throws UpperBoundReachedException{
-        // values are ordered descending so previous is ordinal +1 and vice versa
-        if(ordinal() == 0)
-            throw new UpperBoundReachedException();
-        
+
+    public CARDVALUE next() {
+        // values are ordered descending so previous is ordinal +1 and vice
+        // versa
+        if (ordinal() == 0)
+            return null;
+
         return values()[ordinal() - 1];
     }
 
     public String toString() {
         switch (value) {
         case 14:
+        case 1:
             return "Ace";
         case 13:
             return "King";
