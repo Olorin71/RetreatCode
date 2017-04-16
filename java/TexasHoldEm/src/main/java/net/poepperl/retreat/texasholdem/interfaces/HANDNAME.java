@@ -10,8 +10,7 @@ public enum HANDNAME {
     THREEOFAKIND(4),
     TWOPAIRS(3),
     PAIR(2),
-    HIGHCARD(1),
-    NOHAND(0);
+    HIGHCARD(1);
 
     private final int value;
 
@@ -43,10 +42,8 @@ public enum HANDNAME {
             return "two pairs";
         case 2:
             return "pair";
-        case 1:
-            return "high Card";
         default:
-            return "No Hand";
+            return "high Card";
         }
     }
 }

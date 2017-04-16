@@ -12,7 +12,7 @@ public class BestPossibleHandImpl implements BestPossibleHand {
     private List<Card> handCards;
     private List<Card> kickers;
     
-    private HANDNAME hand = HANDNAME.NOHAND;
+    private HANDNAME hand;
 
     public BestPossibleHandImpl(HANDNAME handName, List<Card> handCards, List<Card> kickers) {
         this.hand = handName;
