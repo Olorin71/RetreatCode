@@ -12,8 +12,9 @@ import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
 
-public class FourOfAKindChecker {
+public class FourOfAKindChecker extends CheckerBase {
 
+    @Override
     public BestPossibleHand Check(DataToCheck data) {
         
         List<CARDVALUE> cardValues = data.getValuesWithNumberOfOccurrences(4);

@@ -14,8 +14,9 @@ import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
 import net.poepperl.retreat.texasholdem.interfaces.LowerBoundReachedException;
 import net.poepperl.retreat.texasholdem.interfaces.UpperBoundReachedException;
 
-public class RoyalAndStraightFlushChecker {
+public class RoyalAndStraightFlushChecker extends CheckerBase {
 
+    @Override
     public BestPossibleHand Check(DataToCheck data) {
         CARDSUIT possibleSuit = null;
 
