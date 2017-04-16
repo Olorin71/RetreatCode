@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.poepperl.retreat.texasholdem.checkers.CheckerBase;
 import net.poepperl.retreat.texasholdem.checkers.FourOfAKindChecker;
+import net.poepperl.retreat.texasholdem.checkers.FullHouseChecker;
 import net.poepperl.retreat.texasholdem.checkers.RoyalAndStraightFlushChecker;
 import net.poepperl.retreat.texasholdem.interfaces.BestPossibleHand;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
@@ -19,6 +20,7 @@ public class HandInvestigatorImpl implements HandInvestigator {
 
         checkers.add(new RoyalAndStraightFlushChecker());
         checkers.add(new FourOfAKindChecker());
+        checkers.add(new FullHouseChecker());
     }
 
     @Override

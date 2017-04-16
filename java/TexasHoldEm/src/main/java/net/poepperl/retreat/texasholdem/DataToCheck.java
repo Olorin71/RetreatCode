@@ -94,4 +94,14 @@ public class DataToCheck {
             }
         });
     }
+
+    public Card popFirstCard(CARDVALUE value) {
+        for (Card card : cardsToCheck) {
+            if (card.getValue() == value) {
+                return pop(card);
+            }
+        }
+
+        return null;
+    }
 }

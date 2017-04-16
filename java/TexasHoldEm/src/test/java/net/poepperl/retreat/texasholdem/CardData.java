@@ -68,4 +68,15 @@ public class CardData {
         communityCards.add(new CardImpl(CARDVALUE.TWO, CARDSUIT.CLUB));
         communityCards.add(new CardImpl(CARDVALUE.QUEEN, CARDSUIT.DIAMOND));
     }
+
+    public void buildCardsForFullHouse() {
+        holeCards.add(new CardImpl(CARDVALUE.TEN, CARDSUIT.HEART));
+        holeCards.add(new CardImpl(CARDVALUE.TEN, CARDSUIT.SPADE));
+
+        communityCards.add(new CardImpl(CARDVALUE.SEVEN, CARDSUIT.CLUB));
+        communityCards.add(new CardImpl(CARDVALUE.SEVEN, CARDSUIT.HEART));
+        communityCards.add(new CardImpl(CARDVALUE.SEVEN, CARDSUIT.DIAMOND));
+        communityCards.add(new CardImpl(CARDVALUE.TWO, CARDSUIT.CLUB));
+        communityCards.add(new CardImpl(CARDVALUE.QUEEN, CARDSUIT.DIAMOND));
+    }
 }

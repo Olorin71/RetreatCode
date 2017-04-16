@@ -15,37 +15,40 @@ public class HandInvestigatorImplTest {
     private HandInvestigator investigator = null;
     private CardData testData;
     
+    private void assertHandFoundAndCorrectType(HANDNAME handName) {
+        BestPossibleHand hand = investigator.locateBestHand(testData.getHoleCards(), testData.getCommunityCards());
+        
+        assertNotNull(hand);
+        assertEquals(handName, hand.getHandName());
+    }
+    
     @Before
     public void initialize(){
         this.investigator = new HandInvestigatorImpl();
         testData = new CardData();
     }
 
-
     @Test
     public void locateBestHandForARoayalFlush() {
         testData.buildCardsForRoyalFlush();
-        BestPossibleHand hand = investigator.locateBestHand(testData.getHoleCards(), testData.getCommunityCards());
-
-        assertNotNull(hand);
-        assertEquals(HANDNAME.ROYALFLUSH, hand.getHandName());
+        assertHandFoundAndCorrectType(HANDNAME.ROYALFLUSH);
     }
 
     @Test
     public void locateBestHandForAStraightFlush() {
         testData.buildCardsForStraightFlush();
-        BestPossibleHand hand = investigator.locateBestHand(testData.getHoleCards(), testData.getCommunityCards());
-
-        assertNotNull(hand);
-        assertEquals(HANDNAME.STRAIGHTFLUSH, hand.getHandName());
+        assertHandFoundAndCorrectType(HANDNAME.STRAIGHTFLUSH);
     }
 
     @Test
     public void locateBestHandForFourOfAKind() {
         testData.buildCardsForFourOfAKind();
-        BestPossibleHand hand = investigator.locateBestHand(testData.getHoleCards(), testData.getCommunityCards());
+        assertHandFoundAndCorrectType(HANDNAME.FOUROFAKIND);
+    }
 
-        assertNotNull(hand);
-        assertEquals(HANDNAME.FOUROFAKIND, hand.getHandName());
+    @Test
+    public void locateBestHandForFullHouse() {
+        testData.buildCardsForFullHouse();
+        assertHandFoundAndCorrectType(HANDNAME.FULLHOUSE);
     }
 }
