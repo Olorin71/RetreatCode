@@ -21,6 +21,7 @@ public class DataToCheck {
     public DataToCheck(List<Card> holeCards, List<Card> communityCards) {
         cardsToCheck = new LinkedList<Card>(holeCards);
         cardsToCheck.addAll(communityCards);
+        sortCardsToCheckDescending();
 
         InitializeDistributionArrays();
         CalculateDistribution();
@@ -81,6 +82,10 @@ public class DataToCheck {
     }
 
     public Card popHighCard() {
+        return cardsToCheck.remove(0);
+    }
+
+    private void sortCardsToCheckDescending() {
         cardsToCheck.sort(new Comparator<Card>() {
             @Override
             public int compare(Card o1, Card o2) {
@@ -88,10 +93,5 @@ public class DataToCheck {
                                        // we sort in descending order
             }
         });
-
-        Card card = cardsToCheck.get(0);
-        cardsToCheck.remove(0);
-
-        return card;
     }
 }
