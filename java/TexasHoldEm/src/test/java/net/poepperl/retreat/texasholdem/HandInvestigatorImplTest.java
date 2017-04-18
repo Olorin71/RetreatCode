@@ -63,4 +63,16 @@ public class HandInvestigatorImplTest {
         testData.buildCardsForStraight();
         assertHandFoundAndCorrectType(HANDNAME.STRAIGHT);
     }
+
+    @Test
+    public void locateBestHandForThreeOfAKind() {
+        testData.buildCardsForThreeOfAKind();
+        assertHandFoundAndCorrectType(HANDNAME.THREEOFAKIND);
+    }
+
+    @Test
+    public void locateBestHandForTwoPairs() {
+        testData.buildCardsForTwoPairs();
+        assertHandFoundAndCorrectType(HANDNAME.TWOPAIRS);
+    }
 }

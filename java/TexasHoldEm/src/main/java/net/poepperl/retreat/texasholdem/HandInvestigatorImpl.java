@@ -9,6 +9,8 @@ import net.poepperl.retreat.texasholdem.checkers.FourOfAKindChecker;
 import net.poepperl.retreat.texasholdem.checkers.FullHouseChecker;
 import net.poepperl.retreat.texasholdem.checkers.RoyalAndStraightFlushChecker;
 import net.poepperl.retreat.texasholdem.checkers.StraightChecker;
+import net.poepperl.retreat.texasholdem.checkers.ThreeOfAKindChecker;
+import net.poepperl.retreat.texasholdem.checkers.TwoPairsChecker;
 import net.poepperl.retreat.texasholdem.interfaces.BestPossibleHand;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 import net.poepperl.retreat.texasholdem.interfaces.HandInvestigator;
@@ -25,6 +27,8 @@ public class HandInvestigatorImpl implements HandInvestigator {
         checkers.add(new FullHouseChecker());
         checkers.add(new FlushChecker());
         checkers.add(new StraightChecker());
+        checkers.add(new ThreeOfAKindChecker());
+        checkers.add(new TwoPairsChecker());
     }
 
     @Override

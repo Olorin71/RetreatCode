@@ -27,14 +27,14 @@ public class StraightChecker extends CheckerBase {
                     break;
                 }
 
-                currentValue.next();
+                currentValue = currentValue.next();
             }
 
             if (straightFound) {
                 break;
             }
 
-            lowerBound.previous();
+            lowerBound = lowerBound.previous();
         }
 
         if (straightFound == false)
