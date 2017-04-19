@@ -134,4 +134,26 @@ public class CardData {
         communityCards.add(new CardImpl(CARDVALUE.THREE, CARDSUIT.DIAMOND));
         communityCards.add(new CardImpl(CARDVALUE.QUEEN, CARDSUIT.DIAMOND));
     }
+
+    public void buildCardsForOnePair() {
+        holeCards.add(new CardImpl(CARDVALUE.FOUR, CARDSUIT.SPADE));
+        holeCards.add(new CardImpl(CARDVALUE.TEN, CARDSUIT.HEART));
+
+        communityCards.add(new CardImpl(CARDVALUE.EIGHT, CARDSUIT.HEART));
+        communityCards.add(new CardImpl(CARDVALUE.SEVEN, CARDSUIT.DIAMOND));
+        communityCards.add(new CardImpl(CARDVALUE.FOUR, CARDSUIT.CLUB));
+        communityCards.add(new CardImpl(CARDVALUE.THREE, CARDSUIT.DIAMOND));
+        communityCards.add(new CardImpl(CARDVALUE.QUEEN, CARDSUIT.DIAMOND));
+    }
+
+    public void buildCardsForHighCard() {
+        holeCards.add(new CardImpl(CARDVALUE.FOUR, CARDSUIT.SPADE));
+        holeCards.add(new CardImpl(CARDVALUE.THREE, CARDSUIT.HEART));
+
+        communityCards.add(new CardImpl(CARDVALUE.TWO, CARDSUIT.HEART));
+        communityCards.add(new CardImpl(CARDVALUE.FIVE, CARDSUIT.DIAMOND));
+        communityCards.add(new CardImpl(CARDVALUE.SEVEN, CARDSUIT.CLUB));
+        communityCards.add(new CardImpl(CARDVALUE.TEN, CARDSUIT.DIAMOND));
+        communityCards.add(new CardImpl(CARDVALUE.NINE, CARDSUIT.DIAMOND));
+    }
 }

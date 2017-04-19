@@ -7,11 +7,13 @@ import net.poepperl.retreat.texasholdem.checkers.CheckerBase;
 import net.poepperl.retreat.texasholdem.checkers.FlushChecker;
 import net.poepperl.retreat.texasholdem.checkers.FourOfAKindChecker;
 import net.poepperl.retreat.texasholdem.checkers.FullHouseChecker;
+import net.poepperl.retreat.texasholdem.checkers.HighCardChecker;
+import net.poepperl.retreat.texasholdem.checkers.PairChecker;
 import net.poepperl.retreat.texasholdem.checkers.RoyalAndStraightFlushChecker;
 import net.poepperl.retreat.texasholdem.checkers.StraightChecker;
 import net.poepperl.retreat.texasholdem.checkers.ThreeOfAKindChecker;
 import net.poepperl.retreat.texasholdem.checkers.TwoPairsChecker;
-import net.poepperl.retreat.texasholdem.interfaces.BestPossibleHand;
+import net.poepperl.retreat.texasholdem.interfaces.Hand;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 import net.poepperl.retreat.texasholdem.interfaces.HandInvestigator;
 
@@ -29,13 +31,15 @@ public class HandInvestigatorImpl implements HandInvestigator {
         checkers.add(new StraightChecker());
         checkers.add(new ThreeOfAKindChecker());
         checkers.add(new TwoPairsChecker());
+        checkers.add(new PairChecker());
+        checkers.add(new HighCardChecker());
     }
 
     @Override
-    public BestPossibleHand locateBestHand(List<Card> holeCards, List<Card> communityCards) {
+    public Hand locateBestHand(List<Card> holeCards, List<Card> communityCards) {
         DataToCheck data = new DataToCheck(holeCards, communityCards);
 
-        BestPossibleHand bestHand = null;
+        Hand bestHand = null;
 
         for (CheckerBase checker : checkers) {
             bestHand = checker.Check(data);

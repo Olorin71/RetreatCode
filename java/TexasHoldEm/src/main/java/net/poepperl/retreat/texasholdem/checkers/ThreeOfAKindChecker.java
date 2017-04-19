@@ -3,9 +3,9 @@ package net.poepperl.retreat.texasholdem.checkers;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.poepperl.retreat.texasholdem.BestPossibleHandImpl;
+import net.poepperl.retreat.texasholdem.HandImpl;
 import net.poepperl.retreat.texasholdem.DataToCheck;
-import net.poepperl.retreat.texasholdem.interfaces.BestPossibleHand;
+import net.poepperl.retreat.texasholdem.interfaces.Hand;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
@@ -13,7 +13,7 @@ import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
 public class ThreeOfAKindChecker extends CheckerBase {
 
     @Override
-    public BestPossibleHand Check(DataToCheck data) {
+    public Hand Check(DataToCheck data) {
         List<CARDVALUE> threeOfAKind = data.getValuesWithNumberOfOccurrences(3);
         
         if(threeOfAKind.size() == 0)
@@ -30,7 +30,7 @@ public class ThreeOfAKindChecker extends CheckerBase {
         kickers.add(data.popHighCard());
         kickers.add(data.popHighCard());
         
-        return new BestPossibleHandImpl(HANDNAME.THREEOFAKIND, handCards, kickers);
+        return new HandImpl(HANDNAME.THREEOFAKIND, handCards, kickers);
     }
 
 }

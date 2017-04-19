@@ -2,7 +2,7 @@ package net.poepperl.retreat.texasholdem.interfaces;
 
 import java.util.List;
 
-public interface BestPossibleHand {
+public interface Hand {
 
     public HANDNAME getHandName();
     public List<Card> getHandCards();

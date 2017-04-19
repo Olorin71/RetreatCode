@@ -10,28 +10,27 @@ import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
 
-public class TwoPairsChecker extends CheckerBase {
+public class PairChecker extends CheckerBase {
 
     @Override
     public Hand Check(DataToCheck data) {
+        List<CARDVALUE> pair = data.getValuesWithNumberOfOccurrences(2);
         
-        List<CARDVALUE> pairValues = data.getValuesWithNumberOfOccurrences(2);
-        
-        if(pairValues.size() < 2)
+        if(pair.size() != 1)
             return null;
         
         List<Card> handCards = new LinkedList<Card>();
         
-        handCards.add(data.popFirstCard(pairValues.get(0)));
-        handCards.add(data.popFirstCard(pairValues.get(0)));
-        handCards.add(data.popFirstCard(pairValues.get(1)));
-        handCards.add(data.popFirstCard(pairValues.get(1)));
+        handCards.add(data.popFirstCard(pair.get(0)));
+        handCards.add(data.popFirstCard(pair.get(0)));
 
         List<Card> kickers = new LinkedList<Card>();
         
         kickers.add(data.popHighCard());
+        kickers.add(data.popHighCard());
+        kickers.add(data.popHighCard());
         
-        return new HandImpl(HANDNAME.TWOPAIRS, handCards, kickers);
+        return new HandImpl(HANDNAME.PAIR, handCards, kickers);
 }
 
 }

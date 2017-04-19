@@ -3,9 +3,9 @@ package net.poepperl.retreat.texasholdem.checkers;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.poepperl.retreat.texasholdem.BestPossibleHandImpl;
+import net.poepperl.retreat.texasholdem.HandImpl;
 import net.poepperl.retreat.texasholdem.DataToCheck;
-import net.poepperl.retreat.texasholdem.interfaces.BestPossibleHand;
+import net.poepperl.retreat.texasholdem.interfaces.Hand;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
@@ -13,7 +13,7 @@ import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
 public class StraightChecker extends CheckerBase {
 
     @Override
-    public BestPossibleHand Check(DataToCheck data) {
+    public Hand Check(DataToCheck data) {
 
         CARDVALUE lowerBound = CARDVALUE.TEN;
         boolean straightFound = true;
@@ -49,6 +49,6 @@ public class StraightChecker extends CheckerBase {
 
         List<Card> kickers = new LinkedList<Card>();
 
-        return new BestPossibleHandImpl(HANDNAME.STRAIGHT, handCards, kickers);
+        return new HandImpl(HANDNAME.STRAIGHT, handCards, kickers);
     }
 }

@@ -6,7 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.poepperl.retreat.texasholdem.interfaces.BestPossibleHand;
+import net.poepperl.retreat.texasholdem.interfaces.Hand;
 import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
 import net.poepperl.retreat.texasholdem.interfaces.HandInvestigator;
 
@@ -16,7 +16,7 @@ public class HandInvestigatorImplTest {
     private CardData testData;
     
     private void assertHandFoundAndCorrectType(HANDNAME handName) {
-        BestPossibleHand hand = investigator.locateBestHand(testData.getHoleCards(), testData.getCommunityCards());
+        Hand hand = investigator.locateBestHand(testData.getHoleCards(), testData.getCommunityCards());
         
         assertNotNull(hand);
         assertEquals(handName, hand.getHandName());
@@ -74,5 +74,17 @@ public class HandInvestigatorImplTest {
     public void locateBestHandForTwoPairs() {
         testData.buildCardsForTwoPairs();
         assertHandFoundAndCorrectType(HANDNAME.TWOPAIRS);
+    }
+
+    @Test
+    public void locateBestHandForOnePair() {
+        testData.buildCardsForOnePair();
+        assertHandFoundAndCorrectType(HANDNAME.PAIR);
+    }
+
+    @Test
+    public void locateBestHandForHighCard() {
+        testData.buildCardsForHighCard();
+        assertHandFoundAndCorrectType(HANDNAME.HIGHCARD);
     }
 }

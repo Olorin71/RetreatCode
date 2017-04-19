@@ -3,10 +3,10 @@ package net.poepperl.retreat.texasholdem.checkers;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.poepperl.retreat.texasholdem.BestPossibleHandImpl;
+import net.poepperl.retreat.texasholdem.HandImpl;
 import net.poepperl.retreat.texasholdem.CardImpl;
 import net.poepperl.retreat.texasholdem.DataToCheck;
-import net.poepperl.retreat.texasholdem.interfaces.BestPossibleHand;
+import net.poepperl.retreat.texasholdem.interfaces.Hand;
 import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
@@ -15,7 +15,7 @@ import net.poepperl.retreat.texasholdem.interfaces.HANDNAME;
 public class RoyalAndStraightFlushChecker extends CheckerBase {
 
     @Override
-    public BestPossibleHand Check(DataToCheck data) {
+    public Hand Check(DataToCheck data) {
         CARDSUIT possibleSuit = null;
 
         possibleSuit = findSuitForAFlush(data);
@@ -30,7 +30,7 @@ public class RoyalAndStraightFlushChecker extends CheckerBase {
             return null;
         }
 
-        return new BestPossibleHandImpl(lowerBound == CARDVALUE.TEN ? HANDNAME.ROYALFLUSH : HANDNAME.STRAIGHTFLUSH,
+        return new HandImpl(lowerBound == CARDVALUE.TEN ? HANDNAME.ROYALFLUSH : HANDNAME.STRAIGHTFLUSH,
                 createHandCardsList(lowerBound, possibleSuit), new LinkedList<Card>());
     }
 
