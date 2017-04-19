@@ -6,5 +6,5 @@ import java.util.UUID;
 
 public interface HandComparer {
 
-    List<UUID> FindRoundWinners(Map<UUID, PlayerHoleCards> players, List<Card> communityCards);
+    List<UUID> FindRoundWinners(Map<UUID, Player> players, List<Card> communityCards);
 }
