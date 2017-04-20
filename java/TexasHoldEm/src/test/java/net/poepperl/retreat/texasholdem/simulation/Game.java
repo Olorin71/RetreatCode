@@ -34,16 +34,18 @@ public class Game {
 
         System.out.println(communityCards);
 
+        HandComparer comparer = Factory.newHandComparer();
+        List<Player> winners = comparer.findRoundWinners(players, communityCards);
+
         for (Player player : players) {
             System.out.println("Player:");
             System.out.println(player.getName());
             System.out.println("HoleCards:");
             System.out.println(player.getHoleCards());
+            System.out.println("Hand:");
+            System.out.println(player.getHand().getHandName());
             System.out.println("");
         }
-
-        HandComparer comparer = Factory.newHandComparer();
-        List<Player> winners = comparer.findRoundWinners(players, communityCards);
 
         System.out.println("Winner(s):");
 

@@ -53,10 +53,10 @@ public class HandImpl implements Hand {
     public int compare(Hand left, Hand right) {
         
         
-        if(left.getHandName().getValue() < left.getHandName().getValue())
+        if(left.getHandName().getValue() < right.getHandName().getValue())
             return -1;
 
-        if(left.getHandName().getValue() > left.getHandName().getValue())
+        if(left.getHandName().getValue() > right.getHandName().getValue())
             return 1;
         
         int handCardComparison = compareHandCards(left, right);
