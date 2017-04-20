@@ -1,6 +1,8 @@
 package net.poepperl.retreat.texasholdem.interfaces;
 
-public interface Card {
+import java.util.Comparator;
+
+public interface Card extends Comparator<Card>{
 
     CARDSUIT getSuit();
 

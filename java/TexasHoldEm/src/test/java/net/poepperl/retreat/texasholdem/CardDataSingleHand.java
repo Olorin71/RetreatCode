@@ -7,12 +7,12 @@ import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 
-public class CardData {
+public class CardDataSingleHand {
 
     private List<Card> holeCards;
     private List<Card> communityCards;
 
-    public CardData() {
+    public CardDataSingleHand() {
         holeCards = new LinkedList<Card>();
         communityCards = new LinkedList<Card>();
     }

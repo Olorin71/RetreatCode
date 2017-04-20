@@ -1,12 +1,10 @@
 package net.poepperl.retreat.texasholdem;
 
-import java.util.Comparator;
-
 import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;
 
-public class CardImpl implements Card, Comparator<Card> {
+public class CardImpl implements Card {
 
     private CARDVALUE value;
     private CARDSUIT suit;

@@ -34,4 +34,55 @@ public class HandImpl implements Hand {
     public List<Card> getKickers() {
         return this.kickers;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof HandImpl) {
+            HandImpl other = (HandImpl) obj;
+            return this.compare(this, other) == 0;
+        }
+
+        return super.equals(obj);
+    }
+
+    public int compare(Hand other) {
+        return this.compare(this, other);
+    }
+
+    @Override
+    public int compare(Hand left, Hand right) {
+        
+        
+        if(left.getHandName().getValue() < left.getHandName().getValue())
+            return -1;
+
+        if(left.getHandName().getValue() > left.getHandName().getValue())
+            return 1;
+        
+        int handCardComparison = compareHandCards(left, right);
+        
+        if(handCardComparison != 0)
+            return handCardComparison;
+        
+        return compareKickers(left, right);
+    }
+
+    private int compareKickers(Hand left, Hand right) {
+        return compareCards(left.getKickers(), right.getKickers());
+    }
+
+    private int compareHandCards(Hand left, Hand right) {
+        return compareCards(left.getHandCards(), right.getHandCards());
+    }
+
+    private int compareCards(List<Card> left, List<Card> right) {
+        for(int n = 0; n < left.size(); n++){
+            int cardComparison = left.get(n).compare(right.get(n));
+            if(cardComparison != 0){
+                return cardComparison;
+            }
+        }
+        
+        return 0;
+    }
 }

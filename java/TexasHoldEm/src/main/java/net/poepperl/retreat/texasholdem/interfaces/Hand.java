@@ -1,10 +1,13 @@
 package net.poepperl.retreat.texasholdem.interfaces;
 
+import java.util.Comparator;
 import java.util.List;
 
-public interface Hand {
+public interface Hand extends Comparator<Hand>{
 
-    public HANDNAME getHandName();
-    public List<Card> getHandCards();
-    public List<Card> getKickers();
+    HANDNAME getHandName();
+    List<Card> getHandCards();
+    List<Card> getKickers();
+    
+    int compare(Hand other);
 }

@@ -11,4 +11,7 @@ public interface Player {
     String getName();
     
     void addHoleCards(Card firstCard, Card secondCard);
+    
+    void setHand(Hand hand);
+    Hand getHand();
 }

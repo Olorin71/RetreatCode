@@ -13,7 +13,7 @@ import net.poepperl.retreat.texasholdem.interfaces.HandInvestigator;
 public class HandInvestigatorImplTest {
 
     private HandInvestigator investigator = null;
-    private CardData testData;
+    private CardDataSingleHand testData;
     
     private void assertHandFoundAndCorrectType(HANDNAME handName) {
         Hand hand = investigator.locateBestHand(testData.getHoleCards(), testData.getCommunityCards());
@@ -25,7 +25,7 @@ public class HandInvestigatorImplTest {
     @Before
     public void initialize(){
         this.investigator = new HandInvestigatorImpl();
-        testData = new CardData();
+        testData = new CardDataSingleHand();
     }
 
     @Test

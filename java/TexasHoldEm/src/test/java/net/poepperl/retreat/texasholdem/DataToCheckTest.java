@@ -15,11 +15,11 @@ import net.poepperl.retreat.texasholdem.interfaces.Card;
 
 public class DataToCheckTest {
 
-    private CardData testData;
+    private CardDataSingleHand testData;
 
     @Before
     public void initialize() {
-        testData = new CardData();
+        testData = new CardDataSingleHand();
     }
 
     @Test
