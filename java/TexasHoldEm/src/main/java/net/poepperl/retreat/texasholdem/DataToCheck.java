@@ -13,9 +13,11 @@ import net.poepperl.retreat.texasholdem.interfaces.Card;
 
 public class DataToCheck {
 
+    // todo eigene klase für die distributions
     private HashMap<CARDVALUE, Integer> cardValueDistribution;
     private HashMap<CARDSUIT, Integer> cardSuitDistribution;
 
+    // todo eigene klasse mit den zu analysierenden karten
     private List<Card> cardsToCheck;
 
     public DataToCheck(List<Card> holeCards, List<Card> communityCards) {
@@ -49,11 +51,11 @@ public class DataToCheck {
     }
 
     public int getSuitCount(CARDSUIT suit) {
-        return cardSuitDistribution.getOrDefault(suit, 0).intValue();
+        return cardSuitDistribution.getOrDefault(suit, 0);
     }
 
     public int getValueCount(CARDVALUE value) {
-        return cardValueDistribution.getOrDefault(value, 0).intValue();
+        return cardValueDistribution.getOrDefault(value, 0);
     }
 
     public boolean hasCard(CARDSUIT suit, CARDVALUE value) {

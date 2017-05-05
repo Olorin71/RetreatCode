@@ -5,6 +5,7 @@ import net.poepperl.retreat.texasholdem.interfaces.Hand;
 import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;
 
 public abstract class CheckerBase {
+    // todo: nur einen boolean zurückgeben und die hand von einem "handbuilder" erstellen lassen
     public abstract Hand Check(DataToCheck data);
 
     protected CARDSUIT findSuitForAFlush(DataToCheck data) {

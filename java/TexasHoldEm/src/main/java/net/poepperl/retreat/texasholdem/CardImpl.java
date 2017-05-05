@@ -19,6 +19,7 @@ public class CardImpl implements Card {
         return suit;
     }
 
+    // todo: weiteres get mit return int "getRank"?!? dann getValue.getValue ersetzen
     @Override
     public CARDVALUE getValue() {
         return value;
@@ -27,6 +28,7 @@ public class CardImpl implements Card {
     @Override
     public String toString() {
 
+        // todo: konvertierung des toString in enum verschieben?
         String suitAsString = "";
         switch (suit) {
         case CLUB:
