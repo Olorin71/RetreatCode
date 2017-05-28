@@ -1,4 +1,4 @@
-package net.poepperl.retreat.texasholdem;
+package net.poepperl.retreat.texasholdem.unit;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -6,6 +6,8 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+import net.poepperl.retreat.texasholdem.HandComparerImpl;
+import net.poepperl.retreat.texasholdem.PlayerImpl;
 import org.junit.Before;
 import org.junit.Test;
 

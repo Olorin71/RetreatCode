@@ -1,8 +1,9 @@
-package net.poepperl.retreat.texasholdem;
+package net.poepperl.retreat.texasholdem.unit;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import net.poepperl.retreat.texasholdem.CardImpl;
 import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;
 import net.poepperl.retreat.texasholdem.interfaces.CARDVALUE;
 import net.poepperl.retreat.texasholdem.interfaces.Card;

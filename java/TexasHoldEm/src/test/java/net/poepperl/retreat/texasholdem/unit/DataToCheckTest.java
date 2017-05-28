@@ -1,4 +1,4 @@
-package net.poepperl.retreat.texasholdem;
+package net.poepperl.retreat.texasholdem.unit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import net.poepperl.retreat.texasholdem.CardImpl;
+import net.poepperl.retreat.texasholdem.DataToCheck;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,8 +1,9 @@
-package net.poepperl.retreat.texasholdem;
+package net.poepperl.retreat.texasholdem.unit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import net.poepperl.retreat.texasholdem.HandInvestigatorImpl;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,7 +1,9 @@
-package net.poepperl.retreat.texasholdem;
+package net.poepperl.retreat.texasholdem.unit;
 
 import static org.junit.Assert.*;
 
+import net.poepperl.retreat.texasholdem.CardImpl;
+import net.poepperl.retreat.texasholdem.PlayerImpl;
 import org.junit.Test;
 
 import net.poepperl.retreat.texasholdem.interfaces.CARDSUIT;

@@ -1,4 +1,4 @@
-package net.poepperl.retreat.texasholdem;
+package net.poepperl.retreat.texasholdem.unit;
 
 import static org.junit.Assert.*;
 
