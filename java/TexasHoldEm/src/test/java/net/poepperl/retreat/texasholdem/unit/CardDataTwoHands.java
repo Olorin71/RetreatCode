@@ -73,4 +73,18 @@ public class CardDataTwoHands {
         communityCards.add(new CardImpl(CARDVALUE.TEN, CARDSUIT.CLUB));
         communityCards.add(new CardImpl(CARDVALUE.SEVEN, CARDSUIT.CLUB));
     }
+
+    public void buildCardsForHighCardAceAndHighCardKing() {
+        playerOneHoleCards.add(new CardImpl(CARDVALUE.NINE, CARDSUIT.DIAMOND));
+        playerOneHoleCards.add(new CardImpl(CARDVALUE.ACE, CARDSUIT.DIAMOND));
+
+        playerTwoHoleCards.add(new CardImpl(CARDVALUE.KING, CARDSUIT.HEART));
+        playerTwoHoleCards.add(new CardImpl(CARDVALUE.NINE, CARDSUIT.HEART));
+
+        communityCards.add(new CardImpl(CARDVALUE.TWO, CARDSUIT.CLUB));
+        communityCards.add(new CardImpl(CARDVALUE.THREE, CARDSUIT.DIAMOND));
+        communityCards.add(new CardImpl(CARDVALUE.FOUR, CARDSUIT.SPADE));
+        communityCards.add(new CardImpl(CARDVALUE.TEN, CARDSUIT.CLUB));
+        communityCards.add(new CardImpl(CARDVALUE.SEVEN, CARDSUIT.CLUB));
+    }
 }

@@ -17,7 +17,7 @@ public class HighCardChecker extends CheckerBase {
         List<Card> handCards = new LinkedList<Card>();
         List<Card> kickers = new LinkedList<Card>();
 
-        kickers.add(data.popHighCard());
+        handCards.add(data.popHighCard());
         kickers.add(data.popHighCard());
         kickers.add(data.popHighCard());
         kickers.add(data.popHighCard());

@@ -76,4 +76,16 @@ public class HandComparerTest {
         assertEquals(player1.getName(), winners.get(0).getName());
         assertEquals(HANDNAME.PAIR, winners.get(0).getHand().getHandName());
     }
+
+    @Test
+    public void highCardAceWinnsOverHighCardKing(){
+        data.buildCardsForHighCardAceAndHighCardKing();
+
+        addPlayerHoleCards();
+        List<Player> winners = findWinningPlayers();
+        assertNotNull(winners);
+        assertEquals(1, winners.size());
+        assertEquals(player1.getName(), winners.get(0).getName());
+        assertEquals(HANDNAME.HIGHCARD, winners.get(0).getHand().getHandName());
+    }
 }
